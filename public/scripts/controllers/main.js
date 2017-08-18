@@ -8,5 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope,requrl) {
+
+
   });

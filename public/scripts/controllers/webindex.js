@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location) {
+  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location,ngAudio) {
 
     $scope.loading_screen = pleaseWait({
       logo: "../images/Loading_Text.png",
@@ -115,5 +115,9 @@ angular.module('perspecticoApp')
         $scope.LogoutMessage = "Error,Try again Later";
       });
     };
+
+    //////////////Audio Player
+
+        $scope.audio = ngAudio.load(requrl+'/Podcasts/testpod.mp3');
 
   });
