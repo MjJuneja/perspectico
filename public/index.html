@@ -69,7 +69,7 @@
       <div class="container">
         <div ng-view=""></div>
       </div>
-
+      <button ng-click="playThis('http://localhost:1234/Podcasts/testpod2.mp3')">Play this</button>
       <div class="footer">
         <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
         <button ng-click='audio.restart()'>Stop</button>

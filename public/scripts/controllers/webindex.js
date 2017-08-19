@@ -119,5 +119,8 @@ angular.module('perspecticoApp')
     //////////////Audio Player
 
         $scope.audio = ngAudio.load(requrl+'/Podcasts/testpod.mp3');
+        $scope.playThis=function(link){
+          $scope.audio = ngAudio.load(link);
+        };
 
   });
