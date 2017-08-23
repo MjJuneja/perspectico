@@ -93,6 +93,20 @@ const validate = {
             return true;
         }
     },
+    longString: function (string) {
+        logger.debug('validate longstring');
+        if (string === undefined) {
+            return false;
+        }
+        var string = string.trim();
+        var letters = /^[A-Za-z0-9-/_',. ]+$/;
+        if (string.length < 2 || string.length > 300 || string.match(letters) === null) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    },
     name: function (string) {
         logger.debug('validate name');
         if (string === undefined) {

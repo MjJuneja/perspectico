@@ -58,6 +58,16 @@ angular
         controller: 'ForgotpasswordCtrl',
         controllerAs: 'forgotpassword'
       })
+      .when('/admin', {
+        templateUrl: 'views/userdashboard.html',
+        controller: 'UserdashboardCtrl',
+        controllerAs: 'userdashboard'
+      })
+      .when('/addmember', {
+        templateUrl: 'views/opspanel.html',
+        controller: 'OpspanelCtrl',
+        controllerAs: 'opspanel'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,0 +1,100 @@
+My podcasts
+
+
+<div>
+  <img ng-src={{podCover}} alt="Podcast cover"><br>
+  <form name="uploadForm" ng-hide="uploadPodForm">
+
+    <input type="file" ngf-select ng-model="userdashboard.cover" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="1MB"
+    /> Image thumbnail: <img style="width:100px;" ngf-thumbnail="userdashboard.cover || '/thumb.jpg'" />
+    <i ng-show="uploadForm.file.$error.maxSize">File too large : max 1MB</i>
+    <button type="submit" ng-click="uploadPic()">Upload</button>
+  </form>
+  {{picMessage}}
+  <button ng-click="toggleImageForm()" ng-hide="toggleButton">{{uploadButton}}</button>
+</div>
+
+<h1>Upload a new podcast</h1>
+<div>
+  <div ng-hide="userdashboard.newPodcastForm">
+
+    <form name="podForm" ng-submit="submitPodForm(podForm)" novalidate>
+
+      <h5>Title</h5>
+      <input type="text" name="validTitle" ng-model="userdashboard.title" placeholder="A title" pattern="[A-Za-z0-9,-.' ]{3,30}"
+        required>
+      <span ng-show="podForm.validTitle.$touched &&
+     podForm.validTitle.$error.pattern &&
+      !podForm.validTitle.$error.required">
+      Invalid title(Should be 3-30 only a-z,A-Z,0-9,-,',. , and space allowed) </span>
+      <span ng-show="podForm.validTitle.$touched &&
+     podForm.validTitle.$error.required">Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validTitle.$touched &&
+     podForm.validTitle.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validTitle.$touched &&
+     podForm.validTitle.$error.pattern">
+      Invalid title(Should be 3-30 only a-z,A-Z,0-9,-,',. , and space allowed) </span>
+
+      <h5>Sub Heading</h5>
+      <input type="text" name="validSub" ng-model="userdashboard.sub" placeholder="A subheading" pattern="[A-Za-z0-9,-.' ]{5,50}"
+        required>
+      <span ng-show="podForm.validSub.$touched &&
+     podForm.validSub.$error.pattern &&
+      !podForm.validSub.$error.required">
+      Invalid subheading(Should be 5-50 only a-z,A-Z,0-9,-,',. , and space allowed) </span>
+      <span ng-show="podForm.validSub.$touched &&
+     podForm.validSub.$error.required">Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validSub.$touched &&
+     podForm.validSub.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validSub.$touched &&
+     podForm.validSub.$error.pattern">
+     Invalid subheading(Should be 5-50 only a-z,A-Z,0-9,-,. , and space allowed) </span>
+
+      <h5>Description</h5>
+      <textarea name="validDiscription" ng-model="userdashboard.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
+        required></textarea>
+      <span ng-show="podForm.validDiscription.$touched &&
+     podForm.validDiscription.$error.pattern &&
+      !podForm.validDiscription.$error.required">
+      Invalid description(Should be 20-300 only a-z,A-Z,0-9,-,. , and space allowed) </span>
+      <span ng-show="podForm.validDiscription.$touched &&
+     podForm.validDiscription.$error.required">Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validDiscription.$touched &&
+     podForm.validDiscription.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validDiscription.$touched &&
+     podForm.validDiscription.$error.pattern">
+     Invalid description(Should be 20-300 only a-z,A-Z,0-9,-,. , and space allowed)</span>
+      <br>
+
+      <select name="validType" ng-model="userdashboard.type" required>
+       <option value="finance">Finance</option>
+       <option value="consulting">Consulting</option>
+       <option value="entrepreneurship">Entrepreneurship</option>
+       <option value="marketing">Marketing</option>
+     </select>
+      <span ng-show="podForm.validType.$touched &&
+     podForm.validType.$error.required">Cannot be left empty </span>
+      <span ng-show="PodSubmitted && !podForm.validType.$touched &&
+     podForm.validType.$error.required">
+        Cannot be left empty </span> {{PodResult}}
+
+      <input type="file"
+      ngf-select
+      ng-model="userdashboard.podcast"
+      name="file"
+      ngf-pattern=".mp3"
+      accept=".mp3"
+      ngf-max-size="20MB"
+      required
+      />
+      <i ng-show="podForm.file.$error.maxSize">File too large : max 20MB</i>
+
+    <input type="submit" ng-click="PodSubmitted=true;" value="Post Podcast">
+    {{postResult}}
+    </form>
+
+
+  </div>

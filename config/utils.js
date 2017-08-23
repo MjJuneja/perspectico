@@ -125,6 +125,11 @@ const utils={
         return randomString.generate(x);
     },
 
+    randomNumberGenerate: function (min, max) {
+        logger.debug('utils randomNumberGenerate');
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+
     sendSms:function(number,body){
         logger.debug('config utils sendSms');
         const twilio = require("twilio");

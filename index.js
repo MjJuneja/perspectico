@@ -45,6 +45,8 @@ const signup = require('./routes/signup');
 const login = require('./routes/login');
 const profile = require('./routes/profile');
 const forgotpassword = require('./routes/forgotpassword');
+const userdashboard = require('./routes/userdashboard');
+const opspanel = require('./routes/opspanel');
 const social =require('./routes/social');
 
 // view engine setup
@@ -67,6 +69,8 @@ app.use('/signup',signup);
 app.use('/login',login);
 app.use('/profile',profile);
 app.use('/forgotpassword',forgotpassword);
+app.use('/userdashboard',userdashboard);
+// app.use('/opspanel',opspanel);
 app.use('/social',social);
 app.use('*',index);
 
