@@ -2,8 +2,8 @@
 <div ng-hide="userdashboard.myPodcasts">
   <h1>My Podcasts</h1>
 
-  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId)">
-    <img src="" alt="">
+  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)">
+    <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
     <p>Description:{{pods.description}}</p>
@@ -24,7 +24,7 @@
         <input type="file" ngf-select ng-model="userdashboard.cover" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="1MB"
         /> Image thumbnail: <img style="width:100px;" ngf-thumbnail="userdashboard.cover || '/thumb.jpg'" />
         <i ng-show="coverForm.file.$error.maxSize">File too large : max 1MB</i>
-        <button type="submit" ng-click="checkCover(pods.podId)">Upload</button>
+        <button type="submit" ng-click="checkCover()">Upload</button>
       </form>
       {{picMessage}}
     </div>

@@ -22,6 +22,7 @@ angular.module('perspecticoApp')
       podcast: "",
       cover: "",
       selectedPod: "",
+      selectedIndex:""
     };
 
 
@@ -42,6 +43,9 @@ angular.module('perspecticoApp')
           $scope.userdashboard.uploadCoverForm = true;
         }
         else if (data.data.length > 0) {
+          for(var i=0;i<data.data.length;i++){
+            data.data[i].coverUrl=requrl+'/Covers/'+data.data[i].coverUrl;
+          }
           $scope.userdashboard.mypods = data.data;
           console.log($scope.userdashboard.mypods);
         }
@@ -142,9 +146,10 @@ angular.module('perspecticoApp')
     };
 
     ///// Select Podcast
-    $scope.selectPod = function (podId) {
+    $scope.selectPod = function (podId,selectedIndex) {
       console.log(podId);
       $scope.userdashboard.selectedPod = podId;
+      $scope.userdashboard.selectedIndex = selectedIndex;
     };
 
     ////////////// Cover pic upload //////////////
@@ -171,8 +176,8 @@ angular.module('perspecticoApp')
       }).then(function (data) {
         if (data.data.message === "success") {
           $scope.picMessage = "Upload successfull";
-          // var random = (new Date()).toString();
-          // $scope.profileUrl = $scope.profileUrl + "?cb=" + random;
+          var random = (new Date()).toString();
+          $scope.userdashboard.mypods[$scope.userdashboard.selectedIndex].coverUrl = $scope.userdashboard.mypods[$scope.userdashboard.selectedIndex].coverUrl + "?cb=" + random;
           $scope.picMessage = undefined;
         }
         else if (data.data.message === "unknown") {
