@@ -1,17 +1,34 @@
-My podcasts
+
+<div ng-hide="userdashboard.myPodcasts">
+  <h1>My Podcasts</h1>
+
+  <div ng-repeat="pods in userdashboard.mypods track by $index">
+    <img src="" alt="">
+    <p>Title:{{pods.title}}</p>
+    <p>Subheading:{{pods.subtext}}</p>
+    <p>Description:{{pods.description}}</p>
+    <p>Type:{{pods.type}}</p>
+    <p>Likes:{{pods.likes}}</p>
+
+    <button ng-click="playThis(pods.fileUrl)">></button>
+    <button ng-click="deleteThis(pods.podId,$index)">X</button>
+
+    <div>
+      <form name="uploadForm" ng-hide="userdashboard.uploadCoverForm">
+
+        <input type="file" ngf-select ng-model="userdashboard.cover" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="1MB"
+        /> Image thumbnail: <img style="width:100px;" ngf-thumbnail="userdashboard.cover || '/thumb.jpg'" />
+        <i ng-show="uploadForm.file.$error.maxSize">File too large : max 1MB</i>
+        <button type="submit" ng-click="uploadPic(pods.podId)">Upload</button>
+      </form>
+      {{picMessage}}
+    </div>
 
 
-<div>
-  <img ng-src={{podCover}} alt="Podcast cover"><br>
-  <form name="uploadForm" ng-hide="uploadPodForm">
+  </div>
 
-    <input type="file" ngf-select ng-model="userdashboard.cover" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="1MB"
-    /> Image thumbnail: <img style="width:100px;" ngf-thumbnail="userdashboard.cover || '/thumb.jpg'" />
-    <i ng-show="uploadForm.file.$error.maxSize">File too large : max 1MB</i>
-    <button type="submit" ng-click="uploadPic()">Upload</button>
-  </form>
-  {{picMessage}}
-  <button ng-click="toggleImageForm()" ng-hide="toggleButton">{{uploadButton}}</button>
+  {{myPodsResult}}
+
 </div>
 
 <h1>Upload a new podcast</h1>
@@ -81,19 +98,11 @@ My podcasts
      podForm.validType.$error.required">
         Cannot be left empty </span> {{PodResult}}
 
-      <input type="file"
-      ngf-select
-      ng-model="userdashboard.podcast"
-      name="file"
-      ngf-pattern=".mp3"
-      accept=".mp3"
-      ngf-max-size="20MB"
-      required
-      />
+      <input type="file" ngf-select ng-model="userdashboard.podcast" name="file" ngf-pattern=".mp3" accept=".mp3" ngf-max-size="20MB"
+        required />
       <i ng-show="podForm.file.$error.maxSize">File too large : max 20MB</i>
 
-    <input type="submit" ng-click="PodSubmitted=true;" value="Post Podcast">
-    {{postResult}}
+      <input type="submit" ng-click="PodSubmitted=true;" value="Post Podcast"> {{postResult}}
     </form>
 
 

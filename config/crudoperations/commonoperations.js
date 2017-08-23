@@ -275,22 +275,22 @@ const dbOperations = {
         var count = request.body.count;
         var Query = {};
         var SortQuery = {};
-        
-        Query['verified']=true;
+
+        Query['verified'] = true;
 
         if (type === "userPods" && userData.useremail) {
-            SortQuery["uploadDate"]=-1;
-            Query["postedByEmail"]=userData.useremail
+            SortQuery["uploadDate"] = -1;
+            Query["postedByEmail"] = userData.useremail
         }
-        else if(type === "userPods" && !userData.useremail){
-            Query[""]="";
+        else if (type === "userPods" && !userData.useremail) {
+            Query[""] = "";
         }
-        else if(type === "top"){
-            SortQuery["likes"]=-1;
+        else if (type === "top") {
+            SortQuery["likes"] = -1;
         }
         else if (type === "search" && request.body.filters) {
-            SortQuery["uploadDate"]=-1;
-         
+            SortQuery["uploadDate"] = -1;
+
             var filters = request.body.filters;
             Object.keys(filters).forEach(function (key) {
                 if (filters[key] && key === "search") {
@@ -325,13 +325,61 @@ const dbOperations = {
                         for (var i = count; i < len; i++) {
                             result[i].verified = undefined;
                             result[i].verifiedBy = undefined;
-                            if(!userData.useremail){
+                            if (!userData.useremail) {
                                 result[i].fileUrl = undefined;
                             }
                             pods.push(result[i]);
                         }
                         response.send(pods);
                     }
+                }
+            });
+    },
+
+    checkRights: function (request, response, userData) {
+        var that = this;
+        const Pods = require('../podschema');
+        Pods.find({
+            podId: request.body.podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    if (result.length === 1) {
+                        if (userData.role === 'admin' || userData.role === 'ops' || (result[0].uploadedByEmail === userData.useremail)) {
+                            that.deletePod(request.body.podId, response);
+                        }
+                        else {
+                            response.json({ message: "fail" });
+                        }
+                    }
+                    else {
+                        response.json({ message: "fail" });
+                    }
+                }
+            });
+
+    },
+
+    deletePod: function (podId, response) {
+        const Pods = require('../podschema');
+        Pods.remove({
+            podId: podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    const fs = require('fs');
+                    var filePath = './public/Podcasts/' + podId+'.mp3';
+                    console.log(filePath);
+                    fs.unlink(filePath, function (error) {
+                        if (error) return logger.error(error);
+                    });
+                    response.json({ message: "success" });
                 }
             });
     },

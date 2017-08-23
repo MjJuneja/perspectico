@@ -8,15 +8,19 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard, $location, $route) {
+  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard, $location, $route, $window) {
 
     $scope.userdashboard = {
       newPodcastForm: false,
+      myPodcasts:false,
+      uploadCoverForm:false,
+      mypods:[],
       title: "",
       sub: "",
       description: "",
       type: "",
-      podcast: ""
+      podcast: "",
+      cover:""
     };
 
 
@@ -28,10 +32,16 @@ angular.module('perspecticoApp')
 
       var promise = userdashboard.loadMyPods(myPod);
       promise.then(function (data) {
-        console.log(data);
         if (data.data.message === "unknown") {
           $scope.myPodsResult = "Not LoggedIn";
           $window.location.reload();
+        }
+        if (data.data.message === "none") {
+          $scope.myPodsResult = "No podcasts uploaded yet!";
+        }
+        else if(data.data.length>0){
+          $scope.userdashboard.mypods=data.data;
+          console.log($scope.userdashboard.mypods);
         }
         else {
           $scope.myPodsResult = "Error loading! Try again later.";
@@ -108,5 +118,23 @@ angular.module('perspecticoApp')
       });
     };
 
+    ///Delete podcast
+    $scope.deleteThis=function(podId,pindex){
+      var pod={
+        podId:podId
+      };
+      var promise = userdashboard.deletePod(pod);
+      promise.then(function (data) {
+        if (data.data.message === "unknown") {
+          $scope.postResult = "Not LoggedIn";
+          $window.location.reload();
+        }
+        else{
+          $scope.userdashboard.mypods.splice(pindex, 1);
+        }
+      }, function (error) {
+        //Do nothing
+      });
+    };
 
   });

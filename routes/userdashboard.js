@@ -36,10 +36,9 @@ var uploadPod = multer({
 
 
 var uploadAndSave = function (request, response, userData) {
-
+    const utils = require('../config/utils');
     if (!request.body.title) {
         request.fileValidationError = false;
-        const utils = require('../config/utils');
         request.podId = utils.randomStringGenerate(16);
         try {
             uploadPod(request, response, function (error) {
@@ -73,7 +72,16 @@ var uploadAndSave = function (request, response, userData) {
             request.body.verified = true;
         }
         if(isValidTitle && isValidSub && isValidDescription && isValidType){
-            dbOperations.createPod(request, response, userData);
+            var oldpath="./public/Podcasts_temp/"+userData.currentpodId+".mp3";
+            var newpath="./public/Podcasts/"+userData.currentpodId+".mp3";
+            utils.fsmove(oldpath,newpath,function(error,result){
+                if(error){
+                    logger.error(error);
+                }
+                else{
+                    dbOperations.createPod(request, response, userData);
+                }
+            });
         }
         else{
            response.json({ message: "fail" }); 
