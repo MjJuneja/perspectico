@@ -53,6 +53,48 @@ router.post('/checkUsername',function(request,response){
     });
 });
 
+///////////Load Pods
+router.post('/loadPods',function(request,response){
+    logger.debug('routes common loadPods');
+    
+    if (request.body.type === "search" && !request.session.user && !request.body.sessionid) {
+        var userData = {};
+        dbOperations.loadPods(request, response, userData);
+    }
+    else {
+        var isValidSessionid = false;
+        var webSessionExist = false;
+
+        if (request.body.appCall === true && request.body.sessionid != undefined) {
+            isValidSessionid = validate.string(request.body.sessionid);
+        }
+        else if (request.session.user) {
+            webSessionExist = true;
+        }
+
+        if (webSessionExist === true) {
+            var userData = request.session.user;
+            dbOperations.loadPods(request, response, userData);
+        }
+        else if (isValidSessionid === true) {
+            var userData = {};
+            commonOperations.getProfileData(request.body.sessionid, userData, function (userData) {
+                if (userData != undefined) {
+                    dbOperations.loadPods(request, response, userData);
+                }
+                else {
+                    response.json({ message: "unknown" });
+                }
+            });
+        }
+        else {
+            response.json({ message: "unknown" });
+        }
+    }
+    
+});
+
+
 module.exports = router;
 
 

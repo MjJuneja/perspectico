@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard) {
+  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard, $location, $route) {
 
     $scope.userdashboard = {
       newPodcastForm: false,
@@ -18,6 +18,31 @@ angular.module('perspecticoApp')
       type: "",
       podcast: ""
     };
+
+
+    $scope.loadMyPods = function () {
+      var myPod = {
+        type: 'userPods',
+        count:0
+      };
+
+      var promise = userdashboard.loadMyPods(myPod);
+      promise.then(function (data) {
+        console.log(data);
+        if (data.data.message === "unknown") {
+          $scope.myPodsResult = "Not LoggedIn";
+          $window.location.reload();
+        }
+        else {
+          $scope.myPodsResult = "Error loading! Try again later.";
+        }
+      }, function (error) {
+        $scope.myPodsResult = "Error Loading! Try again later.";
+      });
+    };
+
+    $scope.loadMyPods();
+
 
     $scope.submitPodForm = function (form) {
       if (form.$valid && $scope.podForm.file.$valid && $scope.userdashboard.podcast) {
@@ -69,6 +94,7 @@ angular.module('perspecticoApp')
       promise.then(function (data) {
         if (data.data.message === "success") {
           $scope.postResult = undefined;
+          $route.reload();
         }
         else if (data.data.message === "unknown") {
           $scope.postResult = "Not LoggedIn";

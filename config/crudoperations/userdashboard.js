@@ -35,7 +35,7 @@ const dbOperations = {
             }
             else{
                 logger.debug('crud result'+ result); 
-                response.json("success");
+                response.json({message:"success"});
             }
         });
     },

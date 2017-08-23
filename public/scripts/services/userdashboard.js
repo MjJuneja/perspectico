@@ -24,6 +24,17 @@ angular.module('perspecticoApp')
         return defer.promise;
       },
 
+      loadMyPods: function (pod) {
+        var defer = $q.defer();
+        $http.post(requrl + '/commonroutes/loadPods', pod)
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+      },
+
     };
     return object;
 
