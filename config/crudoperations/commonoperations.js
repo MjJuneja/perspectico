@@ -375,8 +375,11 @@ const dbOperations = {
                 else {
                     const fs = require('fs');
                     var filePath = './public/Podcasts/' + podId+'.mp3';
-                    console.log(filePath);
                     fs.unlink(filePath, function (error) {
+                        if (error) return logger.error(error);
+                    });
+                    var filePath2 = './public/Covers/' + podId+'.jpeg';
+                    fs.unlink(filePath2, function (error) {
                         if (error) return logger.error(error);
                     });
                     response.json({ message: "success" });
