@@ -1,113 +1,113 @@
 'use strict';
 
-const config =require("./config");
-const AppSession=require('./appsessdbschema');
+const config = require("./config");
+const AppSession = require('./appsessdbschema');
 const logger = require("./logger");
 
-const utils={
+const utils = {
 
-    fillWebSession:function(request,userData) {
+    fillWebSession: function (request, userData) {
         logger.debug('config utils fillWebSession');
-        request.session.user=userData;
-        if(userData.rememberMe==true){
-            var thirtyDays = 30*24*60*60*1000;
+        request.session.user = userData;
+        if (userData.rememberMe == true) {
+            var thirtyDays = 30 * 24 * 60 * 60 * 1000;
             request.session.cookie.expires = new Date(Date.now() + thirtyDays);
         }
     },
-    
-    fillAppSession:function(userData,responseObject,response){
+
+    fillAppSession: function (userData, responseObject, response) {
         logger.debug('config utils fillAppSession');
-        
-        userData._id=undefined; //prevent duplicate record error
-        userData=userData.toObject();
-        userData.sessionid=responseObject.sessionid;
-        
-        AppSession.create(userData,function(error,result){
-            if(error){
+
+        userData._id = undefined; //prevent duplicate record error
+        userData = userData.toObject();
+        userData.sessionid = responseObject.sessionid;
+
+        AppSession.create(userData, function (error, result) {
+            if (error) {
                 logger.error(error);
             }
-            else{
+            else {
                 response.send(responseObject);
             }
         });
     },
 
-    fillSession:function(request,response,result,responseObject){
+    fillSession: function (request, response, result, responseObject) {
         logger.debug('config utils fillSession');
 
         //data is freezed object so no issue till not adding any new property
-        var userData=result;
-        userData.password1=undefined;
-        userData.salt=undefined;
-        userData.passwordtokenstamp=undefined;
-        userData.emailactivationtoken=undefined;
-        userData.forgotpasswordtoken=undefined;
-        userData.mobileverificationcode=undefined;
-        userData.social=undefined;
-        
-        if(request.body.appCall===true){
-            if(request.body.sessionid!=undefined){
-                AppSession.find({sessionid:request.body.sessionid}).remove(function(error,result){
-                    if(error){
+        var userData = result;
+        userData.password1 = undefined;
+        userData.salt = undefined;
+        userData.passwordtokenstamp = undefined;
+        userData.emailactivationtoken = undefined;
+        userData.forgotpasswordtoken = undefined;
+        userData.mobileverificationcode = undefined;
+        userData.social = undefined;
+
+        if (request.body.appCall === true) {
+            if (request.body.sessionid != undefined) {
+                AppSession.find({ sessionid: request.body.sessionid }).remove(function (error, result) {
+                    if (error) {
                         logger.error(error);
                     }
                 });
             }
-            var randomString=this.randomStringGenerate(32);
-            responseObject.sessionid=randomString+userData.username;
-            responseObject.userData=userData;
-            this.fillAppSession(userData,responseObject,response);
+            var randomString = this.randomStringGenerate(32);
+            responseObject.sessionid = randomString + userData.username;
+            responseObject.userData = userData;
+            this.fillAppSession(userData, responseObject, response);
         }
-        else{
-            this.fillWebSession(request,userData);
-            responseObject.userData=userData;
+        else {
+            this.fillWebSession(request, userData);
+            responseObject.userData = userData;
             response.send(responseObject);
         }
     },
 
-    webSessionDestroy:function(request,response){
+    webSessionDestroy: function (request, response) {
         logger.debug('config utils webSessionDestroy');
-        request.session.destroy(function(error) {
-            if(error){
+        request.session.destroy(function (error) {
+            if (error) {
                 logger.error(error);
             }
-            else{
-                response.json({message:"success"});
+            else {
+                response.json({ message: "success" });
             }
         });
     },
 
-    appSessionDestroy:function(id,response){
+    appSessionDestroy: function (id, response) {
         logger.debug('config utils appSessionDestroy');
 
-        AppSession.find({sessionid:id}).remove(function(error,result){
-            if(error){
+        AppSession.find({ sessionid: id }).remove(function (error, result) {
+            if (error) {
                 logger.error(error);
             }
-            else{
-                logger.debug('crud result'+ result); 
-                response.json({message:"success"});
+            else {
+                logger.debug('crud result' + result);
+                response.json({ message: "success" });
             }
         });
     },
 
-    sendMail:function(To,Subject,EmailText,Html_Body){
+    sendMail: function (To, Subject, EmailText, Html_Body) {
         logger.debug('config utils sendMail');
         const nodeMailer = require("nodemailer");
-        var URL="smtps://"+config.SMTPS_EMAIL+":"+config.SMTPS_PASSWORD+"@"+config.SMTPS_URL;
-        
+        var URL = "smtps://" + config.SMTPS_EMAIL + ":" + config.SMTPS_PASSWORD + "@" + config.SMTPS_URL;
+
         var transporter = nodeMailer.createTransport(URL);
         // setup e-mail data with unicode symbols
         var mailOptions = {
-            from: config.COMPANY_NAME+ '<h='+config.SMTPS_EMAIL+'>' , // sender address
+            from: config.COMPANY_NAME + '<h=' + config.SMTPS_EMAIL + '>', // sender address
             to: To, // list of receivers
             subject: Subject, // Subject line
             text: EmailText, // plaintext body
             html: Html_Body // html body
         };
 
-    // send mail with defined transport object
-        transporter.sendMail(mailOptions, function(error, info){
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 logger.error(error);
             }
@@ -119,17 +119,22 @@ const utils={
         });
     },
 
-    randomStringGenerate:function(x){
+    randomStringGenerate: function (x) {
         logger.debug('config utils randomStringGenerate');
         const randomString = require("randomstring");
         return randomString.generate(x);
     },
 
-    sendSms:function(number,body){
+    randomNumberGenerate: function (min, max) {
+        logger.debug('utils randomNumberGenerate');
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+
+    sendSms: function (number, body) {
         logger.debug('config utils sendSms');
         const twilio = require("twilio");
-        var accountSid = config.TWILIO_ACCOUNT_SID; 
-        var authToken = config.TWILIO_AUTH_TOKEN;   
+        var accountSid = config.TWILIO_ACCOUNT_SID;
+        var authToken = config.TWILIO_AUTH_TOKEN;
 
         var client = new twilio.RestClient(accountSid, authToken);
 
@@ -137,18 +142,18 @@ const utils={
             body: body,
             to: number,  // Text this number
             from: config.VALID_TWILIO_NUMBER, // From a valid Twilio number
-        }, function(error, message) {
-            if(error){
+        }, function (error, message) {
+            if (error) {
                 logger.error(error);
             }
-            else{
+            else {
                 logger.info(message.sid);
             }
         });
     },
 
     createMail: function (userdata, type) {
-        logger.debug('utils create mail',type,userdata);
+        logger.debug('utils create mail', type, userdata);
         const emails = require('./emails');
         var that = this;
         var text = "";
@@ -170,8 +175,38 @@ const utils={
                 break;
 
         }
+    },
+
+    fsmove: function (oldPath, newPath, callback) {
+        const fs = require('fs');
+
+        fs.rename(oldPath, newPath, function (error) {
+            if (error) {
+                if (error.code === 'EXDEV') {
+                    copy();
+                } else {
+                    callback(error);
+                }
+                return;
+            }
+            callback();
+        });
+
+        function copy() {
+            var readStream = fs.createReadStream(oldPath);
+            var writeStream = fs.createWriteStream(newPath);
+
+            readStream.on('error', callback);
+            writeStream.on('error', callback);
+
+            readStream.on('close', function () {
+                fs.unlink(oldPath, callback);
+            });
+
+            readStream.pipe(writeStream);
+        }
     }
 
 };
 
-module.exports=utils;
+module.exports = utils;

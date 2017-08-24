@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location) {
+  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location, ngAudio) {
 
     $scope.loading_screen = pleaseWait({
       logo: "../images/Loading_Text.png",
@@ -21,11 +21,11 @@ angular.module('perspecticoApp')
     $scope.redirect = function () {
       if (webindex.loaded === true && webindex.loggedIn === true) {
         if ($location.path() === '/login' || $location.path() === '/signup') {
-          $window.location.assign(requrl+'/#/');
+          $window.location.assign(requrl + '/#/');
         }
       }
       else if (webindex.loaded === true && webindex.loggedIn != true) {
-        if ($location.path() === '/profile') {
+        if ($location.path() === '/profile' || $location.path() === '/admin') {
           $window.location.assign(requrl + '/#/login');
         }
       }
@@ -114,6 +114,58 @@ angular.module('perspecticoApp')
       }, function (error) {
         $scope.LogoutMessage = "Error,Try again Later";
       });
+    };
+
+    ///Load top 10
+    $scope.loadTopPods = function () {
+      var myPod = {
+        type: 'top',
+        count: 0
+      };
+
+      var promise = webindex.loadPods(myPod);
+      promise.then(function (data) {
+
+        if (data.data.length > 0) {
+          for (var i = 0; i < data.data.length; i++) {
+            data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
+          }
+          $scope.playlistPods = data.data;
+          console.log($scope.playlistPods);
+        }
+        else {
+          console.log("Error loading! Try again later.");
+        }
+      }, function (error) {
+        console.log("Error loading! Try again later.");
+      });
+    };
+
+    $scope.loadTopPods();
+
+    $scope.playlistPlay = function (link) {
+      if (link) {
+        link = requrl + '/Podcasts/' + link;
+        webindex.currentPod = link;
+      }
+    };
+
+
+    //////////////Audio Player
+
+    $scope.$watch(function () { return webindex.currentPod }, function (newValue, oldValue) {
+      if (webindex.currentPod) {
+        $scope.playThis(webindex.currentPod);
+      }
+    }, true);
+
+    $scope.playThis = function (link) {
+      try{
+        $scope.audio = ngAudio.load(link);
+        $scope.audio.play();
+      }
+      catch(error){
+      }
     };
 
   });

@@ -1,0 +1,32 @@
+<input type="text" ng-model="library.search" placeholder="Search">
+<button ng-click="search()">Search</button>
+
+
+<button ng-click="showThese('all')">All</button>
+<button ng-click="showThese('finance')">Finance</button>
+<button ng-click="showThese('marketing')">Marketing</button>
+<button ng-click="showThese('consulting')">Consulting</button>
+<button ng-click="showThese('entrepreneurship')">Entrepreneurship</button>
+
+
+<div>
+<div ng-repeat="pods in library.showPods track by $index">
+    <img src="{{pods.coverUrl}}" alt="Cover image">
+    <p>Title:{{pods.title}}</p>
+    <p>Subheading:{{pods.subtext}}</p>
+    <p>Description:{{pods.description}}</p>
+    <p>Type:{{pods.type}}</p>
+    <p>Likes:{{pods.likes}}</p>
+
+    <button ng-click="playThis(pods.fileUrl)">></button>
+    <button ng-class="{liked:isLiked[$index]}" ng-click="likeThis(pods.podId,$index)">Like</button>
+  </div>
+
+  {{allPodsResult}}
+</div>
+
+<div ng-hide="loginFirst">
+  <p>You need to login/signup first to play a podcast!</p>
+  <a ng-href="/#/login">Login now</a>
+  <button ng-click="loginFirst=true">Hide</button>
+</div>

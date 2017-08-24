@@ -16,6 +16,8 @@ angular.module('perspecticoApp')
         loaded:false,
         loggedIn:false,
         userData:{},
+        liked:[],
+        currentPod:"",
 
         checkStatus:function(){
           var defer = $q.defer();
@@ -48,7 +50,18 @@ angular.module('perspecticoApp')
                defer.reject(error);
            })
             return defer.promise;
-        }
+        },
+
+        loadPods: function (pod) {
+        var defer = $q.defer();
+        $http.post(requrl + '/commonroutes/loadPods', pod)
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+        },
 
     };
     return object;

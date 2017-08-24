@@ -9,13 +9,13 @@ const dbOperations = {
     ////////Checking if username exists  ///////////////////// 
     checkUsername: function (object, callback) {
         logger.debug('crud common checkUsername');
-        
+
         User.find({ "username": object.username }, function (error, result) {
             if (error) {
                 logger.error(error);
             }
             else {
-                logger.debug('crud result'+ result); 
+                logger.debug('crud result' + result);
                 if (result[0] != undefined) {
                     object.notFound = false;
                 }
@@ -49,7 +49,7 @@ const dbOperations = {
                     logger.error(error);
                 }
                 else {
-                    logger.debug('crud result'+ result); 
+                    logger.debug('crud result' + result);
                     if (result.length < 1) {
                         response.json({ message: "fail" });
                     }
@@ -77,7 +77,7 @@ const dbOperations = {
                     logger.error(error);
                 }
                 else {
-                    logger.debug('crud result'+ result); 
+                    logger.debug('crud result' + result);
                     response.json({ message: "success" });
                 }
             });
@@ -164,7 +164,7 @@ const dbOperations = {
                     return done(null);
                 }
                 else if (result) {
-                    logger.debug('crud result'+ result); 
+                    logger.debug('crud result' + result);
                     if (result[0] === undefined) {
                         that.socialRegister(request, response, done);
                     }
@@ -218,7 +218,7 @@ const dbOperations = {
                 return done(null);
             }
             else {
-                logger.debug('crud result'+ result); 
+                logger.debug('crud result' + result);
                 var responseObject = {     //No use
                     message: "registered",
                 };
@@ -267,6 +267,126 @@ const dbOperations = {
 
     },
 
+    ////////Load Podcasts
+    loadPods: function (request, response, userData) {
+        logger.debug('crud common loadPods');
+        const Pods = require('../podschema');
+        var type = request.body.type;
+        var count = request.body.count;
+        var Query = {};
+        var SortQuery = {};
+
+
+        if (type === "userPods" && userData.useremail) {
+            SortQuery["uploadDate"] = -1;
+            Query["postedByEmail"] = userData.useremail
+        }
+        else if (type === "userPods" && !userData.useremail) {
+            Query[""] = "";
+        }
+        else if (type === "top") {
+            Query['verified'] = true;
+            SortQuery["likes"] = -1;
+        }
+        else if (type === "search" && request.body.filters) {
+            Query['verified'] = true;
+            SortQuery["uploadDate"] = -1;
+
+            var filters = request.body.filters;
+            Object.keys(filters).forEach(function (key) {
+                if (filters[key] && key === "search") {
+                    var regex = { $regex: filters[key], $options: "$i" }
+                    Query["$or"] = [{ "title": regex }, { "subtext": regex },
+                    { "description": regex }, { "keySkills": regex }, { "type": regex }];
+                }
+                else if (filters[key]) {
+                    filters[key] = filters[key].replace(/ /g, '');
+                    Query[key] = { $regex: filters[key], $options: "$i" };
+                }
+            });
+
+        }
+
+        Pods
+            .find(Query)
+            .sort(SortQuery)
+            // .limit(count + 10)
+            .exec(function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    logger.debug('crud result' + result);
+                    if (result.length < 1) {
+                        response.json({ message: "none" });
+                    }
+                    else {
+                        var len = result.length;
+                        var pods = [];
+                        for (var i = count; i < len; i++) {
+                            result[i].verifiedBy = undefined;
+                            if (!userData.useremail) {
+                                result[i].fileUrl = undefined;
+                            }
+                            pods.push(result[i]);
+                        }
+                        response.send(pods);
+                    }
+                }
+            });
+    },
+
+    checkRights: function (request, response, userData) {
+        var that = this;
+        const Pods = require('../podschema');
+        Pods.find({
+            podId: request.body.podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    if (result.length === 1) {
+                        if (userData.role === 'admin' || userData.role === 'ops' || (result[0].uploadedByEmail === userData.useremail)) {
+                            that.deletePod(request.body.podId, response);
+                        }
+                        else {
+                            response.json({ message: "fail" });
+                        }
+                    }
+                    else {
+                        response.json({ message: "fail" });
+                    }
+                }
+            });
+
+    },
+
+    deletePod: function (podId, response) {
+        const Pods = require('../podschema');
+        Pods.remove({
+            podId: podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    const fs = require('fs');
+                    var filePath = './public/Podcasts/' + podId+'.mp3';
+                    fs.unlink(filePath, function (error) {
+                        if (error) return logger.error(error);
+                    });
+                    var filePath2 = './public/Covers/' + podId+'.jpeg';
+                    fs.unlink(filePath2, function (error) {
+                        if (error) return logger.error(error);
+                    });
+                    response.json({ message: "success" });
+                }
+            });
+    },
+
     ///////// Mobile Application only operations////////////
 
     getProfileData: function (id, userData, callback) {
@@ -277,7 +397,7 @@ const dbOperations = {
                 logger.error(error);
             }
             else {
-                logger.debug('crud result'+ result); 
+                logger.debug('crud result' + result);
                 userData = result[0];
             }
             callback(userData);

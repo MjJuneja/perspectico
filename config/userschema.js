@@ -34,7 +34,8 @@ const userSchema = new schema({
       sId: String,
       accessToken: String
     }
-  ]
+  ],
+  liked:[String]
 });
 
 const User = mongoose.model(config.dbCollection, userSchema);
