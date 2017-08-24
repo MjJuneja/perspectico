@@ -16,7 +16,6 @@ angular.module('perspecticoApp')
         loaded:false,
         loggedIn:false,
         userData:{},
-        playlist:[],
         liked:[],
         currentPod:"",
 

@@ -72,6 +72,14 @@
       </div>
       <button ng-click="playThis('http://localhost:1234/Podcasts/testpod2.mp3')">Play this</button>
       <div class="footer">
+        <div>
+          <p>Playlist</p>
+          <div ng-repeat="playpods in playlistPods track by $index">
+            <p>{{playpods.title}}</p><button ng-click="playlistPlay(playpods.fileUrl)">></button>
+          </div>
+
+        </div>
+
         <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
         <button ng-click='audio.restart()'>Stop</button>
         <button ng-click='audio.muting = !audio.muting'>Mute</button>

@@ -147,7 +147,6 @@ angular.module('perspecticoApp')
 
     ///// Select Podcast
     $scope.selectPod = function (podId,selectedIndex) {
-      console.log(podId);
       $scope.userdashboard.selectedPod = podId;
       $scope.userdashboard.selectedIndex = selectedIndex;
     };
