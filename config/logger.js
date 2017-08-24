@@ -30,12 +30,12 @@ log4js.configure({
     },
     categories: {
         default: {
-            appenders: ['debug'],
-            level: 'debug'
+            appenders: ['error'],
+            level: 'error'
         }
     }
 });
 
-const logger = log4js.getLogger('debug');
+const logger = log4js.getLogger('error');
 module.exports = logger;
 
