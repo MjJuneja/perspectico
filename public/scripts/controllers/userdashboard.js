@@ -192,4 +192,11 @@ angular.module('perspecticoApp')
       });
     };
 
+    $scope.playThis = function (link) {
+      if (link) {
+        link = requrl + '/Podcasts/' + link;
+        webindex.currentPod = link;
+      }
+    };
+
   });

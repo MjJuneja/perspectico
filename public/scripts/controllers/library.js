@@ -16,6 +16,8 @@ angular.module('perspecticoApp')
       search: ""
     };
 
+    $scope.loginFirst=true;
+
     var financePods = [],
       marketingPods = [],
       eprPods = [],
@@ -81,6 +83,16 @@ angular.module('perspecticoApp')
         },
       }
       $scope.loadAllPods(searchObj);
+    };
+
+    $scope.playThis = function (link) {
+      if (link) {
+        link = requrl + '/Podcasts/' + link;
+        webindex.currentPod = link;
+      }
+      else if(!webindex.user){
+        $scope.loginFirst=false;
+      }
     };
 
   });

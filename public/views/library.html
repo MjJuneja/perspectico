@@ -9,7 +9,7 @@
 <button ng-click="showThese('entrepreneurship')">Entrepreneurship</button>
 
 
-
+<div>
 <div ng-repeat="pods in library.showPods track by $index">
     <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
@@ -23,3 +23,10 @@
   </div>
 
   {{allPodsResult}}
+</div>
+
+<div ng-hide="loginFirst">
+  <p>You need to login/signup first to play a podcast!</p>
+  <a ng-href="/#/login">Login now</a>
+  <button ng-click="loginFirst=true">Hide</button>
+</div>

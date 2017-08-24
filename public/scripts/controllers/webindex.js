@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location,ngAudio) {
+  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location, ngAudio) {
 
     $scope.loading_screen = pleaseWait({
       logo: "../images/Loading_Text.png",
@@ -21,7 +21,7 @@ angular.module('perspecticoApp')
     $scope.redirect = function () {
       if (webindex.loaded === true && webindex.loggedIn === true) {
         if ($location.path() === '/login' || $location.path() === '/signup') {
-          $window.location.assign(requrl+'/#/');
+          $window.location.assign(requrl + '/#/');
         }
       }
       else if (webindex.loaded === true && webindex.loggedIn != true) {
@@ -118,9 +118,18 @@ angular.module('perspecticoApp')
 
     //////////////Audio Player
 
-        $scope.audio = ngAudio.load(requrl+'/Podcasts/testpod.mp3');
-        $scope.playThis=function(link){
-          $scope.audio = ngAudio.load(link);
-        };
+    $scope.$watch(function () { return webindex.currentPod }, function (newValue, oldValue) {
+      if (webindex.currentPod) {
+        $scope.playThis(webindex.currentPod);
+      }
+    }, true);
+
+    $scope.playThis = function (link) {
+      try{
+        $scope.audio = ngAudio.load(link);
+      }
+      catch(error){
+      }
+    };
 
   });
