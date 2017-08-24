@@ -95,7 +95,7 @@ router.post('/loadPods', function (request, response) {
 });
 
 
-///////////Load Pods
+///////////Delete Pod
 router.post('/deletePod', function (request, response) {
     logger.debug('routes common deletePod');
 

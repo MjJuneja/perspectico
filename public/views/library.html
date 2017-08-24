@@ -7,6 +7,7 @@
     <p>Likes:{{pods.likes}}</p>
 
     <button ng-click="playThis(pods.fileUrl)">></button>
+    <button ng-class="{liked:isLiked[$index]}" ng-click="likeThis(pods.podId,$index)">Like</button>
   </div>
 
   {{topPodsResult}}
