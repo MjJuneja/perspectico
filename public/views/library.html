@@ -1,4 +1,16 @@
-  <div ng-repeat="pods in main.topPods track by $index">
+<input type="text" ng-model="library.search" placeholder="Search">
+<button ng-click="search()">Search</button>
+
+
+<button ng-click="showThese('all')">All</button>
+<button ng-click="showThese('finance')">Finance</button>
+<button ng-click="showThese('marketing')">Marketing</button>
+<button ng-click="showThese('consulting')">Consulting</button>
+<button ng-click="showThese('entrepreneurship')">Entrepreneurship</button>
+
+
+
+<div ng-repeat="pods in library.showPods track by $index">
     <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
@@ -10,4 +22,4 @@
     <button ng-class="{liked:isLiked[$index]}" ng-click="likeThis(pods.podId,$index)">Like</button>
   </div>
 
-  {{topPodsResult}}
+  {{allPodsResult}}
