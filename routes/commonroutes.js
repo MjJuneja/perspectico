@@ -57,7 +57,7 @@ router.post('/checkUsername', function (request, response) {
 router.post('/loadPods', function (request, response) {
     logger.debug('routes common loadPods');
 
-    if (request.body.type === "search" && !request.session.user && !request.body.sessionid) {
+    if ((request.body.type === "search" || request.body.type === "top") && !request.session.user && !request.body.sessionid) {
         var userData = {};
         dbOperations.loadPods(request, response, userData);
     }

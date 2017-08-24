@@ -276,7 +276,6 @@ const dbOperations = {
         var Query = {};
         var SortQuery = {};
 
-        Query['verified'] = true;
 
         if (type === "userPods" && userData.useremail) {
             SortQuery["uploadDate"] = -1;
@@ -286,9 +285,11 @@ const dbOperations = {
             Query[""] = "";
         }
         else if (type === "top") {
+            Query['verified'] = true;
             SortQuery["likes"] = -1;
         }
         else if (type === "search" && request.body.filters) {
+            Query['verified'] = true;
             SortQuery["uploadDate"] = -1;
 
             var filters = request.body.filters;
@@ -323,7 +324,6 @@ const dbOperations = {
                         var len = result.length;
                         var pods = [];
                         for (var i = count; i < len; i++) {
-                            result[i].verified = undefined;
                             result[i].verifiedBy = undefined;
                             if (!userData.useremail) {
                                 result[i].fileUrl = undefined;

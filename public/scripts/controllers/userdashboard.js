@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard, $location, $route, $window) {
+  .controller('UserdashboardCtrl', function ($scope, Upload, requrl, userdashboard, $location, $route, $window, webindex) {
 
     $scope.userdashboard = {
       newPodcastForm: false,
@@ -32,7 +32,7 @@ angular.module('perspecticoApp')
         count: 0
       };
 
-      var promise = userdashboard.loadMyPods(myPod);
+      var promise = webindex.loadPods(myPod);
       promise.then(function (data) {
         if (data.data.message === "unknown") {
           $scope.myPodsResult = "Not LoggedIn";
