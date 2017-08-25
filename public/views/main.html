@@ -1,3 +1,86 @@
+<section class="hbox stretch">
+    <section id="content">
+        
+      <section class="hbox stretch">
+        
+          <section>
+        
+              <section class="vbox">
+      
+                <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                    <div class="header-banner">
+                        <div class="head-nav container-fluid">
+                            <div class="logo">
+                                <i><img src="images/logo.jpeg" width="120"></i>
+                            </div>
+                            <!--div class="user-btns">
+
+                                <a class="sign-in-btn" href="#sign_in_modal">Sign In</a>
+
+                                <a class="waves-effect waves-light btn modal-trigger" href="#sign_up_modal">Register</a>
+
+                            </div-->
+                        </div>
+
+                        <div class="tagline">
+                            <p>Where experience meets ambition</p>
+                        </div>
+
+                        <a href="#" class="btn btn-info explore-btn">Explore more</a>
+
+                    </div>
+
+                    <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin" ><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
+                    <h2 class="font-thin m-b">Discover <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                      <span class="bar1 a1 bg-primary lter"></span>
+                      <span class="bar2 a2 bg-info lt"></span>
+                      <span class="bar3 a3 bg-success"></span>
+                      <span class="bar4 a4 bg-warning dk"></span>
+                      <span class="bar5 a5 bg-danger dker"></span>
+                    </span></h2>
+
+                    <div class="row row-sm">
+                        <div  ng-repeat="pods in main.topPods track by $index" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                          <div class="item">
+                            <div class="pos-rlt">
+                              <div class="bottom">
+                                <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
+                              </div>
+                              <div class="item-overlay opacity r r-2x bg-black">
+                                <!--div class="text-info padder m-t-sm text-sm">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-o text-muted"></i>
+                                </div-->
+                                <div class="center text-center m-t-n">
+                                  <a href="#"><i class="icon-control-play i-2x"></i></a>
+                                </div>
+                                <div class="bottom padder m-b-sm">
+                                  <a href="#" class="pull-right">
+                                    <i class="fa fa-heart-o"></i>
+                                  </a>
+                                  <a href="#">
+                                    <i class="fa fa-plus-circle"></i>
+                                  </a>
+                                </div>
+                              </div>
+                              <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="r r-2x img-full"></a>
+                            </div>
+                            <div class="padder-v">
+                              <a href="#" class="text-ellipsis"><p>{{pods.title}}</p></a>
+                              <a href="#" class="text-ellipsis text-xs text-muted"><p>{{pods.subtext}}</p></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <a ng-href="/#library" class="btn btn-lg btn-dark explore-all-btn col-md-offset-5 col-md-2">Explore All</a>
+                    
+
+            
+  
   <div ng-repeat="pods in main.topPods track by $index">
     <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
@@ -10,6 +93,171 @@
   </div>
 
   {{topPodsResult}}
+
+
+  <div class="row subject-wrapper">
+      <h2 class="section-heading">Lorem ipsum dolor</h2>
+      <div class="col-md-3 subject">
+        <section class="panel panel-default"> 
+          <div class="panel-body">
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          </div>
+          <h2 class="card-head btn-primary">Finance</h2>                         
+        </section>
+      </div>
+
+      <div class="col-md-3 subject">
+        <section class="panel panel-default"> 
+          <div class="panel-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          </div>
+          <h2 class="card-head btn-info">Consulting</h2>                         
+
+        </section>
+      </div>
+
+      <div class="col-md-3 subject">
+        <section class="panel panel-default"> 
+          <div class="panel-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          </div>
+          <h2 class="card-head btn-primary">Entrepreneurship</h2>                         
+        </section>
+      </div>
+
+      <div class="col-md-3 subject">
+        <section class="panel panel-default"> 
+          <div class="panel-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          </div>
+          <h2 class="card-head btn-info">Marketing</h2>                         
+        </section>
+      </div>  
+
+       <a href="#" class="col-md-2 btn btn-lg btn-dark col-md-offset-5 rd-more-btn">Read More</a>
+                        
+    </div>
+
+    
+                  <!-- Our team Section -->
+<section id="team" class="team content-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2>Our Team</h2>
+          <h3 class="caption gray">Meet the people who make awesome stuffs</h3>
+        </div><!-- /.col-md-12 -->
+  
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-md-4">
+              <div class="team-member">
+                <figure>
+                  <img src="http://i.imgsafe.org/6f46db5.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores mollitia.</p>
+                    <ul>
+                      <li><a href="" class="btn btn-sm btn-icon btn-primary"><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href="" class="btn btn-sm btn-icon btn-info"><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href="" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Lauren Cox</h4>
+                <p>Creative Director</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+  
+            <div class="col-md-4">
+              <div class="team-member">
+                <figure>
+                  <img src="http://i.imgsafe.org/6f46db5.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>Neque minima ea, a praesentium saepe nihil maxime quod esse numquam explicabo eligendi.</p>
+                    <ul>
+                      <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Jessie Barnett</h4>
+                <p>UI/UX Designer</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+  
+            <div class="col-md-4">
+              <div class="team-member">
+                <figure>
+                  <img src="http://i.imgsafe.org/6f46db5.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>Temporibus dolor, quisquam consectetur molestias, veniam voluptatum. Beatae alias omnis totam.</p>
+                    <ul>
+                      <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Terry Fletcher</h4>
+                <p>Web Developer</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+  
+  
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+  
+      </div><!-- /.row -->
+      <a href="#" class="btn col-md-2 btn-lg col-md-offset-5 btn-dark">View All</a>
+    </div><!-- /.container -->
+  </section><!-- /.our-team -->
+
+                  <!-- contact us through mail section -->
+                  <section class="mail-us-wrapper">
+                      <div class="container-fluid">
+                        <div>
+                          <h3>Placement Cells, Teachers and Students reach out to us, we would love to conduct a mock session in your college:
+                          </h3>
+                          <a href="mailto:someone@example.com" class="btn btn-info btn-lg col-md-offset-5 col-md-2">Drop us a mail</a>
+                        </div>                        
+                      </div>
+                    </section>
+  
+                    <!-- social links section-->
+                    <section class="social-links">
+                      <div class="container">
+                        <div class="row">
+                          <a href="#" class="btn-primary"><span class="fa fa-facebook"></span></a>
+                          <a href="#" class="btn-info"><span class="fa fa-twitter"></span></a>
+                          <a href="#" class="btn-danger"><span class="fa fa-google-plus"></span></a>
+                          <a href="#" class="btn-dark"><span class="fa fa-linkedin"></span></a>                       
+  
+                        </div>
+                      </div>
+                    </section>
 
 
 <div ng-hide="loginFirst">

@@ -1,0 +1,27 @@
+[2017-08-25 21:39:15.013] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\web designing\perspectico\perspectico\public\Covers\TG05EhUtGDTEDZB4.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\TG05EhUtGDTEDZB4.jpeg' }
+[2017-08-25 21:40:05.972] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }
+[2017-08-25 21:40:40.724] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }
+[2017-08-25 21:42:08.846] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }

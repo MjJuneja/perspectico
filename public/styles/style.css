@@ -1,0 +1,187 @@
+.team a:link, .team a:active, .team a:visited{
+  color:rgba(255,255,255,1);
+}
+
+.team a:hover{
+  color:rgba(255,255,255,0.6);
+}
+
+
+.gray {
+  color: #a5a5a5;
+}
+
+.team{
+  margin:40px;
+}
+
+.team-member {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.team-member figure {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.team-member figure img {
+  min-width: 100%;
+}
+
+.team-member figcaption p {
+  font-size: 16px;
+}
+
+.team-member figcaption ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-member figcaption ul {
+  visibility: visible;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.team-member figcaption ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.team-member h4 {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.team-member figcaption {
+  padding: 50px;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  z-index: 996;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption {
+  visibility: visible;
+  color: #fff;
+  background: rgba(1, 1, 40, 0.7);
+  /* Primary color, can be changed via colors.css */
+  
+  height: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption ul li a:hover {
+  color: rgba(49, 255, 255, .97);
+}
+
+.team-member figure img {
+  -webkit-transform: scale(1) rotate(0) translateY(0);
+  -moz-transform: scale(1) rotate(0) translateY(0);
+  -o-transform: scale(1) rotate(0) translateY(0);
+  -ms-transform: scale(1) rotate(0) translateY(0);
+  transform: scale(1) rotate(0) translateY(0);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.team-member figure:hover img {
+  -webkit-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -moz-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -o-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -ms-transform: scale(1.1) rotate(1deg) translateY(12px);
+  transform: scale(1.1) rotate(1deg) translateY(12px);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.explore-all-btn{
+    margin-top: 2.5%;
+    margin-bottom: 3.5%;
+}
+
+.subject-wrapper{
+    margin-top: 3%;
+}
+
+.subject-wrapper h2.section-heading{
+    text-align: center;
+    margin-bottom: 2.5%;
+}
+.subject .panel{
+    background: #fff;
+    box-shadow:1px 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.subject-wrapper .card-head{
+    margin-bottom: 0;
+    width: 100%;
+    padding: 0.3em;
+}
+
+.rd-more-btn{
+    margin-top: 1em;
+}
+
+#navbar-example{
+    position: fixed;
+    right: 10%;
+}
+
+.scrollspy-section .nav-tabs > li{
+    float: none;
+    border-bottom: 1px solid #eee;
+
+
+}
+
+.scrollspy-section .nav-tabs > li > a{
+    border: none;
+}
+
+.scrollspy-section .nav-tabs{
+    border: none;
+}
+
+.scrollspy-section .nav-tabs > li.active > a, .scrollspy-section .nav-tabs > li.active > a:hover, .scrollspy-section .nav-tabs > li.active > a:focus{
+    border: none;
+    border-left: 2px solid blue;
+
+}
+
+.scrollspy-section .content h2{
+    border-bottom: 1px solid  #107ae4;
+    padding: 0.5em;
+
+}
+
+.scrollspy-section .content{
+    box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+    border-right: 1px solid #cbd5dd;
+    border-left: 1px solid #cbd5dd;
+    padding: 1em; 
+    margin: 3em 1em;
+}

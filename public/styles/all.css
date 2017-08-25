@@ -1,0 +1,153 @@
+.header-banner{
+    background: url("../images/header.jpg");
+    background-size: cover;
+    min-height: 500px;
+}
+
+.head-nav{
+    top: 1em;
+}
+
+.container-fluid{
+        padding: 10px 25px;
+}
+
+.head-nav *{
+    display: inline-block;
+}
+
+.user-btns{
+    float: right;
+}
+
+.tagline{
+    font-size: 3em;
+    color: #fff;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.explore-btn{
+    left:42%;
+    position: relative;
+}
+
+.search-section{
+    font-size: 1.1em;
+    margin-top: 2em;
+}
+
+.search-section nav{
+    background: #3B76BA;
+}
+
+.input-field label{
+    transform: translateY(1px);
+}
+
+.search-section .col.m3, .search-section .col.m1{
+    line-height: 60px;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.search-section .col.m3 a.btn span{
+    font-size: 0.8em;
+    line-height: 20px;
+
+}
+
+.btn, .btn-large, .btn-flat{
+    height:auto;
+   //    background: #37459D;
+}
+
+.sign-in-btn{
+    background: none;
+    border: 1px solid white;
+}
+
+.modal input[type="submit"]{
+    float: right;
+}
+
+.social-login-divider{
+    margin-top: 1.2em;
+}
+.social-login-divider .or-line{
+    border:1px solid #d4d4d4;
+}
+
+.social-login-divider .col.m2{
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 0px;
+}
+
+.social-login .btn{
+    width:80%;
+    margin: 0 3.2em;
+}
+
+.modal{
+    max-height: none;
+}
+
+.search-section .input-s-lg{
+    width: 100%;
+}
+
+.navbar-form .input-group > .form-control{
+    padding: 1.5em;
+}
+
+.search-section .input-group-btn button{
+    padding: 0.7em;
+}
+
+.search-section .upload-btn{
+    color: #788188 !important;
+    background: #f2f2f2;
+    border-color: #c2ced6;
+}
+
+.mail-us-wrapper{
+    background: #5a6a7a;
+    padding: 3em;
+    margin-bottom: 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.mail-us-wrapper h3{
+    color: white;
+    text-align: center;
+}
+ 
+.mail-us-wrapper a{
+    margin-top : 2em; 
+    border-radius: 30px;
+}
+
+.social-links a{
+    margin: 0.8em;
+    font-size: 2em;
+   // background: #545ca6;
+    padding: 0.5em;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+
+}
+
+.social-links div.row{
+    text-align: center;
+}
+
+.social-links a span{
+      width: 40px;
+   // height: 50px;  
+}
+
+.social-links{
+    margin: 3em;
+}
