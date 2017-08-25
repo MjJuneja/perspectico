@@ -82,7 +82,7 @@
   color: #fff;
   background: rgba(1, 1, 40, 0.7);
   /* Primary color, can be changed via colors.css */
-  
+
   height: 100%;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -182,6 +182,10 @@
     box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
     border-right: 1px solid #cbd5dd;
     border-left: 1px solid #cbd5dd;
-    padding: 1em; 
+    padding: 1em;
     margin: 3em 1em;
+}
+
+.liked{
+  color: blue;
 }

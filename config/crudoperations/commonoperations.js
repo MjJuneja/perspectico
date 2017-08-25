@@ -325,8 +325,17 @@ const dbOperations = {
                         var pods = [];
                         for (var i = count; i < len; i++) {
                             result[i].verifiedBy = undefined;
-                            if (!userData.useremail) {
+                            if(userData.useremail){
+                                if(result[i].likedBy.indexOf(userData.useremail) !== -1){
+                                    result[i].likedBy=true;
+                                }
+                                else{
+                                    result[i].likedBy=false;
+                                }
+                            }
+                            else{
                                 result[i].fileUrl = undefined;
+                                result[i].likedBy=false;
                             }
                             pods.push(result[i]);
                         }
@@ -347,6 +356,7 @@ const dbOperations = {
                     logger.error(error);
                 }
                 else {
+                    logger.debug('crud result' + result);
                     if (result.length === 1) {
                         if (userData.role === 'admin' || userData.role === 'ops' || (result[0].uploadedByEmail === userData.useremail)) {
                             that.deletePod(request.body.podId, response);
@@ -373,16 +383,56 @@ const dbOperations = {
                     logger.error(error);
                 }
                 else {
+                    logger.debug('crud result' + result);
                     const fs = require('fs');
-                    var filePath = './public/Podcasts/' + podId+'.mp3';
+                    var filePath = './public/Podcasts/' + podId + '.mp3';
                     fs.unlink(filePath, function (error) {
                         if (error) return logger.error(error);
                     });
-                    var filePath2 = './public/Covers/' + podId+'.jpeg';
+                    var filePath2 = './public/Covers/' + podId + '.jpeg';
                     fs.unlink(filePath2, function (error) {
                         if (error) return logger.error(error);
                     });
                     response.json({ message: "success" });
+                }
+            });
+    },
+
+    likePod: function (podId, response, userData) {
+        const Pods = require('../podschema');
+        Pods.find({
+            podId: podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    logger.debug('crud result' + result);
+                    if (result.length > 1) {
+                        logger.error('Multiple pods for same id', podId);
+                    }
+                    if (result[0].likedBy.indexOf(userData.useremail) === -1) {
+                        Pods.update({
+                            podId: podId
+                        },
+                            {
+                                $push: { likedBy: userData.useremail },
+                                $inc: { likes: +1 }
+                            },
+                            function (error, result) {
+                                if (error) {
+                                    logger.error(error);
+                                }
+                                else {
+                                    logger.debug('crud result' + result);
+                                    response.json({ message: "success" });
+                                }
+                            });
+                    }
+                    else {
+                        response.json({ message: "success" });
+                    }
                 }
             });
     },

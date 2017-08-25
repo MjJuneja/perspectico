@@ -22,6 +22,7 @@ const dbOperations = {
             type: request.body.type,
             uploadDate: new Date(),
             likes: 0,
+            likedBy:[],
             postedByUsername: session.username,
             postedByEmail: session.useremail,
             randomNumber: randomNumber,

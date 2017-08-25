@@ -8,15 +8,16 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('LibraryCtrl', function ($scope, webindex, requrl) {
+  .controller('LibraryCtrl', function ($scope, webindex, requrl, library, $window) {
 
+    $scope.isLiked = [];
     $scope.library = {
       allPods: [],
       showPods: [],
       search: ""
     };
 
-    $scope.loginFirst=true;
+    $scope.loginFirst = true;
 
     var financePods = [],
       marketingPods = [],
@@ -24,6 +25,10 @@ angular.module('perspecticoApp')
       consultingPods = [];
 
     $scope.loadAllPods = function (myPod) {
+      financePods = [],
+      marketingPods = [],
+      eprPods = [],
+      consultingPods = [];
       var promise = webindex.loadPods(myPod);
       promise.then(function (data) {
         if (data.data.message === "none") {
@@ -32,6 +37,10 @@ angular.module('perspecticoApp')
         else if (data.data.length > 0) {
           for (var i = 0; i < data.data.length; i++) {
             data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
+            data.data[i].liked=(data.data[i].likedBy[0] === 'true');
+            if (data.data[i].liked) {
+              $scope.isLiked.push(data.data[i].podId);
+            }
             if (data.data[i].type === 'finance') {
               financePods.push(data.data[i]);
             }
@@ -74,6 +83,7 @@ angular.module('perspecticoApp')
       }
     };
 
+    ////Search in library
     $scope.search = function () {
       var searchObj = {
         type: 'search',
@@ -85,14 +95,41 @@ angular.module('perspecticoApp')
       $scope.loadAllPods(searchObj);
     };
 
+    ////////Play podcast
     $scope.playThis = function (link) {
       if (link) {
         link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
-      else if(!webindex.user){
-        $scope.loginFirst=false;
+      else if (!webindex.user) {
+        $scope.loginFirst = false;
       }
     };
+
+    ////////Like this
+    $scope.likeThis = function (podId, pindex) {
+      if (!webindex.userData.useremail) {
+        $scope.loginFirst = false;
+      }
+      else if ($scope.isLiked.indexOf(podId)===-1) {
+        var pod = {
+          podId: podId
+        };
+        var promise = library.likePod(pod);
+        promise.then(function (data) {
+          if (data.data.message === "unknown") {
+            $scope.postResult = "Not LoggedIn";
+            $window.location.reload();
+          }
+          else {
+            $scope.isLiked.push(podId);
+            $scope.library.allPods[pindex].likes = $scope.library.allPods[pindex].likes + 1;
+          }
+        }, function (error) {
+          $scope.isLiked.push(podId);
+          $scope.library.allPods[pindex].likes = $scope.library.allPods[pindex].likes + 1;
+        });
+      }
+    }
 
   });
