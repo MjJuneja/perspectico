@@ -152,6 +152,7 @@ angular.module('perspecticoApp')
 
 
     //////////////Audio Player
+    $scope.played=[];
 
     $scope.$watch(function () { return webindex.currentPod }, function (newValue, oldValue) {
       if (webindex.currentPod) {
@@ -160,12 +161,24 @@ angular.module('perspecticoApp')
     }, true);
 
     $scope.playThis = function (link) {
+      $scope.played.push(link);
+
       try{
         $scope.audio = ngAudio.load(link);
         $scope.audio.play();
       }
       catch(error){
       }
+    };
+
+    $scope.playPrevious=function(){
+      if($scope.played.length>1){
+        webindex.currentPlaying=$scope.played[$scope.played.length-2];
+      }
+    };
+
+    $scope.playNext=function(){
+
     };
 
   });
