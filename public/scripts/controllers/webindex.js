@@ -21,6 +21,7 @@ angular.module('perspecticoApp')
     $scope.redirect = function () {
       if (webindex.loaded === true && webindex.loggedIn === true) {
         if ($location.path() === '/login' || $location.path() === '/signup') {
+          $scope.hideHF=false;
           $window.location.assign(requrl + '/#/');
         }
       }
@@ -32,6 +33,9 @@ angular.module('perspecticoApp')
     };
 
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+      if ($location.path() === '/login' || $location.path() === '/signup'){
+        $scope.hideHF=true;
+      }
       $scope.redirect();
     });
 
@@ -42,6 +46,7 @@ angular.module('perspecticoApp')
     $scope.SignupButton = false;
     $scope.ProfileButton = true;
     $scope.LogoutButton = true;
+    $scope.hideHF = false;
 
     $scope.ActivationMessage = undefined;
 

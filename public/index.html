@@ -40,7 +40,7 @@
   <div ng-controller="WebindexCtrl">
     <div ng-cloak>
       <!-- Add your site or application content here -->
-      <div class="header">
+      <div class="header" ng-hide="hideHF">
         <div class="navbar navbar-default" role="navigation">
           <!--div class="container"-->
 
@@ -182,7 +182,7 @@
 
       <!--/section-->
 
-      <footer class="footer bg-dark">
+      <footer class="footer bg-dark" ng-hide="hideHF">
         <div id="jp_container_N">
           <div class="jp-type-playlist">
             <div id="jplayer_N" class="jp-jplayer hide"></div>
