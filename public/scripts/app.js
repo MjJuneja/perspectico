@@ -73,6 +73,11 @@ angular
         controller: 'LibraryCtrl',
         controllerAs: 'library'
       })
+      .when('/members', {
+        templateUrl: 'views/members.html',
+        controller: 'OpspanelCtrl',
+        controllerAs: 'opspanel'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -70,7 +70,7 @@ app.use('/login',login);
 app.use('/profile',profile);
 app.use('/forgotpassword',forgotpassword);
 app.use('/userdashboard',userdashboard);
-// app.use('/opspanel',opspanel);
+app.use('/opspanel',opspanel);
 app.use('/social',social);
 app.use('*',index);
 

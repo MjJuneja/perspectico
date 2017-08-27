@@ -25,7 +25,7 @@ angular.module('perspecticoApp')
         }
       }
       else if (webindex.loaded === true && webindex.loggedIn != true) {
-        if ($location.path() === '/profile' || $location.path() === '/admin') {
+        if ($location.path() === '/profile' || $location.path() === '/admin' || $location.path() === '/addmember') {
           $window.location.assign(requrl + '/#/login');
         }
       }

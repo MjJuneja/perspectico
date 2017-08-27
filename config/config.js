@@ -7,6 +7,7 @@ const secrets={
     mongoUrl:'mongodb://localhost:27017/perspectico',
     dbCollection:"users",
     dbPods:"pods",
+    dbMembers:"members",
     sessionCollection:"appsessions",
     sessionKey:["ggggg","aaaaa","sssssss","hhhhh","ffff","kkkkkk","ttt","aaaa"],
     defaultSessionDuration:2*60*60,

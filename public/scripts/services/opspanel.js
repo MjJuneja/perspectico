@@ -8,16 +8,45 @@
  * Factory in the perspecticoApp.
  */
 angular.module('perspecticoApp')
-  .factory('opspanel', function () {
+  .factory('opspanel', function ($http, $q, requrl) {
     // Service logic
     // ...
+    var object = {
 
-    var meaningOfLife = 42;
+      postMember: function (member) {
+        var defer = $q.defer();
+        $http.post(requrl + '/opspanel/postMember', member)
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+      },
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+      deleteMember: function (member) {
+        var defer = $q.defer();
+        $http.post(requrl + '/opspanel/deleteMember', member)
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+      },
+
+      loadMembers: function (member) {
+        var defer = $q.defer();
+        $http.post(requrl + '/opspanel/loadMembers')
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+      },
+
     };
+    return object;
+
   });

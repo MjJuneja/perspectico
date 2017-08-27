@@ -172,7 +172,6 @@ var callUpload = function (request, response) {
 
 router.post('/uploadCover', function (request, response) {
     logger.debug('routes userdash uploadCover');
-    console.log(request.query.podId);
     var isValidSessionid = false;
     var webSessionExist = false;
 

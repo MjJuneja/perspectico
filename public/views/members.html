@@ -1,0 +1,12 @@
+<h1>All team members</h1>
+<div>
+  <div ng-repeat="members in opspanel.allMembers">
+    <img ng-src="{{members.picUrl}}">
+      <p>{{members.name}}</p>
+      <p>{{members.designation}}</p>
+      <p>{{members.description}}</p>
+      <a ng-href="{{members.fblink}}">FB</a>
+      <a ng-href="{{members.twlink}}">Twitter</a>
+      <a ng-href="{{members.lklink}}">Linkedin</a>
+  </div>
+</div>
