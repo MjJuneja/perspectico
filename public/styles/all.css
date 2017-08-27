@@ -21,6 +21,7 @@
 }
 
 .tagline{
+    margin-top: 3em;
     font-size: 3em;
     color: #fff;
     font-family: sans-serif;
@@ -30,6 +31,7 @@
 .explore-btn{
     left:42%;
     position: relative;
+    margin-top: 2.5em;
 }
 
 .search-section{
@@ -59,7 +61,7 @@
 
 .btn, .btn-large, .btn-flat{
     height:auto;
-   //    background: #37459D;
+   /*   background: #37459D;*/
 }
 
 .sign-in-btn{
@@ -131,8 +133,8 @@
 .social-links a{
     margin: 0.8em;
     font-size: 2em;
-   // background: #545ca6;
-    padding: 0.5em;
+   /*background: #545ca6;*/
+    padding: 0.6em;
     color: white;
     border-radius: 50%;
     text-align: center;
@@ -145,9 +147,9 @@
 
 .social-links a span{
       width: 40px;
-   // height: 50px;  
+   /* height: 50px;*/  
 }
 
 .social-links{
-    margin: 3em;
+    margin: 3em 0 7em 0;
 }
