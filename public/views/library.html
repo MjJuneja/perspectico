@@ -1,15 +1,14 @@
-<input type="text" ng-model="library.search" placeholder="Search">
-<button ng-click="search()">Search</button>
+<!--input type="text" ng-model="library.search" placeholder="Search">
+<button ng-click="search()">Search</button-->
 
-
-<button ng-click="showThese('all')">All</button>
+<!--button ng-click="showThese('all')">All</button>
 <button ng-click="showThese('finance')">Finance</button>
 <button ng-click="showThese('marketing')">Marketing</button>
 <button ng-click="showThese('consulting')">Consulting</button>
-<button ng-click="showThese('entrepreneurship')">Entrepreneurship</button>
+<button ng-click="showThese('entrepreneurship')">Entrepreneurship</button-->
 
 
-<div>
+<!--div>
 <div ng-repeat="pods in library.showPods track by $index">
     <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
@@ -23,7 +22,124 @@
   </div>
 
   {{allPodsResult}}
-</div>
+</div-->
+
+<section class="vbox">
+  <section>
+    <section class="hbox stretch">
+      
+      <section id="content">
+        <section class="vbox">
+<section class="w-f-md" id="bjax-target">
+  <section class="hbox stretch">
+    <!-- side content -->
+    <aside class="aside bg-light dk" id="sidebar">
+      <section class="vbox animated fadeInUp">
+        <section class="scrollable hover">
+          <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+            <a ng-click="showThese('all')" class="list-group-item">
+              All
+            </a>
+            <a ng-click="showThese('marketing')" class="list-group-item active">
+              Marketing
+            </a>
+            <a ng-click="showThese('finance')" class="list-group-item">
+              Finance
+            </a>
+            <a ng-click="showThese('entrepreneurship')" class="list-group-item">
+              Entrepreneurship
+            </a>
+            <a ng-click="showThese('consulting')" class="list-group-item">
+              Consulting
+            </a>
+          </div>
+        </section>
+      </section>
+    </aside>
+    <!-- / side content -->
+    <section>
+      
+<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="submit" ng-click="search()" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+        </span>
+        <input type="text" class="form-control input-sm no-border rounded"  ng-model="library.search" placeholder="Business, Finance, Consulting ...">
+      </div>
+    </div>
+  </form>
+      <section class="vbox">
+        <section class="scrollable padder-lg">
+          <h2 class="font-thin m-b">All</h2>
+          <div class="row row-sm">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="pods in library.showPods track by $index">
+              <div class="item">
+                <div class="pos-rlt">
+                  <div class="item-overlay opacity r r-2x bg-black">
+                    <div class="center text-center m-t-n">
+                      <a ng-click="playThis(pods.fileUrl)"><i class="fa fa-play-circle i-2x"></i></a>
+                    </div>
+                    <div class="bottom padder m-b-sm">
+                      <a href="#" class="pull-right">
+                        <i class="fa fa-heart-o"></i>
+                      </a>
+                          <a class="btn btn-default" style="padding: 4px;" ng-class="{liked:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
+                              <span class="text">
+                                <i class="fa fa-thumbs-up text-success"></i> {{pods.likes}}
+                              </span>
+                              <span class="text-active">
+                                <i class="fa fa-thumbs-down text-danger"></i> 
+                              </span>
+                            </a>
+                    
+                    </div>
+                  </div>
+                  <a href="track-detail.html"><img src="{{pods.coverUrl}}" alt="" class="r r-2x img-full"></a>
+                </div>
+                <div class="padder-v">
+                  <p class="text-ellipsis">{{pods.title}}</p>
+                  <p class="text-ellipsis text-xs text-muted">{{pods.subtext}}</p>
+                </div>
+              </div>
+            </div>            
+            </div>
+          <!--ul class="pagination pagination">
+            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+          </ul-->
+        </section>                    
+      </section>
+    </section>
+  </section>
+</section>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div ng-hide="loginFirst">
   <p>You need to login/signup first to play a podcast!</p>

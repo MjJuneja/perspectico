@@ -534,7 +534,7 @@ a.list-group-item:focus {
 .header,
 .footer {
   min-height: 50px;
-  padding: 0 15px;
+ /* padding: 0 15px;*/
 }
 .header > p,
 .footer > p {
@@ -629,7 +629,7 @@ body.container {
   .app .vbox > section,
   footer.footer {
     position: absolute;
-
+  }
   .app .vbox.flex > section > section {
     overflow: auto;
   }
@@ -639,6 +639,7 @@ body.container {
     border-spacing: 0;
     width: 100%;
   }
+
   .hbox > aside,
   .hbox > section {
     display: table-cell;
@@ -670,7 +671,7 @@ body.container {
 
   .vbox > section,
   footer.footer {
-    top: 0;
+    /*top: 0;*/
     bottom: 0;
     width: 100%;
   }
@@ -1255,7 +1256,7 @@ body.container {
   color: #788188;
 }
 .btn-link.active {
-  webkit-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .btn-default {
@@ -1539,6 +1540,7 @@ fieldset[disabled] .btn-dark.active {
 }
 .btn-icon.btn-sm {
   width: 30px;
+  height : 3em;
 }
 .btn-icon.btn-sm.b-2x {
   width: 32px;
