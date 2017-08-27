@@ -78,6 +78,9 @@ angular
         controller: 'OpspanelCtrl',
         controllerAs: 'opspanel'
       })
+      .when('/modules', {
+        templateUrl: 'views/modules.html',
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -26,6 +26,13 @@ angular.module('perspecticoApp')
     };
 
 
+    var unregister=$scope.$watch(webindex.loaded,function(newValue,oldValue){
+        if(!angular.equals(webindex.loaded, false)){
+            $scope.loadMyPods();
+            unregister();
+        }
+    },true);
+
     $scope.loadMyPods = function () {
       var myPod = {
         type: 'userPods',
@@ -56,8 +63,6 @@ angular.module('perspecticoApp')
         $scope.myPodsResult = "Error Loading! Try again later.";
       });
     };
-
-    $scope.loadMyPods();
 
 
     $scope.submitPodForm = function (form) {

@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('OpspanelCtrl', function ($scope, $window, opspanel, Upload, requrl, $route) {
+  .controller('OpspanelCtrl', function ($scope, $window, opspanel, Upload, requrl, $route, webindex) {
 
     $scope.opspanel={
       name:"",
@@ -21,6 +21,15 @@ angular.module('perspecticoApp')
       priority:"",
       allMembers:[]
     };
+
+    var unregister=$scope.$watch(webindex.loaded,function(newValue,oldValue){
+        if(!angular.equals(webindex.loaded, false)){
+            $scope.loadMembers();
+            unregister();
+        }
+    },true);
+
+
 
     $scope.loadMembers = function () {
       var promise = opspanel.loadMembers();
@@ -46,8 +55,6 @@ angular.module('perspecticoApp')
         $scope.loadResult = "Error Loading! Try again later.";
       });
     };
-
-    $scope.loadMembers();
 
 
     $scope.submitMemberForm = function (form) {
