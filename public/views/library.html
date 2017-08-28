@@ -82,8 +82,10 @@
                       <a ng-click="playThis(pods.fileUrl)"><i class="fa fa-play-circle i-2x"></i></a>
                     </div>
                     <div class="bottom padder m-b-sm">
-                      <a class="pull-right" ng-class="{wished:(isWished.indexOf(pods.podId)!==-1)}" ng-click="wishThis(pods.podId,$index)">
-                        <i class="fa fa-heart-o"></i>
+                      <a class="pull-right" ng-class="{active:(isWished.indexOf(pods.podId)!==-1)}" ng-click="wishThis(pods.podId,$index)">
+                        <i class="fa fa-heart-o text i-2x"></i>
+                        <i class="fa fa-heart text-active text-danger i-2x"></i>
+                        
                       </a>
                           <a class="btn btn-default" style="padding: 4px;" ng-class="{liked:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
                               <span class="text">
