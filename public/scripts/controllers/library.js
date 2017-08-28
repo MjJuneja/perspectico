@@ -11,6 +11,7 @@ angular.module('perspecticoApp')
   .controller('LibraryCtrl', function ($scope, webindex, requrl, library, $window) {
 
     $scope.isLiked = [];
+    $scope.isWished = [];
     $scope.library = {
       allPods: [],
       showPods: [],
@@ -38,8 +39,12 @@ angular.module('perspecticoApp')
           for (var i = 0; i < data.data.length; i++) {
             data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
             data.data[i].liked=(data.data[i].likedBy[0] === 'true');
+            data.data[i].wished=(data.data[i].wishedBy[0] === 'true');
             if (data.data[i].liked) {
               $scope.isLiked.push(data.data[i].podId);
+            }
+            if (data.data[i].wished) {
+              $scope.isWished.push(data.data[i].podId);
             }
             if (data.data[i].type === 'finance') {
               financePods.push(data.data[i]);
@@ -118,7 +123,6 @@ angular.module('perspecticoApp')
         var promise = library.likePod(pod);
         promise.then(function (data) {
           if (data.data.message === "unknown") {
-            $scope.postResult = "Not LoggedIn";
             $window.location.reload();
           }
           else {
@@ -128,6 +132,29 @@ angular.module('perspecticoApp')
         }, function (error) {
           $scope.isLiked.push(podId);
           $scope.library.allPods[pindex].likes = $scope.library.allPods[pindex].likes + 1;
+        });
+      }
+    }
+
+        ////////Wishlist this
+    $scope.wishThis = function (podId, pindex) {
+      if (!webindex.userData.useremail) {
+        $scope.loginFirst = false;
+      }
+      else if ($scope.isWished.indexOf(podId)===-1) {
+        var pod = {
+          podId: podId
+        };
+        var promise = library.wishPod(pod);
+        promise.then(function (data) {
+          if (data.data.message === "unknown") {
+            $window.location.reload();
+          }
+          else {
+            $scope.isWished.push(podId);
+          }
+        }, function (error) {
+          $scope.isWished.push(podId);
         });
       }
     }

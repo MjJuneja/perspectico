@@ -23,6 +23,7 @@ const dbOperations = {
             uploadDate: new Date(),
             likes: 0,
             likedBy:[],
+            wishedBy:[],
             postedByUsername: session.username,
             postedByEmail: session.useremail,
             randomNumber: randomNumber,

@@ -20,7 +20,8 @@ const podSchema = new schema({
     randomNumber: Number,
     verified: Boolean,
     verifiedBy: String,
-    likedBy:[String]
+    likedBy:[String],
+    wishedBy:[String]
 });
 
 const Pods = mongoose.model(config.dbPods, podSchema);

@@ -166,6 +166,40 @@ router.post('/likePod', function (request, response) {
     }
 });
 
+///////////Wish Pod
+router.post('/wishPod', function (request, response) {
+    logger.debug('routes common wishPod');
+
+    var isValidSessionid = false;
+    var webSessionExist = false;
+
+    if (request.body.appCall === true && request.body.sessionid != undefined) {
+        isValidSessionid = validate.string(request.body.sessionid);
+    }
+    else if (request.session.user) {
+        webSessionExist = true;
+    }
+
+    if (webSessionExist === true) {
+        var userData = request.session.user;
+        dbOperations.wishPod(request.body.podId, response, userData);
+    }
+    else if (isValidSessionid === true) {
+        var userData = {};
+        commonOperations.getProfileData(request.body.sessionid, userData, function (userData) {
+            if (userData != undefined) {
+                dbOperations.wishPod(request.body.podId, response, userData);
+            }
+            else {
+                response.json({ message: "unknown" });
+            }
+        });
+    }
+    else {
+        response.json({ message: "unknown" });
+    }
+});
+
 module.exports = router;
 
 

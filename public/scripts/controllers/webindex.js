@@ -70,6 +70,7 @@ angular.module('perspecticoApp')
           $scope.SignupButton = true;
           $scope.ProfileButton = false;
           $scope.LogoutButton = false;
+          $scope.loadwishedPods();
         }
         else {
           $scope.loginStatus = "Login/SignUp";
@@ -148,10 +149,38 @@ angular.module('perspecticoApp')
 
     $scope.loadTopPods();
 
+    //////Load wishlised
+    $scope.loadwishedPods = function () {
+      var myPod = {
+        type: 'wished',
+        count: 0
+      };
+
+      var promise = webindex.loadPods(myPod);
+      promise.then(function (data) {
+
+        if (data.data.length > 0) {
+          for (var i = 0; i < data.data.length; i++) {
+            data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
+          }
+          $scope.wishedPods = data.data;
+          console.log($scope.wishedPods);
+        }
+        else {
+          console.log("Error loading! Try again later.");
+        }
+      }, function (error) {
+        console.log("Error loading! Try again later.");
+      });
+    };
+
+
     $scope.playlistPlay = function (link) {
       if (link) {
         link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
+      }else{
+        $scope.loginFirst=false;
       }
     };
 

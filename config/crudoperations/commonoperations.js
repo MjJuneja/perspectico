@@ -281,8 +281,8 @@ const dbOperations = {
             SortQuery["uploadDate"] = -1;
             Query["postedByEmail"] = userData.useremail
         }
-        else if (type === "userPods" && !userData.useremail) {
-            Query[""] = "";
+        else if (type === "wished" && userData.useremail) {
+            Query["wishedBy"] = userData.useremail;
         }
         else if (type === "top") {
             Query['verified'] = true;
@@ -332,10 +332,17 @@ const dbOperations = {
                                 else{
                                     result[i].likedBy=false;
                                 }
+                                if(result[i].wishedBy.indexOf(userData.useremail) !== -1){
+                                    result[i].wishedBy=true;
+                                }
+                                else{
+                                    result[i].wishedBy=false;
+                                }
                             }
                             else{
                                 result[i].fileUrl = undefined;
                                 result[i].likedBy=false;
+                                result[i].wishedBy=false;
                             }
                             pods.push(result[i]);
                         }
@@ -346,6 +353,7 @@ const dbOperations = {
     },
 
     checkRights: function (request, response, userData) {
+        logger.debug('crud common checkrights');
         var that = this;
         const Pods = require('../podschema');
         Pods.find({
@@ -374,6 +382,7 @@ const dbOperations = {
     },
 
     deletePod: function (podId, response) {
+        logger.debug('crud common deletePod');
         const Pods = require('../podschema');
         Pods.remove({
             podId: podId
@@ -399,6 +408,7 @@ const dbOperations = {
     },
 
     likePod: function (podId, response, userData) {
+        logger.debug('crud common likePod');
         const Pods = require('../podschema');
         Pods.find({
             podId: podId
@@ -419,6 +429,45 @@ const dbOperations = {
                             {
                                 $push: { likedBy: userData.useremail },
                                 $inc: { likes: +1 }
+                            },
+                            function (error, result) {
+                                if (error) {
+                                    logger.error(error);
+                                }
+                                else {
+                                    logger.debug('crud result' + result);
+                                    response.json({ message: "success" });
+                                }
+                            });
+                    }
+                    else {
+                        response.json({ message: "success" });
+                    }
+                }
+            });
+    },
+
+    wishPod: function (podId, response, userData) {
+        logger.debug('crud common wishPod');
+        const Pods = require('../podschema');
+        Pods.find({
+            podId: podId
+        }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    logger.debug('crud result' + result);
+                    if (result.length > 1) {
+                        logger.error('Multiple pods for same id', podId);
+                    }
+                    if (result[0].wishedBy.indexOf(userData.useremail) === -1) {
+                        Pods.update({
+                            podId: podId
+                        },
+                            {
+                                $push: { wishedBy: userData.useremail },
                             },
                             function (error, result) {
                                 if (error) {

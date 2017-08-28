@@ -82,7 +82,7 @@
                       <a ng-click="playThis(pods.fileUrl)"><i class="fa fa-play-circle i-2x"></i></a>
                     </div>
                     <div class="bottom padder m-b-sm">
-                      <a href="#" class="pull-right">
+                      <a class="pull-right" ng-class="{wished:(isWished.indexOf(pods.podId)!==-1)}" ng-click="wishThis(pods.podId,$index)">
                         <i class="fa fa-heart-o"></i>
                       </a>
                           <a class="btn btn-default" style="padding: 4px;" ng-class="{liked:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
@@ -128,21 +128,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div ng-hide="loginFirst">
-  <p>You need to login/signup first to play/like a podcast!</p>
+  <p>You need to login/signup first to play/like/wishlist a podcast!</p>
   <a ng-href="/#/login">Login now</a>
   <button ng-click="loginFirst=true">Hide</button>
 </div>
