@@ -85,7 +85,7 @@
                       <a class="pull-right" ng-class="{active:(isWished.indexOf(pods.podId)!==-1)}" ng-click="wishThis(pods.podId,$index)">
                         <i class="fa fa-heart-o text i-2x"></i>
                         <i class="fa fa-heart text-active text-danger i-2x"></i>
-                        
+
                       </a>
                           <a class="btn btn-default" style="padding: 4px;" ng-class="{liked:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
                               <span class="text">
@@ -103,6 +103,7 @@
                 <div class="padder-v">
                   <p class="text-ellipsis">{{pods.title}}</p>
                   <p class="text-ellipsis text-xs text-muted">{{pods.subtext}}</p>
+                  <p class="text-ellipsis text-xs text-muted">{{pods.duration}}</p>
                 </div>
               </div>
             </div>

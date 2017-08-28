@@ -475,12 +475,26 @@ const dbOperations = {
                                 }
                                 else {
                                     logger.debug('crud result' + result);
-                                    response.json({ message: "success" });
+                                    response.json({ message: "wished" });
                                 }
                             });
                     }
                     else {
-                        response.json({ message: "success" });
+                        Pods.update({
+                            podId: podId
+                        },
+                            {
+                                $pull: { wishedBy: userData.useremail },
+                            },
+                            function (error, result) {
+                                if (error) {
+                                    logger.error(error);
+                                }
+                                else {
+                                    logger.debug('crud result' + result);
+                                    response.json({ message: "unwished" });
+                                }
+                            });
                     }
                 }
             });

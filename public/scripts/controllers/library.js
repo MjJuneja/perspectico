@@ -45,6 +45,7 @@ angular.module('perspecticoApp')
             }
             if (data.data[i].wished) {
               $scope.isWished.push(data.data[i].podId);
+              webindex.isWished.push(data.data[i].podId);
             }
             if (data.data[i].type === 'finance') {
               financePods.push(data.data[i]);
@@ -141,7 +142,7 @@ angular.module('perspecticoApp')
       if (!webindex.userData.useremail) {
         $scope.loginFirst = false;
       }
-      else if ($scope.isWished.indexOf(podId)===-1) {
+      else{
         var pod = {
           podId: podId
         };
@@ -150,8 +151,14 @@ angular.module('perspecticoApp')
           if (data.data.message === "unknown") {
             $window.location.reload();
           }
-          else {
+          else if(data.data.message==='wished') {
             $scope.isWished.push(podId);
+            webindex.isWished.push(podId);
+          }
+          else{
+            var i=$scope.isWished.indexOf(podId);
+            $scope.isWished.splice(i,1);
+            webindex.isWished.splice(i,1);
           }
         }, function (error) {
           $scope.isWished.push(podId);

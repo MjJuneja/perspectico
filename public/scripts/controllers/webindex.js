@@ -8,7 +8,7 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location, ngAudio) {
+  .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location, ngAudio, library) {
 
     $scope.loading_screen = pleaseWait({
       logo: "../images/Loading_Text.png",
@@ -21,7 +21,7 @@ angular.module('perspecticoApp')
     $scope.redirect = function () {
       if (webindex.loaded === true && webindex.loggedIn === true) {
         if ($location.path() === '/login' || $location.path() === '/signup') {
-          $scope.hideHF=false;
+          $scope.hideHF = false;
           $window.location.assign(requrl + '/#/');
         }
       }
@@ -33,8 +33,8 @@ angular.module('perspecticoApp')
     };
 
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
-      if ($location.path() === '/login' || $location.path() === '/signup'){
-        $scope.hideHF=true;
+      if ($location.path() === '/login' || $location.path() === '/signup') {
+        $scope.hideHF = true;
       }
       $scope.redirect();
     });
@@ -150,7 +150,8 @@ angular.module('perspecticoApp')
 
     $scope.loadTopPods();
 
-    //////Load wishlised
+    //////Load wishlisted
+
     $scope.loadwishedPods = function () {
       var myPod = {
         type: 'wished',
@@ -165,11 +166,25 @@ angular.module('perspecticoApp')
             data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
           }
           $scope.wishedPods = data.data;
-          console.log($scope.wishedPods);
         }
         else {
           console.log("Error loading! Try again later.");
         }
+      }, function (error) {
+        console.log("Error loading! Try again later.");
+      });
+    };
+
+    $scope.unwishThis=function(podId){
+      var Pod = {
+        podId:podId
+      };
+
+      var promise = library.wishPod(Pod);
+      promise.then(function (data) {
+        var indexOfobj = $scope.wishedPods.findIndex(i => i.podId === podId);
+        $scope.wishedPods.splice(indexOfobj,1);
+
       }, function (error) {
         console.log("Error loading! Try again later.");
       });
@@ -180,14 +195,23 @@ angular.module('perspecticoApp')
       if (link) {
         link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
-      }else{
-        $scope.loginFirst=false;
+      } else {
+        $scope.loginFirst = false;
       }
     };
 
+    $scope.$watch(function () { return webindex.isWished }, function (newValue, oldValue) {
+      if ($scope.wishedPods && webindex.isWished.length !== $scope.wishedPods.length) {
+
+          console.log(webindex.isWished.length, $scope.wishedPods.length);
+          $scope.loadwishedPods();
+
+      }
+    }, true);
+
 
     //////////////Audio Player
-    $scope.played=[];
+    $scope.played = [];
 
     $scope.$watch(function () { return webindex.currentPod }, function (newValue, oldValue) {
       if (webindex.currentPod) {
@@ -198,21 +222,21 @@ angular.module('perspecticoApp')
     $scope.playThis = function (link) {
       $scope.played.push(link);
 
-      try{
+      try {
         $scope.audio = ngAudio.load(link);
         $scope.audio.play();
       }
-      catch(error){
+      catch (error) {
       }
     };
 
-    $scope.playPrevious=function(){
-      if($scope.played.length>1){
-        webindex.currentPlaying=$scope.played[$scope.played.length-2];
+    $scope.playPrevious = function () {
+      if ($scope.played.length > 1) {
+        webindex.currentPlaying = $scope.played[$scope.played.length - 2];
       }
     };
 
-    $scope.playNext=function(){
+    $scope.playNext = function () {
 
     };
 

@@ -15,6 +15,7 @@ const podSchema = new schema({
     type: String,
     uploadDate: Date,
     likes: Number,
+    duration: String,
     postedByUsername: String,
     postedByEmail: String,
     randomNumber: Number,

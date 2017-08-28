@@ -41,3 +41,21 @@
     at TLSSocket.Readable.push (_stream_readable.js:134:10)
     at TLSWrap.onread (net.js:547:20) code: 'EENVELOPE', command: 'API' }
 [2017-08-26 21:52:35.638] [ERROR] error - error sending mail
+[2017-08-29 01:14:53.418] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\HhCYQsHOLH3eQiFl.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\HhCYQsHOLH3eQiFl.jpeg' }
+[2017-08-29 01:14:54.294] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\s7G4keAHvrEFaYxF.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\s7G4keAHvrEFaYxF.jpeg' }
+[2017-08-29 01:14:55.049] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\V1LaiXGlXbiXObpD.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\V1LaiXGlXbiXObpD.jpeg' }
