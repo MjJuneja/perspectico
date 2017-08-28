@@ -311,12 +311,8 @@ section.wishlist.dropdown-menu .media-body{
   width: 86%;
 }
 
-.panel-heading + .list-group .list-group-item:first-child{
-  display: none!important;
-}
-
 #snackbar{
- // visibility: hidden;
+  /* visibility: hidden; */
   min-width: 520px;
   margin-left: -260px;
   background-color: #333;
