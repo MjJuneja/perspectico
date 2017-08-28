@@ -1,4 +1,4 @@
-<h1>All team members</h1>
+<!-- <h1>All team members</h1>
 <div>
   <div ng-repeat="members in opspanel.allMembers">
     <img ng-src="{{members.picUrl}}">
@@ -9,4 +9,43 @@
       <a ng-href="{{members.twlink}}">Twitter</a>
       <a ng-href="{{members.lklink}}">Linkedin</a>
   </div>
-</div>
+</div> -->
+
+
+                  <!-- Our team Section -->
+                  <section id="team" class="team content-section">
+                      <div class="container">
+                        <div class="row text-center">
+                          <div class="col-md-12">
+                            <h2>Our Team</h2>
+                          </div><!-- /.col-md-12 -->
+                  
+                          <div class="container">
+                            <div class="row">
+                  
+                              <div class="col-md-4" ng-repeat="members in opspanel.allMembers">
+                                <div class="team-member">
+                                  <figure>
+                                    <img ng-src="{{members.picUrl}}" alt="" class="img-responsive">
+                                    <figcaption>
+                                      <p>{{members.description}}</p>
+                                      <ul>
+                                        <li><a ng-href="{{members.fblink}}" class="btn btn-sm btn-icon btn-primary"><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a ng-href="{{members.twlink}}" class="btn btn-sm btn-icon btn-info"><i class="fa fa-twitter fa-2x"></i></a></li>
+                                        <li><a ng-href="{{members.lklink}}" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                      </ul>
+                                    </figcaption>
+                                  </figure>
+                                  <h4>{{members.name}}</h4>
+                                  <p>{{members.designation}}</p>
+                                </div><!-- /.team-member-->
+                              </div><!-- /.col-md-4 -->
+                  
+                  
+                            
+                            </div><!-- /.row -->
+                          </div><!-- /.container -->
+                  
+                        </div><!-- /.row -->
+                      </div><!-- /.container -->
+                    </section><!-- /.our-team -->

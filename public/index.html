@@ -88,18 +88,18 @@
                         <strong>You have <span class="count">{{wishedPods.length-1}}</span> Podcasts</strong>
                       </div>
                       <div class="list-group list-group-alt">
-                        <div ng-repeat="wpods in wishedPods track by $index">
-                        <!-- <a href="#" class="media list-group-item"> -->
+                        <!-- <div > -->
+                         <a class="media list-group-item" ng-repeat="wpods in wishedPods track by $index">
                                 <span class="pull-left thumb-sm">
                                   <img ng-src="{{wpods.coverUrl}}" alt="..." class="img-circle">
                                 </span>
-                                <span class="media-body block m-b-none">
+                                <span class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
                                   {{wpods.title}}<br>
                                   <small class="text-muted">{{wpods.type}}</small>
-                                  <button ng-click="playlistPlay(wpods.fileUrl)">></button>
+                                  
                                 </span>
-                              <!-- </a> -->
-                            </div>
+                              </a> 
+                            <!-- </div> -->
                       </div>
                       <!--div class="panel-footer text-sm">
                               <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
@@ -163,10 +163,12 @@
         <div ng-view=""></div>
       </div>
 
-      <div ng-hide="loginFirst">
-        <p>You need to login/signup first to play/like/wishlist a podcast!</p>
-        <a ng-href="/#/login">Login now</a>
-        <button ng-click="loginFirst=true">Hide</button>
+      <div ng-hide="loginFirst" id="snackbar"> 
+        Please Login/Sign-up to continue
+        <span class="pull-right">
+        <a ng-href="/#/login" class="btn btn-info">Login now</a>
+        <a ng-click="loginFirst=true" class="loginfirst-dismiss">Dismiss</a>
+        </span>
       </div>
 
       <!--/section-->
@@ -218,14 +220,14 @@
                                   <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
                                   <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
                                 </div-->
-                  <div>
+                  <!-- <div>
                     <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
                     <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
-                  </div>
-                  <div class="hide">
+                  </div> -->
+                  <!-- <div class="hide">
                     <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
                     <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

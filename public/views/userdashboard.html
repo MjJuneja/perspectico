@@ -2,19 +2,20 @@
 <div ng-hide="userdashboard.myPodcasts">
   <h1>My Podcasts</h1>
 
-  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)">
-    <img src="{{pods.coverUrl}}" alt="Cover image">
+<div class="row">
+  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)" class="col-md-3">
+    <img src="{{pods.coverUrl}}" alt="Cover image" class="img-responsive" width="200">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
     <p>Description:{{pods.description}}</p>
     <p>Type:{{pods.type}}</p>
     <p>Likes:{{pods.likes}}</p>
 
-    <button ng-click="playThis(pods.fileUrl)">></button>
-    <button ng-click="deleteThis(pods.podId,$index)">X</button>
+    <button ng-click="playThis(pods.fileUrl)" class="btn btn-primary">Play</button>
+    <button ng-click="deleteThis(pods.podId,$index)" class="btn btn-danger">Remove</button>
 
   </div>
-
+</div>
   {{myPodsResult}}
 
     <div ng-hide="userdashboard.uploadCoverForm">
@@ -32,7 +33,7 @@
 </div>
 
 <h1>Upload a new podcast</h1>
-<div>
+<div style="margin-bottom: 6em;">
   <div ng-hide="userdashboard.newPodcastForm">
 
     <form name="podForm" ng-submit="submitPodForm(podForm)" novalidate>

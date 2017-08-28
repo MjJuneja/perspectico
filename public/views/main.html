@@ -23,7 +23,8 @@
                         </div>
 
                         <div class="tagline">
-                            <p>Where experience meets ambition</p>
+                            <h3>Where experience meets ambition</h3>
+                            <p>Ace your career by getting perspective by industry experts in form of podcasts, mentoring and interview training</p>
                         </div>
 
                         <a href="#/library" class="btn btn-info explore-btn btn-lg">Explore more</a>
@@ -57,17 +58,17 @@
                                 <div class="center text-center m-t-n">
                                   <a  ng-click="playThis(pods.fileUrl)"><i class="icon-control-play i-2x"></i></a>
                                 </div>
-                                <div class="bottom padder m-b-sm">
+                                <!-- <div class="bottom padder m-b-sm">
                                   <a href="#" class="pull-right">
                                     <i class="fa fa-heart-o"></i>
                                   </a>
                                   <a href="#">
                                     <i class="fa fa-plus-circle"></i>
                                   </a>
-                                </div>
+                                </div> -->
                               </div>
                               <div class="item-overlay-description">{{pods.description}}</div>
-                              <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="r r-2x img-full"></a>
+                              <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="pods-cover r r-2x img-full"></a>
                             </div>
 
                             <div class="padder-v col-md-10">
@@ -268,8 +269,10 @@
                     </section>
 
 
-<div ng-hide="loginFirst">
-  <p>You need to login/signup first to play/like/wishlist a podcast!</p>
-  <a ng-href="/#/login">Login now</a>
-  <button ng-click="loginFirst=true">Hide</button>
+<div ng-hide="loginFirst" id="snackbar">
+  Please Login/Sign-up to continue
+  <span class="pull-right">
+  <a ng-href="/#/login" class="btn btn-info">Login now</a>
+  <a ng-click="loginFirst=true" class="loginfirst-dismiss">Dismiss</a>
+  </span>
 </div>

@@ -20,12 +20,18 @@
     float: right;
 }
 
-.tagline{
+.tagline h3{
     margin-top: 3em;
     font-size: 3em;
     color: #fff;
     font-family: sans-serif;
     text-align: center;
+}
+
+.tagline p{
+    text-align: center;
+    font-size: 1.34em;
+    color: #ddd;
 }
 
 .explore-btn{

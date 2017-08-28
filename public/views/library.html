@@ -37,10 +37,10 @@
       <section class="vbox animated fadeInUp">
         <section class="scrollable hover">
           <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-            <a ng-click="showThese('all')" class="list-group-item">
+            <a ng-click="showThese('all')" class="list-group-item active">
               All
             </a>
-            <a ng-click="showThese('marketing')" class="list-group-item active">
+            <a ng-click="showThese('marketing')" class="list-group-item">
               Marketing
             </a>
             <a ng-click="showThese('finance')" class="list-group-item">
@@ -96,7 +96,7 @@
 
                     </div>
                   </div>
-                  <a href="track-detail.html"><img src="{{pods.coverUrl}}" alt="" class="r r-2x img-full"></a>
+                  <a href="track-detail.html"><img src="{{pods.coverUrl}}" alt="" class="pods-cover r r-2x img-full"></a>
                 </div>
                 <div class="padder-v">
                   <p class="text-ellipsis">{{pods.title}}</p>
@@ -128,8 +128,10 @@
 
 
 
-<div ng-hide="loginFirst">
-  <p>You need to login/signup first to play/like/wishlist a podcast!</p>
-  <a ng-href="/#/login">Login now</a>
-  <button ng-click="loginFirst=true">Hide</button>
+<div ng-hide="loginFirst" id="snackbar">
+  Please Login/Sign-up to continue
+  <span class="pull-right">
+  <a ng-href="/#/login" class="btn btn-info">Login now</a>
+  <a ng-click="loginFirst=true" class="loginfirst-dismiss">Dismiss</a>
+  </span>
 </div>

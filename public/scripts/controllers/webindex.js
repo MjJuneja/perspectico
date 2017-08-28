@@ -47,6 +47,7 @@ angular.module('perspecticoApp')
     $scope.ProfileButton = true;
     $scope.LogoutButton = true;
     $scope.hideHF = false;
+    $scope.loginFirst = true;
 
     $scope.ActivationMessage = undefined;
 
