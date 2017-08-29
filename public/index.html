@@ -91,12 +91,12 @@
                         <!-- <div > -->
                          <a class="media list-group-item" ng-repeat="wpods in wishedPods track by $index">
                                 <span class="pull-left thumb-sm">
-                                  <img ng-src="{{wpods.coverUrl}}" alt="..." class="img-circle">
+                                  <img ng-src="{{wpods.coverUrl}}" alt="..." class="">
                                 </span>
                                 <span class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
                                   {{wpods.title}}<br>
                                   <small class="text-muted">{{wpods.type}}</small>
-                                <button ng-click="unwishThis(wpods.podId)">x</button>
+                                <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
 
                                 </span>
                               </a>

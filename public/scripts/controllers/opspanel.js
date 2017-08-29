@@ -30,7 +30,6 @@ angular.module('perspecticoApp')
     },true);
 
 
-
     $scope.loadMembers = function () {
       var promise = opspanel.loadMembers();
       promise.then(function (data) {
@@ -55,6 +54,7 @@ angular.module('perspecticoApp')
         $scope.loadResult = "Error Loading! Try again later.";
       });
     };
+    $scope.loadMembers();
 
 
     $scope.submitMemberForm = function (form) {

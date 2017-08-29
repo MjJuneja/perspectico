@@ -118,15 +118,20 @@
               <a ng-href="#signup" class="btn btn-lg btn-info btn-block rounded">Create an account</a>
           </section>
 
-    <div ng-controller="GoogleCtrl">
-        <span class="btn btn-danger btn-block m-b-sm" ><i class="fa fa-google-plus pull-left"></i><input type="button" ng-click="SignInGoogle()" value="Sign in with google" class="btn btn-danger"/></span>
-        {{GoogleMessage}}
-    </div>
+            <div>
+              <a href="/social/socialGoogle/" target="_self" class="btn btn-danger btn-block m-b-sm btn-lg">
+                <span> <i class="fa fa-google-plus i-2x pull-left"></i>
+                Login with Google
+                </span>
+              </a>
+            </div>
 
-    <div ng-controller="FacebookCtrl">
-        <span class="btn btn-primary btn-block m-b-sm"> <i class="fa fa-facebook pull-left"></i>
-        <a href="/social/socialFacebook/" target="_self" class="btn btn-primary">Login with Facebook</a>
-        {{FacebookMessage}}</span>
-    </div>
+            <div>
+              <a href="/social/socialFacebook/" target="_self" class="btn btn-primary btn-lg btn-block m-b-sm">
+                <span> <i class="fa fa-facebook i-2x pull-left"></i>
+                Login with Facebook
+                </span>
+              </a>
+            </div>
         </div>
       </section>
