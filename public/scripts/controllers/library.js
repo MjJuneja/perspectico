@@ -15,7 +15,8 @@ angular.module('perspecticoApp')
     $scope.library = {
       allPods: [],
       showPods: [],
-      search: ""
+      search: "",
+      podType:"All"
     };
 
     $scope.loginFirst = true;
@@ -80,6 +81,7 @@ angular.module('perspecticoApp')
     $scope.loadAllPods(loadAllObject);
 
     $scope.showThese = function (type) {
+      $scope.library.podType=type;
       switch (type) {
         case 'all': $scope.library.showPods = $scope.library.allPods; break;
         case 'marketing': $scope.library.showPods = marketingPods; break;

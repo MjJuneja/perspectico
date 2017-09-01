@@ -7,6 +7,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+   <link type="image/x-icon" href="images/favicon.png" />
   <script src="bower_components/please-wait/build/please-wait.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <!-- build:css(.) styles/vendor.css -->
@@ -243,7 +245,7 @@
                 <!-- The method Playlist.displayPlaylist() uses this unordered list -->
                 <li class="list-group-item" ng-repeat="playpods in playlistPods track by $index">
                   <div>
-                    <a class="jp-playlist-item-remove">x</a>
+                    <!-- <a class="jp-playlist-item-remove">x</a> -->
                     <a class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
                   </div>
                   <!-- {{playpods.title}}<button ng-click="playlistPlay(playpods.fileUrl)">></button> -->

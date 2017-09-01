@@ -36,6 +36,9 @@ angular.module('perspecticoApp')
       if ($location.path() === '/login' || $location.path() === '/signup') {
         $scope.hideHF = true;
       }
+      else{
+        $scope.hideHF = false;
+      }
       $scope.redirect();
     });
 

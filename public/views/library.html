@@ -66,13 +66,13 @@
         <span class="input-group-btn">
           <button type="submit" ng-click="search()" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
         </span>
-        <input type="text" class="form-control input-sm no-border rounded"  ng-model="library.search" placeholder="Business, Finance, Consulting ...">
+        <input type="text" class="form-control input-sm no-border rounded"  ng-model="library.search" placeholder="I want perspective on">
       </div>
     </div>
   </form>
       <section class="vbox">
         <section class="scrollable padder-lg">
-          <h2 class="font-thin m-b">All</h2>
+          <h2 class="font-thin m-b">{{library.podType}}</h2>
           <div class="row row-sm">
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="pods in library.showPods track by $index">
               <div class="item">

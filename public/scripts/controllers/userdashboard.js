@@ -63,7 +63,7 @@ angular.module('perspecticoApp')
         $scope.myPodsResult = "Error Loading! Try again later.";
       });
     };
-
+    $scope.loadMyPods();
 
     $scope.submitPodForm = function (form) {
       if (form.$valid && $scope.podForm.file.$valid && $scope.userdashboard.podcast) {

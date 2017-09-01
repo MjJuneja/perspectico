@@ -282,6 +282,7 @@ const dbOperations = {
             Query["postedByEmail"] = userData.useremail
         }
         else if (type === "wished" && userData.useremail) {
+            Query['verified'] = true;
             Query["wishedBy"] = userData.useremail;
         }
         else if (type === "top") {
@@ -305,6 +306,10 @@ const dbOperations = {
                 }
             });
 
+        }
+        else{
+            Query['verified'] = true;
+            SortQuery["uploadDate"] = -1;
         }
 
         Pods
