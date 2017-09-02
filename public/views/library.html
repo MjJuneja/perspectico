@@ -82,7 +82,7 @@
                               </div>
                   <div class="item-overlay opacity r r-2x bg-black">
                     <div class="center text-center m-t-n">
-                      <a ng-click="playThis(pods.fileUrl)"><i class="fa fa-play-circle i-2x"></i></a>
+                      <a ng-hide="pods.fileUrl==libPlaying" ng-click="playThis(pods.fileUrl)"><i class="fa fa-play-circle i-2x"></i></a>
                     </div>
                     <div class="bottom padder m-b-sm">
                       <a class="pull-right" ng-class="{active:(isWished.indexOf(pods.podId)!==-1)}" ng-click="wishThis(pods.podId,$index)">

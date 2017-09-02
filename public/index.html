@@ -46,7 +46,7 @@
         <div class="navbar navbar-default" role="navigation">
           <!--div class="container"-->
 
-          <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+          <header class="bg-info header header-md navbar navbar-fixed-top-xs">
             <div class="navbar-header aside bg-info">
               <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                       <i class="icon-list"></i>
@@ -95,7 +95,7 @@
                                 <span class="pull-left thumb-sm">
                                   <img ng-src="{{wpods.coverUrl}}" alt="..." class="">
                                 </span>
-                                <span class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
+                                <span ng-hide="wpods.fileUrl==currentPlaying" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
                                   {{wpods.title}}<br>
                                   <small class="text-muted">{{wpods.type}}</small>
                                 <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
@@ -246,7 +246,7 @@
                 <li class="list-group-item" ng-repeat="playpods in playlistPods track by $index">
                   <div>
                     <!-- <a class="jp-playlist-item-remove">x</a> -->
-                    <a class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
+                    <a ng-hide="playpods.fileUrl==currentPlaying" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
                   </div>
                   <!-- {{playpods.title}}<button ng-click="playlistPlay(playpods.fileUrl)">></button> -->
                 </li>

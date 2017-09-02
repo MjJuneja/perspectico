@@ -172,6 +172,8 @@ angular.module('perspecticoApp')
           webindex.wishedPods = data.data;
         }
         else {
+          $scope.wishedPods = [];
+          webindex.wishedPods = [];
           console.log("Error loading! Try again later.");
         }
       }, function (error) {
@@ -198,6 +200,7 @@ angular.module('perspecticoApp')
 
     $scope.playlistPlay = function (link) {
       if (link) {
+        $scope.currentPlaying = link;
         link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       } else {
@@ -232,6 +235,7 @@ angular.module('perspecticoApp')
       }
     };
 
+    $scope.currentPlaying = "";
     $scope.playPrevious = function () {
       if ($scope.played.length > 1) {
         webindex.currentPlaying = $scope.played[$scope.played.length - 2];

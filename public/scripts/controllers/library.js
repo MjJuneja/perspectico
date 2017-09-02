@@ -104,8 +104,10 @@ angular.module('perspecticoApp')
     };
 
     ////////Play podcast
+    $scope.libPlaying = "";
     $scope.playThis = function (link) {
       if (link) {
+        $scope.libPlaying = link;
         link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
@@ -150,6 +152,7 @@ angular.module('perspecticoApp')
         };
         var promise = library.wishPod(pod);
         promise.then(function (data) {
+          console.log(data);
           if (data.data.message === "unknown") {
             $window.location.reload();
           }
