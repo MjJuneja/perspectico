@@ -67,8 +67,9 @@
                                   </a>
                                 </div> -->
                               </div>
-                              <div class="item-overlay-description">{{pods.description}}</div>
+                              <div class="item-overlay-description" ng-class="{vDescription:(pods.podId==currentClicked)}">{{pods.description}}</div>
                               <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="pods-cover r r-2x img-full"></a>
+                              <button ng-click="currentClicked=''">X</button>
                             </div>
 
                             <div class="padder-v col-md-10">
@@ -80,8 +81,7 @@
 
                           </div>
                           <div class="more-vert">
-                            <button ng-click="currentClicked=''">X</button>
-                              <i class="fa fa-ellipsis-h pull-right" ng-class={vDescription:(pods.podId==currentClicked)} ng-click="currentClicked=pods.podId"></i>
+                              <i class="fa fa-ellipsis-h pull-right" ng-click="currentClicked=pods.podId"></i>
                           </div>
                         </div>
                     </div>

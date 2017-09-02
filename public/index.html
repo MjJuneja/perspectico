@@ -100,7 +100,7 @@
                                 <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
 
                                 </span>
-                                <span ng-class={isPlaying:(wpods.fileUrl==currentPlaying)} class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
+                                <span ng-class="{isPlaying:(wpods.fileUrl==currentPlaying)}" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
                                  </span>
 
                               </a>
@@ -195,7 +195,7 @@
               <div class="jp-interface">
                 <div class="jp-controls">
                   <div ng-click="playPrevious()"><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
-                  <div ng-class="isPaused:audio.paused" ng-click='audio.paused ? audio.play() : audio.pause()'>
+                  <div ng-class="{isPaused:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()'>
                     <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
                     <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
                   </div>
@@ -248,7 +248,7 @@
                 <li class="list-group-item" ng-repeat="playpods in playlistPods track by $index">
                   <div>
                     <!-- <a class="jp-playlist-item-remove">x</a> -->
-                    <a ng-hide="playpods.fileUrl==currentPlaying" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
+                    <a ng-class="{isPlaying:(playpods.fileUrl==currentPlaying)}" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
                   </div>
                   <!-- {{playpods.title}}<button ng-click="playlistPlay(playpods.fileUrl)">></button> -->
                 </li>
