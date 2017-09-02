@@ -53,7 +53,7 @@
      Invalid designation(Should be 2-30 only a-z,A-Z,0-9,-,. , and space allowed) </span>
 
       <h5>Description</h5>
-      <textarea name="validDiscription" ng-model="opspanel.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
+      <textarea rows="20" cols="100" name="validDiscription" ng-model="opspanel.description" placeholder="A brief description" pattern="[A-Za-z0-9,-.' ]{20,3000}"
         required></textarea>
       <span ng-show="memberForm.validDiscription.$touched &&
      memberForm.validDiscription.$error.pattern &&

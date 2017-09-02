@@ -56,6 +56,7 @@ angular.module('perspecticoApp')
 
     $scope.loadData = function () {
       var promise = webindex.checkStatus();
+      $scope.loadTopPods();
       promise.then(function (data) {
         if (data.data.message === "fail") {
           $scope.loginStatus = "Login/SignUp";
@@ -151,8 +152,6 @@ angular.module('perspecticoApp')
       });
     };
 
-    $scope.loadTopPods();
-
     //////Load wishlisted
 
     $scope.loadwishedPods = function () {
@@ -198,6 +197,7 @@ angular.module('perspecticoApp')
     };
 
 
+    $scope.currentPlaying = "";
     $scope.playlistPlay = function (link) {
       if (link) {
         $scope.currentPlaying = link;
@@ -235,7 +235,6 @@ angular.module('perspecticoApp')
       }
     };
 
-    $scope.currentPlaying = "";
     $scope.playPrevious = function () {
       if ($scope.played.length > 1) {
         webindex.currentPlaying = $scope.played[$scope.played.length - 2];

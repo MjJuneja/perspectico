@@ -80,7 +80,8 @@
 
                           </div>
                           <div class="more-vert">
-                              <i class="fa fa-ellipsis-h pull-right"></i>
+                            <button ng-click="currentClicked=''">X</button>
+                              <i class="fa fa-ellipsis-h pull-right" ng-class={vDescription:(pods.podId==currentClicked)} ng-click="currentClicked=pods.podId"></i>
                           </div>
                         </div>
                     </div>

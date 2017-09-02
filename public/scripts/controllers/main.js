@@ -15,6 +15,7 @@ angular.module('perspecticoApp')
     };
 
     $scope.loginFirst=true;
+    $scope.currentClicked = false;
 
     $scope.loadTopPods = function () {
       var myPod = {

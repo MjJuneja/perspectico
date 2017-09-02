@@ -100,7 +100,7 @@ const validate = {
         }
         var string = string.trim();
         var letters = /^[A-Za-z0-9-/_',. ]+$/;
-        if (string.length < 2 || string.length > 300 || string.match(letters) === null) {
+        if (string.length < 2 || string.length > 3000 || string.match(letters) === null) {
             return false;
         }
         else {
