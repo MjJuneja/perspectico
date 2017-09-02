@@ -200,7 +200,7 @@ angular.module('perspecticoApp')
     $scope.playThis = function (link) {
       if (link) {
         $scope.userPlaying = link;
-        link = requrl + '/Podcasts/' + link;
+        // link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
     };

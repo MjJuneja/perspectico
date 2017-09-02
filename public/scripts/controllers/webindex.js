@@ -36,7 +36,7 @@ angular.module('perspecticoApp')
       if ($location.path() === '/login' || $location.path() === '/signup') {
         $scope.hideHF = true;
       }
-      else{
+      else {
         $scope.hideHF = false;
       }
       $scope.redirect();
@@ -180,16 +180,16 @@ angular.module('perspecticoApp')
       });
     };
 
-    $scope.unwishThis=function(podId){
+    $scope.unwishThis = function (podId) {
       var Pod = {
-        podId:podId
+        podId: podId
       };
 
       var promise = library.wishPod(Pod);
       promise.then(function (data) {
         var indexOfobj = $scope.wishedPods.findIndex(i => i.podId === podId);
-        $scope.wishedPods.splice(indexOfobj,1);
-        webindex.wishedPods.splice(indexOfobj,1);
+        $scope.wishedPods.splice(indexOfobj, 1);
+        webindex.wishedPods.splice(indexOfobj, 1);
 
       }, function (error) {
         console.log("Error loading! Try again later.");
@@ -200,8 +200,7 @@ angular.module('perspecticoApp')
     $scope.currentPlaying = "";
     $scope.playlistPlay = function (link) {
       if (link) {
-        $scope.currentPlaying = link;
-        link = requrl + '/Podcasts/' + link;
+        // link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       } else {
         $scope.loginFirst = false;
@@ -210,7 +209,7 @@ angular.module('perspecticoApp')
 
     $scope.$watch(function () { return webindex.isWished }, function (newValue, oldValue) {
       if ($scope.wishedPods && webindex.isWished.length !== $scope.wishedPods.length) {
-          $scope.loadwishedPods();
+        $scope.loadwishedPods();
       }
     }, true);
 
@@ -225,7 +224,15 @@ angular.module('perspecticoApp')
     }, true);
 
     $scope.playThis = function (link) {
-      $scope.played.push(link);
+      $scope.currentPlaying = link;
+      if (!$scope.previousPlay) {
+        $scope.played.push(link);
+      }
+      else {
+        $scope.previousPlay = false;
+      }
+
+      link = requrl + '/Podcasts/' + link;
 
       try {
         $scope.audio = ngAudio.load(link);
@@ -235,14 +242,31 @@ angular.module('perspecticoApp')
       }
     };
 
+    $scope.previousPlay = false;
     $scope.playPrevious = function () {
       if ($scope.played.length > 1) {
-        webindex.currentPlaying = $scope.played[$scope.played.length - 2];
+        $scope.previousPlay = true;
+        if(webindex.currentPod===$scope.played[$scope.played.length - 2]){
+          if($scope.counter>0){
+            $scope.counter--;
+          }
+          $scope.playNext();
+        }else{
+          webindex.currentPod = $scope.played[$scope.played.length - 2];
+        }
       }
     };
 
+    $scope.counter = 0
     $scope.playNext = function () {
 
+      if ($scope.counter>-1 && $scope.counter < $scope.playlistPods.length) {
+        webindex.currentPod = $scope.playlistPods[$scope.counter].fileUrl;
+        $scope.counter++;
+      }
+      else{
+        $scope.counter=0;
+      }
     };
 
   });

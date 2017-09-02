@@ -48,7 +48,7 @@ angular.module('perspecticoApp')
     $scope.playThis = function (link) {
       if (link) {
         $scope.mainPlaying = link;
-        link = requrl + '/Podcasts/' + link;
+        // link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
       else if(!webindex.user){
