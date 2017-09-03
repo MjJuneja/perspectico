@@ -13,6 +13,7 @@
     <p>Duration:{{pods.duration}}</p>
 
     <button ng-hide="pods.fileUrl==userPlaying" ng-click="playThis(pods.fileUrl)" class="btn btn-primary">Play</button>
+    <p ng-hide="pods.fileUrl!==userPlaying">Playing...</p>
     <button ng-click="deleteThis(pods.podId,$index)" class="btn btn-danger">Remove</button>
 
   </div>

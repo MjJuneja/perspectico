@@ -195,21 +195,27 @@
               <div class="jp-interface">
                 <div class="jp-controls">
                   <div ng-click="playPrevious()"><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
-                  <div ng-class="{active:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()'>
+                  <div ng-class="{active:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()' ng-hide="!initiated">
                     <a class="jp-play text-active"><i class="icon-control-play i-2x"></i></a>
                     <a class="jp-pause text"><i class="icon-control-pause i-2x"></i></a>
+                  </div>
+                  <div ng-hide="initiated">
+                    <i class="icon-control-play i-2x"></i>
                   </div>
                   <div ng-click="playNext()"><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
                   <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
                   <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
                   <div class="jp-progress hidden-xs">
                     <div class="jp-seek-bar dk">
-                                        <!-- <div class="form-group">
+                      <input class="form-control ng-pristine ng-untouched ng-valid" type="text" ng-model="audio.currentTime">
+                      <!-- <p>{{totalTime}}</p> -->
+
+                                         <!-- <div class="form-group">
         <label class="col-md-4 control-label" for="prependedtext">Progress</label>
         <div class="col-md-8">
             <div class="input-group">
                 <span class="input-group-addon">Progress</span>
-                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.progress'>
+                <input class='form-control' type=range min=0 max=1 step=0.1 ng-model='audio.progress'>
             </div>
         </div>
     </div> -->

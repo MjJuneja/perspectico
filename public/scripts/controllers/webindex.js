@@ -51,6 +51,7 @@ angular.module('perspecticoApp')
     $scope.LogoutButton = true;
     $scope.hideHF = false;
     $scope.loginFirst = true;
+    $scope.initiated = false;
 
     $scope.ActivationMessage = undefined;
 
@@ -231,6 +232,8 @@ angular.module('perspecticoApp')
       else {
         $scope.previousPlay = false;
       }
+
+      $scope.initiated = true;
 
       link = requrl + '/Podcasts/' + link;
 

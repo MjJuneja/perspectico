@@ -57,7 +57,7 @@
                                 </div-->
                                 <div class="center text-center m-t-n">
                                   <a  ng-hide="pods.fileUrl==mainPlaying" ng-click="playThis(pods.fileUrl)"><i class="icon-control-play i-2x"></i></a>
-                                  <p>Playing...</p>
+                                  <p ng-hide="pods.fileUrl!==mainPlaying">Playing...</p>
                                 </div>
                                 <!-- <div class="bottom padder m-b-sm">
                                   <a href="#" class="pull-right">
@@ -70,7 +70,7 @@
                               </div>
                               <div class="item-overlay-description" ng-class="{vDescription:(pods.podId==currentClicked)}">{{pods.description}}
                                   <button ng-click="currentClicked=''" class="btn"><i class="fa fa-times-circle-o text-muted"></i></button>
-                                  
+
                               </div>
                               <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="pods-cover r r-2x img-full"></a>
                             </div>
