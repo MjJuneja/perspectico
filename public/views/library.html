@@ -59,17 +59,26 @@
     <!-- / side content -->
     <section>
 
-<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-
-    <div class="form-group">
-      <div class="input-group">
-        <span class="input-group-btn">
-          <button type="submit" ng-click="search()" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-        </span>
-        <input type="text" class="form-control input-sm no-border rounded"  ng-model="library.search" placeholder="I want perspective on">
+      <div class="row">
+        <div class="col-md-2" style="padding: 1.8em 1em; left: 7em;">
+            I want perspective on :
+        </div>
+        <div class="col-md-10">
+          
+<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs form-horizontal" role="search">
+    
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="submit" ng-click="search()" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+            </span>
+            <input type="text" class="form-control input-sm no-border rounded"  ng-model="library.search" placeholder="Marketing, Finance, Entrepreneurship, Consulting..." id="search-bar">
+          </div>
+        </div>
+      </form>
+        </div>
       </div>
-    </div>
-  </form>
+
       <section class="vbox">
         <section class="scrollable padder-lg">
           <h2 class="font-thin m-b">{{library.podType}}</h2>
@@ -90,13 +99,16 @@
                         <i class="fa fa-heart text-active text-danger i-2x"></i>
 
                       </a>
-                          <a class="btn btn-default" style="padding: 4px;" ng-class="{liked:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
+                          <a class="btn btn-default" style="padding: 4px;" ng-class="{active:(isLiked.indexOf(pods.podId)!==-1)}" ng-click="likeThis(pods.podId,$index)">
                               <span class="text">
-                                <i class="fa fa-thumbs-up text-success"></i> {{pods.likes}}
+                                <i class="icon-like text-success"></i> {{pods.likes}}
                               </span>
                               <span class="text-active">
+                                  <i class="fa fa-thumbs-up text-info"></i> {{pods.likes}}
+                                </span>
+                              <!-- <span class="text-active">
                                 <i class="fa fa-thumbs-down text-danger"></i>
-                              </span>
+                              </span> -->
                             </a>
 
                     </div>

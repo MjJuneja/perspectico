@@ -1010,9 +1010,9 @@ body.container {
   .header-md .navbar-brand {
     line-height: 60px;
   }
-  .header-md .navbar-brand img {
+  /* .header-md .navbar-brand img {
     max-height: 30px;
-  }
+  } */
   .header-md .navbar-nav > li > a {
     padding: 20px;
   }
