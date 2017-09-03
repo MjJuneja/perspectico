@@ -244,6 +244,12 @@ angular.module('perspecticoApp')
       catch (error) {
       }
     };
+    $scope.audio={progress:0};
+    $scope.player={progress:0};
+    $scope.$watch(function () { return $scope.audio.progress }, function (newValue, oldValue) {
+      // console.log(typeof($scope.audio.progress),$scope.audio.progress);
+      $scope.player.progress=Number($scope.audio.progress);
+    }, true);
 
     $scope.previousPlay = false;
     $scope.playPrevious = function () {
