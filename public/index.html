@@ -86,7 +86,7 @@
                         </a>
                   <section class="dropdown-menu aside-xl animated fadeInUp wishlist">
                     <section class="panel bg-white">
-                      <div class="panel-heading b-light bg-light">
+                       <div class="panel-heading b-light bg-light">
                         <strong>You have <span class="count">{{wishedPods.length}}</span> Podcasts</strong>
                       </div>
                       <div class="list-group list-group-alt">
@@ -95,12 +95,14 @@
                                 <span class="pull-left thumb-sm">
                                   <img ng-src="{{wpods.coverUrl}}" alt="..." class="">
                                 </span>
-                                <span ng-hide="wpods.fileUrl==currentPlaying" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
-                                  {{wpods.title}}<br>
+                                <span> {{wpods.title}}<br>
                                   <small class="text-muted">{{wpods.type}}</small>
                                 <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
 
                                 </span>
+                                <span ng-class="{isPlaying:(wpods.fileUrl==currentPlaying)}" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
+                                 </span>
+
                               </a>
                             <!-- </div> -->
                       </div>
@@ -193,7 +195,7 @@
               <div class="jp-interface">
                 <div class="jp-controls">
                   <div ng-click="playPrevious()"><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
-                  <div ng-click='audio.paused ? audio.play() : audio.pause()'>
+                  <div ng-class="{isPaused:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()'>
                     <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
                     <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
                   </div>
@@ -202,6 +204,15 @@
                   <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
                   <div class="jp-progress hidden-xs">
                     <div class="jp-seek-bar dk">
+                                        <!-- <div class="form-group">
+        <label class="col-md-4 control-label" for="prependedtext">Progress</label>
+        <div class="col-md-8">
+            <div class="input-group">
+                <span class="input-group-addon">Progress</span>
+                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.progress'>
+            </div>
+        </div>
+    </div> -->
                       <!-- <div class="wrap">
                             <input class='range' type=range min=0 max=1 step=0.01 ng-model='audio.progress'>
                           </div> -->
@@ -246,7 +257,7 @@
                 <li class="list-group-item" ng-repeat="playpods in playlistPods track by $index">
                   <div>
                     <!-- <a class="jp-playlist-item-remove">x</a> -->
-                    <a ng-hide="playpods.fileUrl==currentPlaying" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
+                    <a ng-class="{isPlaying:(playpods.fileUrl==currentPlaying)}" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
                   </div>
                   <!-- {{playpods.title}}<button ng-click="playlistPlay(playpods.fileUrl)">></button> -->
                 </li>

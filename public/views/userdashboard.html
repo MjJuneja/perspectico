@@ -3,7 +3,7 @@
   <h1>My Podcasts</h1>
 
 <div class="row">
-  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)" class="col-md-3">
+  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)" class="col-md-3" ng-class="{selected:(userdashboard.selectedPod==pods.podId)}">
     <img src="{{pods.coverUrl}}" alt="Cover image" class="img-responsive" width="200">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
