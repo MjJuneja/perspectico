@@ -71,3 +71,80 @@
   code: 'ENOENT',
   syscall: 'unlink',
   path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\Lp3iS6VOGkMKo8De.jpeg' }
+[2017-09-04 00:17:57.285] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\3TbC07sf6Pqmyzsr.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\3TbC07sf6Pqmyzsr.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:02.885] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\PlT1FDs6VongK9Ug.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\PlT1FDs6VongK9Ug.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:17.306] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\nnEWXwMVD48X3sC3.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\nnEWXwMVD48X3sC3.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:18.037] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\xlgnnfylSMTTPndo.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\xlgnnfylSMTTPndo.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:18.581] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\6Uitw0ZCl08lwjh6.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\6Uitw0ZCl08lwjh6.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:19.189] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\rwKYwZZHixupw6Ku.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\rwKYwZZHixupw6Ku.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:19.895] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\JfvHMuA3IBHoY9ER.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\JfvHMuA3IBHoY9ER.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:13.028] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\Q7MAVwidSwefCncg.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\Q7MAVwidSwefCncg.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:14.503] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\Ots2UuozQBbHZt8g.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\Ots2UuozQBbHZt8g.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:14.917] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\3KR8zVcvbgfzKYtd.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\3KR8zVcvbgfzKYtd.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:15.308] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\6L9ZWWEGtPldl9RS.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\6L9ZWWEGtPldl9RS.jpeg',
+  storageErrors: [] }

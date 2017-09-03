@@ -9,8 +9,10 @@
       <a ng-href="{{members.fblink}}">FB</a>
       <a ng-href="{{members.twlink}}">Twitter</a>
       <a ng-href="{{members.lklink}}">Linkedin</a>
-      <button ng-click="deleteThis(members.memberId,$index)">X</button>
-  </div>
+      <p>
+      <button ng-click="deleteThis(members.memberId,$index)" class="btn btn-danger">Remove</button>
+      </p>
+    </div>
 </div>
 
 

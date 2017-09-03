@@ -43,7 +43,7 @@
 }
 
 .team-member figcaption ul {
-  visibility: visible;
+  /* visibility: visible; */
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
@@ -201,14 +201,11 @@
 }
 
 /* styling music seekbar */
-  .wrap { margin: 2em; }
+  .wrap { margin: 2em 0; }
 
 .range {
   -webkit-appearance: none;
-  background: linear-gradient(to right,
-  #4cb6cb 0%, #4cb6cb 50%,
-    #777 50%, #777 62.5%,
-    #444 62.5%, #444 100%);
+  background: transparent;
   cursor: pointer;
   height: 3px;
   margin: 0;
@@ -271,21 +268,24 @@ footer.footer{
   right: 0; */
   bottom: 0;
   left: 0;
-  background: rgba(255,255,255,0.85);
+  background: rgba(200,200,200,0.85);
   color: black;
   height: 0;
   visibility: hidden;
   transition: 0.1s;
   width: 100%;
   padding: 3em 0.8em 0.8em 0.8em;
+  word-break: break-all;
 }
 
-.item-overlay-description button{
+.item-overlay-description p{
   position: absolute;
   top: 2%;
   right: 5%;
   padding: 0.1em;
   font-size: 1.5em;
+  cursor: pointer;
+  
 }
 
 .item-overlay-description.vDescription{
@@ -345,22 +345,6 @@ section.wishlist.dropdown-menu .media-body{
   line-height: 35px;
 }
 
-#snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s;
-  animation: fadein 0.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
 .loginfirst-dismiss{
   margin-left: 1em;
   color: #ddd;
@@ -378,5 +362,10 @@ section.wishlist.dropdown-menu .media-body{
 
 #navbar-example li.active a{
   background-color: transparent;
+  color: white;
+}
+
+.selectedpods{
+  background: #4cb6cb;
   color: white;
 }

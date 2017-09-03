@@ -80,7 +80,7 @@
             <div class="navbar-right ">
               <ul class="nav navbar-nav m-n hidden-xs nav-user user">
                 <li class="hidden-xs">
-                  <a class="dropdown-toggle lt" data-toggle="dropdown">
+                  <a class="dropdown-toggle lt" data-toggle="dropdown" style="cursor:pointer">
                           <i class="icon-heart"></i>
                           <span class="badge badge-sm up bg-danger count">{{wishedPods.length}}</span>
                         </a>
@@ -100,7 +100,7 @@
                                 <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
 
                                 </span>
-                                <span ng-class="{isPlaying:(wpods.fileUrl==currentPlaying)}" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)"> <i class="fa fa-play-circle i-2x pull-right"></i>
+                                <span ng-class="{active:(wpods.fileUrl==currentPlaying)}" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)" style="cursor:pointer"> <i class="text fa fa-play-circle i-2x pull-right"></i>
                                  </span>
 
                               </a>
@@ -114,7 +114,7 @@
                   </section>
                 </li>
                 <li class="dropdown" ng-cloak>
-                  <a ng-href="#login" class="dropdown-toggle bg clear" data-toggle="dropdown" ng-show="LogoutButton">
+                  <a ng-href="#login" class="dropdown-toggle bg clear" data-toggle="dropdown" ng-show="LogoutButton" style="cursor:pointer">
                     <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                             <img src="images/a0.png" alt="...">
                           </span-->
@@ -209,7 +209,7 @@
                     <div class="jp-seek-bar dk">
 
                         <div class="wrap">
-                            <input class='range' type=range min=0 max=1 step=0.01 ng-model='player.progress'>
+                            <input class='range' type='range' min=0 max=1 step=0.00001 ng-model='player.progress'>
                           </div>
 
                       <div>
@@ -226,7 +226,7 @@
                     <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
                   </div>
                   <div class="hidden-xs hidden-sm jp-volume">
-                    <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
+                    <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume' style="padding:0">
                     <!-- <div class="jp-volume-bar dk">
                       <div class="jp-volume-bar-value lter"></div>
                     </div> -->

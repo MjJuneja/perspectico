@@ -114,6 +114,10 @@
 
                     </div>
                   </div>
+                  <div class="item-overlay-description" ng-class="{vDescription:(pods.podId==currentClicked)}">{{pods.description}}
+                    <p ng-click="currentClicked=''"><i class="fa fa-times-circle-o text-muted"></i></p>
+
+                </div>
                   <a href="track-detail.html"><img src="{{pods.coverUrl}}" alt="" class="pods-cover r r-2x img-full"></a>
                 </div>
                 <div class="padder-v">
@@ -121,6 +125,9 @@
                   <p class="text-ellipsis text-xs text-muted">{{pods.subtext}}</p>
                 </div>
               </div>
+              <div class="more-vert">
+                <i class="fa fa-ellipsis-h pull-right" ng-click="currentClicked=pods.podId"></i>
+            </div>
             </div>
             </div>
           <!--ul class="pagination pagination">
