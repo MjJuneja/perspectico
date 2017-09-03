@@ -195,9 +195,9 @@
               <div class="jp-interface">
                 <div class="jp-controls">
                   <div ng-click="playPrevious()"><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
-                  <div ng-class="{isPaused:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()'>
-                    <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
-                    <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                  <div ng-class="{active:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()'>
+                    <a class="jp-play text-active"><i class="icon-control-play i-2x"></i></a>
+                    <a class="jp-pause text"><i class="icon-control-pause i-2x"></i></a>
                   </div>
                   <div ng-click="playNext()"><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
                   <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
