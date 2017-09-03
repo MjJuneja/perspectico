@@ -95,6 +95,7 @@
        <option value="entrepreneurship">Entrepreneurship</option>
        <option value="marketing">Marketing</option>
      </select>
+      <input name="validType" type="text" ng-model="userdashboard.type" pattern="[A-Za-z0-9,-.' ]{3,30}" placeholder="Any other" required>
       <span ng-show="podForm.validType.$touched &&
      podForm.validType.$error.required">Cannot be left empty </span>
       <span ng-show="PodSubmitted && !podForm.validType.$touched &&

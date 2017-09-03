@@ -61,6 +61,7 @@ var uploadAndSave = function (request, response, userData) {
         }
     }
     else if (request.body.title) {
+        request.body.type = request.body.type.toLowerCase();
         var podObject = request.body;
         var isValidTitle = validate.string(podObject.title);
         var isValidSub = validate.string(podObject.subtext);

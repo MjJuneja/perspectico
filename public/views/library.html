@@ -37,19 +37,19 @@
       <section class="vbox animated fadeInUp">
         <section class="scrollable hover">
           <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-            <a ng-click="showThese('all')" class="list-group-item active">
+            <a ng-click="showThese('all')" class="list-group-item" ng-class="{active:(library.podType=='all')}">
               All
             </a>
-            <a ng-click="showThese('marketing')" class="list-group-item">
+            <a ng-click="showThese('marketing')" class="list-group-item" ng-class="{active:(library.podType=='marketing')}">
               Marketing
             </a>
-            <a ng-click="showThese('finance')" class="list-group-item">
+            <a ng-click="showThese('finance')" class="list-group-item" ng-class="{active:(library.podType=='finance')}">
               Finance
             </a>
-            <a ng-click="showThese('entrepreneurship')" class="list-group-item">
+            <a ng-click="showThese('entrepreneurship')" class="list-group-item" ng-class="{active:(library.podType=='entrepreneurship')}">
               Entrepreneurship
             </a>
-            <a ng-click="showThese('consulting')" class="list-group-item">
+            <a ng-click="showThese('consulting')" class="list-group-item" ng-class="{active:(library.podType=='consulting')}">
               Consulting
             </a>
           </div>
@@ -81,7 +81,7 @@
 
       <section class="vbox">
         <section class="scrollable padder-lg">
-          <h2 class="font-thin m-b">{{library.podType}}</h2>
+           <!-- <h2 class="font-thin m-b">{{library.podType}}</h2> -->
           <div class="row row-sm">
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="pods in library.showPods track by $index">
               <div class="item">

@@ -59,3 +59,15 @@
   code: 'ENOENT',
   syscall: 'unlink',
   path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\V1LaiXGlXbiXObpD.jpeg' }
+[2017-09-03 19:16:50.275] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\Rrc5yR0a91Q06oXm.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\Rrc5yR0a91Q06oXm.jpeg' }
+[2017-09-03 19:18:18.245] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\Lp3iS6VOGkMKo8De.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\Lp3iS6VOGkMKo8De.jpeg' }

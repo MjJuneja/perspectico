@@ -16,7 +16,7 @@ angular.module('perspecticoApp')
       allPods: [],
       showPods: [],
       search: "",
-      podType:"All"
+      podType:"all"
     };
 
     $scope.loginFirst = true;
@@ -63,6 +63,7 @@ angular.module('perspecticoApp')
           }
           $scope.library.allPods = data.data;
           $scope.library.showPods = data.data;
+          $scope.library.podType='all';
           console.log($scope.library.allPods);
         }
         else {
