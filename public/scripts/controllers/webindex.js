@@ -33,11 +33,16 @@ angular.module('perspecticoApp')
     };
 
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
-      if ($location.path() === '/login' || $location.path() === '/signup') {
+      if ($location.path() === '/login' || $location.path() === '/signup' || $location.path() === '/forgotpassword') {
         $scope.hideHF = true;
+        $scope.onHome = false;
       }
       else {
         $scope.hideHF = false;
+        $scope.onHome = false;
+      }
+      if ($location.path() === '/') {
+        $scope.onHome = true;
       }
       $scope.redirect();
     });
@@ -50,6 +55,7 @@ angular.module('perspecticoApp')
     $scope.ProfileButton = true;
     $scope.LogoutButton = true;
     $scope.hideHF = false;
+    $scope.onHome = true;
     $scope.loginFirst = true;
     $scope.initiated = false;
 

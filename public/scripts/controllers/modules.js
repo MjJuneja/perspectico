@@ -8,10 +8,9 @@
  * Controller of the perspecticoApp
  */
 angular.module('perspecticoApp')
-  .controller('ModulesCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ModulesCtrl', function ($scope, $location, $anchorScroll) {
+    $scope.scrollTo = function(id) {
+      $location.hash(id);
+      $anchorScroll();
+   }
   });
