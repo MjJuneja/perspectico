@@ -251,7 +251,7 @@ angular.module('perspecticoApp')
     $scope.$watch(function () { return $scope.audio.progress }, function (newValue, oldValue) {
       // console.log(typeof($scope.audio.progress),$scope.audio.progress);
       $scope.player.progress=Number($scope.audio.progress);
-      var val = $scope.player.progress
+      var val = $scope.player.progress * 100;
       var buf = ((100 - val) / 4) + parseInt(val);
       myEl.css(
         'background',
