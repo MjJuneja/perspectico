@@ -373,11 +373,41 @@ section.wishlist.dropdown-menu .media-body{
 #content.col-md-6{
   box-shadow:0px 0px 25px rgba(0,0,0,0.5)
 }
+
+/* volume bar styles */
 /* 
-.transparentHeader a{
-  color: white
+ .volume-wrap { margin: 2em 0; } */
+
+
+.volume-range {
+  -webkit-appearance: none;
+  /* background: transparent; */
+  cursor: pointer;
+  height: 1px;
+  margin: 0;
+  transition: 0.1s ease-in;
+  vertical-align: bottom;
+  width: 100%;
+}
+ .volume-wrap:hover .volume-range,
+.volume-wrap.hover .volume-range { height: 3px; }  
+
+.volume-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #aeaeae;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 5px #eaeaea;
+  height: 8px;
+  transition: 0.1s ease-in;
+  width: 8px;
 }
 
-.transparentHeader .wishlist a{
-  color: initial;
-} */
+ .volume-wrap:hover .volume-range::-webkit-slider-thumb,
+.volume-wrap.hover  .volume-range::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+}    
+
+.volume-range:focus{
+  border-color: white;
+}
