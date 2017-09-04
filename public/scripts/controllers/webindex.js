@@ -253,10 +253,9 @@ angular.module('perspecticoApp')
       $scope.player.progress=Number($scope.audio.progress);
       var val = $scope.player.progress
       var buf = ((100 - val) / 4) + parseInt(val);
-      console.log(myEl);
       myEl.css(
         'background',
-        'linear-gradient(to right, ##4cb6cb 0%, ##4cb6cb ' + val + '%, #777 ' + val + '%, #777 ' + buf + '%, #444 ' + buf + '%, #444 100%)'
+        'linear-gradient(to right, #4cb6cb 0%, #4cb6cb ' + val + '%, #777 ' + val + '%, #777 ' + buf + '%, #444 ' + buf + '%, #444 100%)'
       );
     }, true);
 
