@@ -80,6 +80,8 @@ angular
       })
       .when('/modules', {
         templateUrl: 'views/modules.html',
+        controller: 'ModulesCtrl',
+        controllerAs: 'modules'
       })
       .otherwise({
         redirectTo: '/'
