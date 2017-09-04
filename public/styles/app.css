@@ -1,4 +1,4 @@
-html {
+  html {
   background-color: #f2f4f8;
   overflow-x: hidden;
 }
@@ -1379,8 +1379,10 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff !important;
-  background-color: #4cb6cb;
-  border-color: #4cb6cb;
+  /* background-color: #4cb6cb;
+  border-color: #4cb6cb; */
+  background-color: #107ae4;
+  border-color: #107ae4;
 }
 .btn-info:hover,
 .btn-info:focus,
@@ -2449,8 +2451,9 @@ fieldset[disabled] .btn-dark.active {
   background-color: #15a25a !important;
 }
 .bg-info {
-  background-color: #4cb6cb;
+/*  background-color: #4cb6cb;*/
   color: #eaf6f9;
+  background-color: #107ae4
 }
 .bg-info.lt,
 .bg-info .lt {
@@ -2466,7 +2469,7 @@ fieldset[disabled] .btn-dark.active {
 }
 .bg-info.dker,
 .bg-info .dker {
-  background-color: #2ea0b6;
+  background-color: #1500cd;
 }
 .bg-info.bg,
 .bg-info .bg {

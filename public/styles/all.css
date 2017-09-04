@@ -159,3 +159,32 @@
 .social-links{
     margin: 3em 0;
 }
+
+.text-blue-dker{
+    color:  #1500cd
+}
+
+.text-blue{
+    color: #107ae4
+}
+
+.team-member img{
+    height: 280px;
+}
+
+
+
+@media only screen and (max-width: 760px){
+    .explore-btn{
+        left: 30%;
+    }
+
+    .mail-us-wrapper{
+        padding:1.2em; 
+    }
+
+    .social-links a{
+        margin: 0.2em;
+        padding: 0.4em;
+    }
+}

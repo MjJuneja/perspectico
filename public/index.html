@@ -42,20 +42,20 @@
   <div ng-controller="WebindexCtrl">
     <div ng-cloak>
       <!-- Add your site or application content here -->
-      <div class="header" ng-hide="hideHF" ng-class="{transparentHeader:onHome}">
-        <div class="navbar navbar-default" role="navigation">
+      <div class="header bg-white" ng-hide="hideHF" ng-class="{transparentHeader:onHome}">
+        <div class="navbar" role="navigation">
           <!--div class="container"-->
 
-          <header class="bg-info header header-md navbar navbar-fixed-top-xs">
-            <div class="navbar-header aside bg-info">
-              <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+          <header class="header bg-white header-md navbar navbar-fixed-top-xs">
+            <div class="navbar-header aside bg-white">
+              <!-- <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                       <i class="icon-list"></i>
-                    </a>
+                    </a> -->
               <a href="/" class="navbar-brand text-lt">
                       <i><img ng-src="images/logo.png" alt="."></i>
-                      <span class="hidden-nav-xs m-l-sm">Perspectico</span>
+                      <span class="hidden-nav-xs m-l-sm text-blue">Perspectico</span>
                     </a>
-              <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+              <a class="btn btn-link visible-xs text-blue" data-toggle="dropdown" data-target=".user">
                       <i class="icon-settings"></i>
                     </a>
             </div>
@@ -80,7 +80,7 @@
             <div class="navbar-right ">
               <ul class="nav navbar-nav m-n hidden-xs nav-user user">
                 <li class="hidden-xs">
-                  <a class="dropdown-toggle lt" data-toggle="dropdown" style="cursor:pointer">
+                  <a class="dropdown-toggle lt text-blue" data-toggle="dropdown" style="cursor:pointer">
                           <i class="icon-heart"></i>
                           <span class="badge badge-sm up bg-danger count">{{wishedPods.length}}</span>
                         </a>

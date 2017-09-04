@@ -57,7 +57,7 @@
 
 
 
-<section id="content" class="m-t-lg wrapper-md animated fadeInUp bg-info dker">
+<section id="content" class="col-md-6 col-md-offset-3 m-t-xl wrapper-md animated fadeInUp bg-info dker">
         <div class="container aside-xl">
           <a class="navbar-brand block" ng-href="/"><span class="h1 font-bold">Perspectico</span></a>
           <section class="m-b-lg">
@@ -96,11 +96,15 @@
                   password too small or invalid character,use(8-25 char)(a-z,0-9,A-Z,!,@,#,$,%,^,&,*,(,),_,.) </span>
 
               </div>
+              
 
+               <div class="text-center m-t m-b">
+                  <div class="checkbox i-checks"> <label> <input type="checkbox" ng-model="login.RememberMe" value="false"><i></i> Remember me </label> </div>
+              </div>
+              
+                <!-- <input type="checkbox" ng-model="login.RememberMe" value="false">Remember Me<br> -->
 
-                <input type="checkbox" ng-model="login.RememberMe" value="false">Remember Me<br>
-
-                <input type="submit" ng-click="submitted=true;" value="Login" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded">
+                <input type="submit" ng-click="submitted=true;" value="Login" class="btn btn-lg btn-info b-white b-2x btn-block btn-rounded">
 
 
               <!--button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign in</span></button-->
