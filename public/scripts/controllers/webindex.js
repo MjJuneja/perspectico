@@ -246,9 +246,18 @@ angular.module('perspecticoApp')
     };
     $scope.audio={progress:0};
     $scope.player={progress:0};
+
+    var myEl = angular.element( document.querySelector( '#seekBar' ) );
     $scope.$watch(function () { return $scope.audio.progress }, function (newValue, oldValue) {
       // console.log(typeof($scope.audio.progress),$scope.audio.progress);
       $scope.player.progress=Number($scope.audio.progress);
+      var val = $scope.player.progress
+      var buf = ((100 - val) / 4) + parseInt(val);
+      console.log(myEl);
+      myEl.css(
+        'background',
+        'linear-gradient(to right, ##4cb6cb 0%, ##4cb6cb ' + val + '%, #777 ' + val + '%, #777 ' + buf + '%, #444 ' + buf + '%, #444 100%)'
+      );
     }, true);
 
     $scope.previousPlay = false;
