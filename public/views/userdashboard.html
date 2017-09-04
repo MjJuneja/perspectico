@@ -73,7 +73,7 @@
      Invalid subheading(Should be 5-50 only a-z,A-Z,0-9,-,. , and space allowed) </span>
 
       <h5>Description</h5>
-      <textarea name="validDiscription" ng-model="userdashboard.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
+      <textarea name="validDiscription" rows="15" cols="60" ng-model="userdashboard.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
         required></textarea>
       <span ng-show="podForm.validDiscription.$touched &&
      podForm.validDiscription.$error.pattern &&
