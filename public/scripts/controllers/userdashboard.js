@@ -54,7 +54,7 @@ angular.module('perspecticoApp')
             data.data[i].coverUrl=requrl+'/Covers/'+data.data[i].coverUrl;
           }
           $scope.userdashboard.mypods = data.data;
-          console.log($scope.userdashboard.mypods);
+          // console.log($scope.userdashboard.mypods);
         }
         else {
           $scope.myPodsResult = "Error loading! Try again later.";

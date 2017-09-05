@@ -46,7 +46,7 @@ angular.module('perspecticoApp')
             data.data[i].picUrl=requrl+'/Members/'+data.data[i].picUrl;
           }
           $scope.opspanel.allMembers = data.data;
-          console.log($scope.opspanel.allMembers);
+          // console.log($scope.opspanel.allMembers);
         }
         else {
           $scope.loadResult = "Error loading! Try again later.";

@@ -32,7 +32,7 @@ angular.module('perspecticoApp')
           }
           $scope.main.topPods = data.data;
           webindex.playlist = data.data;
-          console.log($scope.main.topPods);
+          // console.log($scope.main.topPods);
         }
         else {
           $scope.topPodsResult = "Error loading! Try again later.";

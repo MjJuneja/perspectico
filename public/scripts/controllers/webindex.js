@@ -10,6 +10,11 @@
 angular.module('perspecticoApp')
   .controller('WebindexCtrl', function ($scope, webindex, requrl, $window, $timeout, $rootScope, $location, ngAudio, library) {
 
+    ///redirection on perspectico.com
+    if($location.host()==='perspectico.com'){
+      $window.location.href=requrl;
+    }
+
     $scope.loading_screen = pleaseWait({
       logo: "../images/Loading_Text.png",
       backgroundColor: '#ffffff',
@@ -149,7 +154,7 @@ angular.module('perspecticoApp')
             data.data[i].coverUrl = requrl + '/Covers/' + data.data[i].coverUrl;
           }
           $scope.playlistPods = data.data;
-          console.log($scope.playlistPods);
+          // console.log($scope.playlistPods);
         }
         else {
           console.log("Error loading! Try again later.");

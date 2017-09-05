@@ -64,7 +64,7 @@ angular.module('perspecticoApp')
           $scope.library.allPods = data.data;
           $scope.library.showPods = data.data;
           $scope.library.podType='all';
-          console.log($scope.library.allPods);
+          // console.log($scope.library.allPods);
         }
         else {
           $scope.allPodsResult = "Error loading! Try again later.";
@@ -153,7 +153,7 @@ angular.module('perspecticoApp')
         };
         var promise = library.wishPod(pod);
         promise.then(function (data) {
-          console.log(data);
+          // console.log(data);
           if (data.data.message === "unknown") {
             $window.location.reload();
           }
