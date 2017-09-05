@@ -78,6 +78,25 @@ const dbOperations = {
                     }
                 }
         });
+    },
+
+    loadUsers:function(response){
+        logger.debug('crud opspanel loadUsers');
+        const Users = require('../userschema');
+        Users.find({},
+            {
+                useremail:1,
+                _id:0
+            }
+            , function (error, result) {
+                if (error) {
+                    logger.error(error);
+                }
+                else {
+                    logger.debug('crud result' + result);
+                    response.send(result);
+                }
+            });
     }
 
 };

@@ -35,9 +35,20 @@ angular.module('perspecticoApp')
         return defer.promise;
       },
 
-      loadMembers: function (member) {
+      loadMembers: function () {
         var defer = $q.defer();
         $http.post(requrl + '/opspanel/loadMembers')
+          .then(function (data) {
+            defer.resolve(data);
+          }, function (error) {
+            defer.reject(error);
+          })
+        return defer.promise;
+      },
+
+      loadUsers: function () {
+        var defer = $q.defer();
+        $http.post(requrl + '/opspanel/loadUsers')
           .then(function (data) {
             defer.resolve(data);
           }, function (error) {

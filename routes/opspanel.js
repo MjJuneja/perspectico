@@ -161,4 +161,35 @@ router.post('/loadMembers', function (request, response) {
     dbOperations.loadMembers(response);
 });
 
+router.post('/loadUsers', function (request, response) {
+    logger.debug('routes opspanel loadUsers');
+    var isValidSessionid = false;
+    var webSessionExist = false;
+
+    if (request.body.appCall === true && request.body.sessionid != undefined) {
+        isValidSessionid = validate.string(request.body.sessionid);
+    }
+    else if (request.session.user) {
+        webSessionExist = true;
+    }
+
+    if (webSessionExist === true && (request.session.user.role==='admin' || request.session.user.role==='ops')) {
+        dbOperations.loadUsers(response);
+    }
+    else if (isValidSessionid === true) {
+        var userData = {};
+        commonOperations.getProfileData(request.body.sessionid, userData, function (userData) {
+            if (userData != undefined && (userData.role==='admin' || userData.role==='ops')) {
+                dbOperations.loadUsers(response);
+            }
+            else {
+                response.json({ message: "unknown" });
+            }
+        });
+    }
+    else {
+        response.json({ message: "unknown" });
+    }
+});
+
 module.exports = router;

@@ -19,7 +19,8 @@ angular.module('perspecticoApp')
       lklink:"",
       memberpic:"",
       priority:"",
-      allMembers:[]
+      allMembers:[],
+      allUsers:[]
     };
 
     var unregister=$scope.$watch(webindex.loaded,function(newValue,oldValue){
@@ -140,6 +141,23 @@ angular.module('perspecticoApp')
         }
       }, function (error) {
         //Do nothing
+      });
+    };
+
+
+    $scope.loadUsers=()=>{
+      var promise = opspanel.loadUsers();
+      promise.then(function (data) {
+        if (data.data.message === "unknown") {
+          $scope.memberResult = "Not LoggedIn";
+          $window.location.reload();
+        }
+        else {
+          $scope.opspanel.allUsers=data.data;
+          $scope.userMessge = undefined;
+        }
+      }, function (error) {
+        $scope.userMessge = 'Error occured! Try again later';
       });
     };
 

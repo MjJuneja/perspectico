@@ -1,3 +1,12 @@
+<div>
+  <button ng-click="loadUsers()">Load Users</button>
+  {{userMessage}}
+  Total Users: {{opspanel.allUsers.length}} <br>
+  <span ng-repeat="users in opspanel.allUsers">
+    {{users.useremail}},
+  </span>
+</div>
+
 
 <h1>All team members</h1>
 <div>
