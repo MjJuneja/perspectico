@@ -8,16 +8,35 @@
  * Factory in the perspecticoApp.
  */
 angular.module('perspecticoApp')
-  .factory('library', function () {
+  .factory('library', function (requrl,$http,$q) {
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
+      var object= {
 
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+        likePod:function(obj){
+          var defer = $q.defer();
+          $http.post(requrl+'/commonroutes/likePod',obj)
+          .then(function(data){
+            defer.resolve(data);
+          },function(error){
+            defer.reject(error);
+          })
+          return defer.promise;
+        },
+
+        wishPod:function(obj){
+          var defer = $q.defer();
+          $http.post(requrl+'/commonroutes/wishPod',obj)
+          .then(function(data){
+            defer.resolve(data);
+          },function(error){
+            defer.reject(error);
+          })
+          return defer.promise;
+        },
+
+      };
+    return object;
+
   });

@@ -1,0 +1,150 @@
+[2017-08-25 21:39:15.013] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\web designing\perspectico\perspectico\public\Covers\TG05EhUtGDTEDZB4.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\TG05EhUtGDTEDZB4.jpeg' }
+[2017-08-25 21:40:05.972] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }
+[2017-08-25 21:40:40.724] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }
+[2017-08-25 21:42:08.846] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Covers\OScitzpAcqxFO4WB.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Covers\\OScitzpAcqxFO4WB.jpeg',
+  storageErrors: [] }
+[2017-08-26 21:52:35.596] [ERROR] error - { Error: No recipients defined
+    at SMTPConnection._formatError (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:528:15)
+    at SMTPConnection._setEnvelope (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:719:30)
+    at SMTPConnection.send (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:383:10)
+    at SMTPTransport.<anonymous> (D:\web designing\perspectico\perspectico\node_modules\nodemailer-smtp-transport\lib\smtp-transport.js:126:24)
+    at D:\web designing\perspectico\perspectico\node_modules\nodemailer-smtp-transport\lib\smtp-transport.js:162:21
+    at SMTPConnection._actionAUTHComplete (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:1236:5)
+    at SMTPConnection.<anonymous> (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:319:22)
+    at SMTPConnection._processResponse (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:669:16)
+    at SMTPConnection._onData (D:\web designing\perspectico\perspectico\node_modules\smtp-connection\lib\smtp-connection.js:493:10)
+    at emitOne (events.js:96:13)
+    at TLSSocket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at TLSSocket.Readable.push (_stream_readable.js:134:10)
+    at TLSWrap.onread (net.js:547:20) code: 'EENVELOPE', command: 'API' }
+[2017-08-26 21:52:35.638] [ERROR] error - error sending mail
+[2017-08-29 01:14:53.418] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\HhCYQsHOLH3eQiFl.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\HhCYQsHOLH3eQiFl.jpeg' }
+[2017-08-29 01:14:54.294] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\s7G4keAHvrEFaYxF.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\s7G4keAHvrEFaYxF.jpeg' }
+[2017-08-29 01:14:55.049] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\V1LaiXGlXbiXObpD.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\V1LaiXGlXbiXObpD.jpeg' }
+[2017-09-03 19:16:50.275] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\Rrc5yR0a91Q06oXm.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\Rrc5yR0a91Q06oXm.jpeg' }
+[2017-09-03 19:18:18.245] [ERROR] error - { Error: ENOENT: no such file or directory, unlink 'D:\workspace2\git-projects\perspectico\public\Covers\Lp3iS6VOGkMKo8De.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'unlink',
+  path: 'D:\\workspace2\\git-projects\\perspectico\\public\\Covers\\Lp3iS6VOGkMKo8De.jpeg' }
+[2017-09-04 00:17:57.285] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\3TbC07sf6Pqmyzsr.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\3TbC07sf6Pqmyzsr.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:02.885] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\PlT1FDs6VongK9Ug.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\PlT1FDs6VongK9Ug.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:17.306] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\nnEWXwMVD48X3sC3.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\nnEWXwMVD48X3sC3.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:18.037] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\xlgnnfylSMTTPndo.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\xlgnnfylSMTTPndo.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:18.581] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\6Uitw0ZCl08lwjh6.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\6Uitw0ZCl08lwjh6.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:19.189] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\rwKYwZZHixupw6Ku.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\rwKYwZZHixupw6Ku.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:18:19.895] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\JfvHMuA3IBHoY9ER.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\JfvHMuA3IBHoY9ER.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:13.028] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\Q7MAVwidSwefCncg.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\Q7MAVwidSwefCncg.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:14.503] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\Ots2UuozQBbHZt8g.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\Ots2UuozQBbHZt8g.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:14.917] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\3KR8zVcvbgfzKYtd.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\3KR8zVcvbgfzKYtd.jpeg',
+  storageErrors: [] }
+[2017-09-04 00:19:15.308] [ERROR] error - { Error: ENOENT: no such file or directory, open 'D:\web designing\perspectico\perspectico\public\Members_temp\6L9ZWWEGtPldl9RS.jpeg'
+    at Error (native)
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\web designing\\perspectico\\perspectico\\public\\Members_temp\\6L9ZWWEGtPldl9RS.jpeg',
+  storageErrors: [] }

@@ -15,11 +15,14 @@ const podSchema = new schema({
     type: String,
     uploadDate: Date,
     likes: Number,
+    duration: String,
     postedByUsername: String,
     postedByEmail: String,
     randomNumber: Number,
     verified: Boolean,
-    verifiedBy: String
+    verifiedBy: String,
+    likedBy:[String],
+    wishedBy:[String]
 });
 
 const Pods = mongoose.model(config.dbPods, podSchema);

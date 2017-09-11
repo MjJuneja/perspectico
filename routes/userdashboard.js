@@ -61,6 +61,7 @@ var uploadAndSave = function (request, response, userData) {
         }
     }
     else if (request.body.title) {
+        request.body.type = request.body.type.toLowerCase();
         var podObject = request.body;
         var isValidTitle = validate.string(podObject.title);
         var isValidSub = validate.string(podObject.subtext);
@@ -71,20 +72,36 @@ var uploadAndSave = function (request, response, userData) {
         if (userData.role === 'admin' || userData.role === 'ops') {
             request.body.verified = true;
         }
-        if(isValidTitle && isValidSub && isValidDescription && isValidType){
-            var oldpath="./public/Podcasts_temp/"+userData.currentpodId+".mp3";
-            var newpath="./public/Podcasts/"+userData.currentpodId+".mp3";
-            utils.fsmove(oldpath,newpath,function(error,result){
-                if(error){
+        if (isValidTitle && isValidSub && isValidDescription && isValidType) {
+            var oldpath = "./public/Podcasts_temp/" + userData.currentpodId + ".mp3";
+            var newpath = "./public/Podcasts/" + userData.currentpodId + ".mp3";
+            utils.fsmove(oldpath, newpath, function (error, result) {
+                if (error) {
                     logger.error(error);
                 }
-                else{
-                    dbOperations.createPod(request, response, userData);
+                else {
+                    const mp3Duration = require('mp3-duration');
+
+                    mp3Duration(newpath, function (err, duration) {
+                        if (err) {
+                            logger.error(error);
+                            request.body.duration = "NA";
+                            dbOperations.createPod(request, response, userData);
+                        }
+                        else {
+                            var date = new Date(null);
+                            date.setSeconds(duration);
+                            var result = date.toISOString().substr(11, 8);
+                            request.body.duration = result;
+                            dbOperations.createPod(request, response, userData);
+                        }
+                    });
+
                 }
             });
         }
-        else{
-           response.json({ message: "fail" }); 
+        else {
+            response.json({ message: "fail" });
         }
     }
     else {
@@ -172,7 +189,6 @@ var callUpload = function (request, response) {
 
 router.post('/uploadCover', function (request, response) {
     logger.debug('routes userdash uploadCover');
-    console.log(request.query.podId);
     var isValidSessionid = false;
     var webSessionExist = false;
 

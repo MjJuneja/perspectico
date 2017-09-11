@@ -1,2 +1,153 @@
-Add new Member to the team
-{{Message}}
+<div>
+  <button ng-click="loadUsers()">Load Users</button>
+  {{userMessage}}
+  Total Users: {{opspanel.allUsers.length}} <br>
+  <span ng-repeat="users in opspanel.allUsers">
+    {{users.useremail}},
+  </span>
+</div>
+
+
+<h1>All team members</h1>
+<div>
+  <div ng-repeat="members in opspanel.allMembers">
+    <img ng-src="{{members.picUrl}}">
+      <p>{{members.name}}</p>
+      <p>{{members.designation}}</p>
+      <p>{{members.description}}</p>
+      <a ng-href="{{members.fblink}}">FB</a>
+      <a ng-href="{{members.twlink}}">Twitter</a>
+      <a ng-href="{{members.lklink}}">Linkedin</a>
+      <p>
+      <button ng-click="deleteThis(members.memberId,$index)" class="btn btn-danger">Remove</button>
+      </p>
+    </div>
+</div>
+
+
+
+<div>
+  <h1>Add a new member</h1>
+  <div>
+
+    <form name="memberForm" ng-submit="submitMemberForm(memberForm)" novalidate style="margin-bottom:6em">
+
+      <h5>Name</h5>
+      <input type="text" name="validName" ng-model="opspanel.name" placeholder="Name" pattern="[A-Za-z ]{3,30}" required>
+      <span ng-show="memberForm.validName.$touched &&
+     memberForm.validName.$error.pattern &&
+      !memberForm.validName.$error.required">
+      Invalid Name(Should be 3-30 only a-z,A-Z and space allowed) </span>
+      <span ng-show="memberForm.validName.$touched &&
+     memberForm.validName.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validName.$touched &&
+     memberForm.validName.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validName.$touched &&
+     memberForm.validName.$error.pattern">
+      Invalid Name(Should be 3-30 only a-z,A-Z and space allowed) </span>
+
+      <h5>Designation</h5>
+      <input type="text" name="validDesignation" ng-model="opspanel.designation" placeholder="Designation" pattern="[A-Za-z0-9,-.' ]{2,30}"
+        required>
+      <span ng-show="memberForm.validDesignation.$touched &&
+     memberForm.validDesignation.$error.pattern &&
+      !memberForm.validDesignation.$error.required">
+      Invalid designation(Should be 2-30 only a-z,A-Z,0-9,-,',. , and space allowed) </span>
+      <span ng-show="memberForm.validDesignation.$touched &&
+     memberForm.validDesignation.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validDesignation.$touched &&
+     memberForm.validDesignation.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validDesignation.$touched &&
+     memberForm.validDesignation.$error.pattern">
+     Invalid designation(Should be 2-30 only a-z,A-Z,0-9,-,. , and space allowed) </span>
+
+      <h5>Description</h5>
+      <textarea rows="20" cols="100" name="validDiscription" ng-model="opspanel.description" placeholder="A brief description" pattern="[A-Za-z0-9,-.' ]{20,3000}"
+        required></textarea>
+      <span ng-show="memberForm.validDiscription.$touched &&
+     memberForm.validDiscription.$error.pattern &&
+      !memberForm.validDiscription.$error.required">
+      Invalid description(Should be 20-300 only a-z,A-Z,0-9,-,. , and space allowed) </span>
+      <span ng-show="memberForm.validDiscription.$touched &&
+     memberForm.validDiscription.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validDiscription.$touched &&
+     memberForm.validDiscription.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validDiscription.$touched &&
+     memberForm.validDiscription.$error.pattern">
+     Invalid description(Should be 20-300 only a-z,A-Z,0-9,-,. , and space allowed)</span>
+      <br>
+
+      <h5>Priority(0-9)</h5>
+      <input type="number" name="validpriority" ng-model="opspanel.priority" pattern="[0-9]{1}" required>
+      <span ng-show="memberForm.validpriority.$touched &&
+     memberForm.validpriority.$error.pattern &&
+      !memberForm.validpriority.$error.required">
+      Invalid priority </span>
+      <span ng-show="memberForm.validpriority.$touched &&
+     memberForm.validpriority.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validpriority.$touched &&
+     memberForm.validpriority.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validpriority.$touched &&
+     memberForm.validpriority.$error.pattern">
+     Invalid priority</span>
+
+      <h5>Facebook link</h5>
+      <input type="text" name="validfblink" ng-model="opspanel.fblink" pattern="[A-Za-z0-9,-.'/_: ]{6,50}" required>
+      <span ng-show="memberForm.validfblink.$touched &&
+     memberForm.validfblink.$error.pattern &&
+      !memberForm.validfblink.$error.required">
+      Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,',./_ and space allowed) </span>
+      <span ng-show="memberForm.validfblink.$touched &&
+     memberForm.validfblink.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validfblink.$touched &&
+     memberForm.validfblink.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validfblink.$touched &&
+     memberForm.validfblink.$error.pattern">
+     Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,./_ and space allowed) </span>
+
+      <h5>Twitter link</h5>
+      <input type="text" name="validtwlink" ng-model="opspanel.twlink" pattern="[A-Za-z0-9,-.'/_: ]{6,50}" required>
+      <span ng-show="memberForm.validtwlink.$touched &&
+     memberForm.validtwlink.$error.pattern &&
+      !memberForm.validtwlink.$error.required">
+      Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,',./_!@#$%^&*() and space allowed) </span>
+      <span ng-show="memberForm.validtwlink.$touched &&
+     memberForm.validtwlink.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validtwlink.$touched &&
+     memberForm.validtwlink.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validtwlink.$touched &&
+     memberForm.validtwlink.$error.pattern">
+     Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,./_!@#$%^&*() and space allowed) </span>
+
+      <h5>LinkedIn link</h5>
+      <input type="text" name="validlklink" ng-model="opspanel.lklink" pattern="[A-Za-z0-9,-.'/_: ]{6,50}" required>
+      <span ng-show="memberForm.validlklink.$touched &&
+     memberForm.validlklink.$error.pattern &&
+      !memberForm.validlklink.$error.required">
+      Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,',./_!@#$%^&*() and space allowed) </span>
+      <span ng-show="memberForm.validlklink.$touched &&
+     memberForm.validlklink.$error.required">Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validlklink.$touched &&
+     memberForm.validlklink.$error.required">
+        Cannot be left empty </span>
+      <span ng-show="memberSubmitted && !memberForm.validlklink.$touched &&
+     memberForm.validlklink.$error.pattern">
+     Invalid link(Should be 6-50 only a-z,A-Z,0-9,-,./_!@#$%^&*() and space allowed) </span>
+
+
+      <input type="file" ngf-select ng-model="opspanel.memberpic" name="file" ngf-pattern="image/*" accept="image/*" ngf-max-size="1MB"
+        required /> Image thumbnail:
+      <img style="width:100px;" ngf-thumbnail="opspanel.memberpic || '/thumb.jpg'" />
+      <i ng-show="memberForm.file.$error.maxSize">File too large : max 1MB</i>
+
+      <input type="submit" ng-click="memberSubmitted=true;" value="Add to team"> {{memberResult}}
+    </form>
+
+  </div>
+</div>

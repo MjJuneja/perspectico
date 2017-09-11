@@ -1,4 +1,103 @@
-  <div ng-repeat="pods in main.topPods track by $index">
+<section class="hbox stretch">
+    <section id="content" style="position:absolute; top:0;">
+
+      <section class="hbox stretch">
+
+          <section>
+
+              <section class="vbox">
+
+                <section class="scrollable w-f-md" id="bjax-target">
+                    <div class="header-banner">
+                        <div class="head-nav container-fluid">
+                            <!--div class="logo">
+                                <i><img src="images/logo.jpeg" width="120"></i>
+                            </div-->
+                            <!--div class="user-btns">
+
+                                <a class="sign-in-btn" href="#sign_in_modal">Sign In</a>
+
+                                <a class="waves-effect waves-light btn modal-trigger" href="#sign_up_modal">Register</a>
+
+                            </div-->
+                        </div>
+
+                        <div class="tagline">
+                            <h3><span class="text-blue">Where</span> <span class="text-blue-dker">Experience</span> <span class="text-blue">meets</span> <span class="text-blue-dker">Ambition</span></h3>
+                            <div class="row">
+                              <div class="col-md-8 col-md-offset-2">
+                            <p class="text-dark">Perspectico brings you first hand perspectives from industry experts via podcasts, mentoring
+                                sessions and interview training to help you ace your career decisions.</p>
+                              </div>
+                            </div>
+                              </div>
+
+                        <a href="#/library" class="btn btn-info explore-btn btn-lg">Get Perspective</a>
+
+                    </div>
+                    <h2 class="font-thin m-b padder-lg">Podcasts <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                      <span class="bar1 a1 bg-primary lter"></span>
+                      <span class="bar2 a2 bg-info lt"></span>
+                      <span class="bar3 a3 bg-success"></span>
+                      <span class="bar4 a4 bg-warning dk"></span>
+                      <span class="bar5 a5 bg-danger dker"></span>
+                    </span></h2>
+
+                    <div class="row row-sm padder-lg">
+                        <div  ng-repeat="pods in main.topPods track by $index" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                          <div class="item">
+                            <div class="pos-rlt">
+                              <div class="bottom">
+                                <span class="badge bg-info m-l-sm m-b-sm">{{pods.duration}}</span>
+                              </div>
+                              <div class="item-overlay opacity r r-2x bg-black">
+                                <!--div class="text-info padder m-t-sm text-sm">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-o text-muted"></i>
+                                </div-->
+                                <div class="center text-center m-t-n">
+                                  <a  ng-hide="pods.fileUrl==mainPlaying" ng-click="playThis(pods.fileUrl)"><i class="icon-control-play i-2x"></i></a>
+                                  <p ng-hide="pods.fileUrl!==mainPlaying">Playing...</p>
+                                </div>
+                                <!-- <div class="bottom padder m-b-sm">
+                                  <a href="#" class="pull-right">
+                                    <i class="fa fa-heart-o"></i>
+                                  </a>
+                                  <a href="#">
+                                    <i class="fa fa-plus-circle"></i>
+                                  </a>
+                                </div> -->
+                              </div>
+                              <div class="item-overlay-description" ng-class="{vDescription:(pods.podId==currentClicked)}">{{pods.description}}
+                                  <p ng-click="currentClicked=''"><i class="fa fa-times-circle-o text-muted"></i></p>
+
+                              </div>
+                              <a href="#"><img src="{{pods.coverUrl}}" alt="Cover image" class="pods-cover r r-2x img-full"></a>
+                            </div>
+
+                            <div class="padder-v col-md-10">
+                              <p class="text-ellipsis">{{pods.title}}</p>
+                              <p  class="text-ellipsis text-xs text-muted">{{pods.subtext}}</p>
+                            </div>
+
+
+
+                          </div>
+                          <div class="more-vert">
+                              <i class="fa fa-ellipsis-h pull-right" ng-click="currentClicked=pods.podId"></i>
+                          </div>
+                        </div>
+                    </div>
+                    <p class="pull-left text-muted">**Based on real interview experiences, not approved by the companies. For the purpose of confidentiality, the voices have been changed.</p>
+                    <a ng-href="#/library" class="btn btn-lg btn-dark explore-all-btn col-md-offset-5 col-md-2 col-sm-offset-4 col-xs-offset-4">Explore All</a>
+
+
+
+
+  <!--div ng-repeat="pods in main.topPods track by $index">
     <img src="{{pods.coverUrl}}" alt="Cover image">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
@@ -7,13 +106,188 @@
     <p>Likes:{{pods.likes}}</p>
 
     <button ng-click="playThis(pods.fileUrl)">></button>
-  </div>
+  </div-->
 
   {{topPodsResult}}
 
 
-<div ng-hide="loginFirst">
-  <p>You need to login/signup first to play a podcast!</p>
-  <a ng-href="/#/login">Login now</a>
-  <button ng-click="loginFirst=true">Hide</button>
+  <div class="row subject-wrapper padder-md">
+      <h2 class="section-heading">Our Modules</h2>
+      <div class="col-md-4 subject">
+        <section class="panel panel-default">
+          <div class="panel-body">
+
+              Finance is one of the most coveted careers in the world, however, it is also one of the toughest to get
+              into. It is quite difficult to get a shortlist from leading firms, let alone clearing the interview. Through
+              our initiative, we have tied-up with folks with several years of experience in across Investment
+              Banking and Private Equity. Our team has come up with a list of core topics everyone should know to
+              tackle any finance interview. Through our Interview Preparation modules, we cover these and more to
+              help you crack that finance job!
+          </div>
+          <h2 class="card-head bg-info">Finance</h2>
+        </section>
+      </div>
+
+      <div class="col-md-4 subject">
+        <section class="panel panel-default">
+          <div class="panel-body">
+              Top tier management consulting firms value structured problem solving and analytical ability. Luckily
+              for you, it can be learnt. Through our Interview Preparation modules, we teach you how to analyse a
+              business scenario and make recommendations for business cases, handle tricky guesstimates and whiz
+              past those brain teasers. The training is rooted in fundamental frameworks consultants swear by –
+              from Porter’s five Forces to the BCG Matrix – to give you that inside edge.
+          </div>
+          <h2 class="card-head bg-info">Consulting</h2>
+
+        </section>
+      </div>
+
+      <div class="col-md-4 subject">
+        <section class="panel panel-default">
+          <div class="panel-body" style="height:201px">
+              Technology and e-commerce have been the fastest growing career fields over the last five years. With
+              heavy investments in consumer internet by global investors, Unicorns are now a leading career option
+              for young folks interested in working in a fast-paced environment. Through our Interview Preparation
+              Modules we offer you insights on the roles available in technology
+          </div>
+          <h2 class="card-head bg-info">Entrepreneurship</h2>
+        </section>
+      </div>
+
+    
+    </div>
+      <div class="row">
+       <a ng-href="/#modules" class="col-md-2 btn btn-lg btn-dark col-md-offset-5 rd-more-btn col-sm-offset-4 col-xs-offset-4">Read More</a>
+      </div>
+
+
+                  <!-- Our team Section -->
+<section id="team" class="team content-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2>Our Team</h2>
+          <h3 class="caption gray">Meet our panel of Industry Experts</h3>
+        </div><!-- /.col-md-12 -->
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-3">
+              <div class="team-member">
+                <figure>
+                  <img src="../images/nikhil.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>Shaheed Sukhdev College of Business Studies, Nomura, Contangrow.</p>
+                    <ul>
+                      <li><a href="https://www.facebook.com/nikhil.chainani.16"><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href="https://twitter.com/nikhil_chainani"><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href="https://www.linkedin.com/in/nikhil-chainani-73074735/"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Nikhil Chainani</h4>
+                <p>Founder</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+
+            <div class="col-md-3">
+              <div class="team-member">
+                <figure>
+                  <img src="../images/dhruv.png" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>IIM Bangalore, IIT Delhi, Xander Private Equity, Kotak Institutional Equities,
+                        Rockstays</p>
+                    <ul>
+                      <li><a href="https://www.facebook.com/dhruva.acharya "><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href="https://www.linkedin.com/in/dhruva-acharya-0b054713/"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Dhruva Acharya</h4>
+                <p>Mentor</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+
+            <div class="col-md-3">
+              <div class="team-member">
+                <figure>
+                  <img src="../images/Ishita.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>IIM Bangalore, Lady Shri Ram College Delhi University, Kotak Institutional
+                        Equities, HSBC Markets, Unitus Capital</p>
+                    <ul>
+                      <li><a href="https://www.facebook.com/ishita.verma"><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href="https://twitter.com/Ishita_V"><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href="https://www.linkedin.com/in/ishitaverma/"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Ishita Verma</h4>
+                <p>Mentor</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+
+            <div class="col-md-3">
+              <div class="team-member">
+                <figure>
+                  <img src="../images/ojas.jpg" alt="" class="img-responsive">
+                  <figcaption>
+                    <p>IIT Bombay, Dailyhunt, Kiwi Games, AT Kearney, GenNext Ventures, Deloitte</p>
+                    <ul>
+                      <li><a href="https://www.facebook.com/ojas.vipat"><i class="fa fa-facebook fa-2x"></i></a></li>
+                      <li><a href="https://twitter.com/OjasVipat"><i class="fa fa-twitter fa-2x"></i></a></li>
+                      <li><a href="https://www.linkedin.com/in/ojas-vipat-38484313/"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                    </ul>
+                  </figcaption>
+                </figure>
+                <h4>Ojas Vipat</h4>
+                <p>Mentor</p>
+              </div><!-- /.team-member-->
+            </div><!-- /.col-md-4 -->
+
+
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+
+      </div><!-- /.row -->
+      <a href="#/members" class="btn col-md-2 btn-lg col-md-offset-5 btn-dark col-sm-offset-4 col-xs-offset-4">View All</a>
+    </div><!-- /.container -->
+  </section><!-- /.our-team -->
+
+                  <!-- contact us through mail section -->
+                  <section class="mail-us-wrapper bg-info dker">
+                      <div class="container-fluid">
+                        <div>
+                          <h3>Placement Cells, Teachers and Students reach out to us, we would love to conduct a mock session in your college:
+                          </h3>
+                          <a class="btn btn-info btn-lg col-md-offset-3 col-md-6">Drop us a mail at :  perspectico.path@gmail.com</a>
+                        </div>
+                      </div>
+                    </section>
+
+                    <!-- social links section-->
+                    <section class="social-links">
+                      <div class="container">
+                        <div class="row">
+                          <a href="https://www.facebook.com/perspectico" class="btn-primary"><span class="fa fa-facebook animated pulse infinite"></span></a>
+                          <a href="https://twitter.com/Perspectico1" class="btn-info"><span class="fa fa-twitter"></span></a>
+                          <a href="https://plus.google.com/u/3/discover" class="btn-danger"><span class="fa fa-google-plus"></span></a>
+                          <a href="https://www.linkedin.com/company/13397198/" class="btn-dark"><span class="fa fa-linkedin"></span></a>
+
+                        </div>
+                      </div>
+                    </section>
+                    <section style="margin-bottom: 4.1em;">
+                      <p class="text-muted bg-black lter" style="padding: 0.4em; text-align:center">Developed by <span style="color:#e4e4e4"><a href="https://ab-hi.github.io/portfolio/">Abhishek Bansal</a></span> and <span style="color:#e4e4e4"><a href="https://himanshuchandra.github.io">Himanshu Chandra</a></span></p>
+                    </section>
+
+
+<div ng-hide="loginFirst" id="snackbar">
+  Please Login/Sign-up to continue
+  <span class="pull-right">
+  <a ng-href="/#/login" class="btn btn-info">Login now</a>
+  <a ng-click="loginFirst=true" class="loginfirst-dismiss">Dismiss</a>
+  </span>
 </div>

@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <title></title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+   <link type="image/x-icon" href="images/favicon.png" />
   <script src="bower_components/please-wait/build/please-wait.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <!-- build:css(.) styles/vendor.css -->
@@ -14,11 +16,23 @@
   <link rel="stylesheet" href="bower_components/please-wait/build/please-wait.css" />
   <link rel="stylesheet" href="bower_components/SpinKit/css/spinkit.css" />
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css" />
+
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
+  <!-- my css -->
+  <link rel="stylesheet" href="styles/jplayer.flat.css" type="text/css" />
+  <link rel="stylesheet" href="styles/animate.css" type="text/css" />
+  <link rel="stylesheet" href="styles/font.css" type="text/css" />
+  <link rel="stylesheet" href="styles/all.css" type="text/css" />
+  <link rel="stylesheet" href="styles/app.css" type="text/css" />
+  <link rel="stylesheet" href="styles/style.css" type="text/css" />
+
+
 </head>
 
 <body ng-app="perspecticoApp">
@@ -28,72 +42,238 @@
   <div ng-controller="WebindexCtrl">
     <div ng-cloak>
       <!-- Add your site or application content here -->
-      <div class="header">
-        <div class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
+      <div class="header bg-white" ng-hide="hideHF" ng-class="{transparentHeader:onHome}">
+        <div class="navbar" role="navigation">
+          <!--div class="container"-->
 
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <header class="header bg-white header-md navbar navbar-fixed-top-xs">
+            <div class="navbar-header aside bg-white">
+              <!-- <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                      <i class="icon-list"></i>
+                    </a> -->
+              <a href="/" class="navbar-brand text-lt">
+                      <i><img ng-src="images/logo.png" alt="."></i>
+                      <span class="hidden-nav-xs m-l-sm text-blue">Perspectico</span>
+                    </a>
+              <a class="btn btn-link visible-xs text-blue" data-toggle="dropdown" data-target=".user">
+                      <i class="icon-settings"></i>
+                    </a>
+            </div>
+            <!--ul class="nav navbar-nav hidden-xs">
+                    <li>
+                      <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                        <i class="fa fa-indent text"></i>
+                        <i class="fa fa-dedent text-active"></i>
+                      </a>
+                    </li>
+                  </ul-->
+            <!-- <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                        </span>
+                        <input type="text" class="form-control input-sm no-border rounded" placeholder="Business, Finance, Consulting ...">
+                      </div>
+                    </div>
+                  </form> -->
+            <div class="navbar-right ">
+              <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+                <li class="hidden-xs">
+                  <a class="dropdown-toggle lt text-blue" data-toggle="dropdown" style="cursor:pointer">
+                          <i class="icon-heart"></i>
+                          <span class="badge badge-sm up bg-danger count">{{wishedPods.length}}</span>
+                        </a>
+                  <section class="dropdown-menu aside-xl animated fadeInUp wishlist">
+                    <section class="panel bg-white">
+                       <div class="panel-heading b-light bg-light">
+                        <strong ng-show="LogoutButton"><a href="#/login">Login/Signup to view wishlist</a></strong>
+                        <strong ng-hide="LogoutButton">You have <span class="count">{{wishedPods.length}}</span> Podcasts</strong>
+                      </div>
+                      <div class="list-group list-group-alt">
+                        <!-- <div > -->
+                         <a class="media list-group-item" ng-repeat="wpods in wishedPods track by $index">
+                                <span class="pull-left thumb-sm">
+                                  <img ng-src="{{wpods.coverUrl}}" alt="..." class="">
+                                </span>
+                                <span> {{wpods.title}}<br>
+                                  <small class="text-muted">{{wpods.type}}</small>
+                                <!-- <button ng-click="unwishThis(wpods.podId)">x</button> -->
+
+                                </span>
+                                <span ng-class="{active:(wpods.fileUrl==currentPlaying)}" class="media-body block m-b-none" ng-click="playlistPlay(wpods.fileUrl)" style="cursor:pointer"> <i class="text fa fa-play-circle i-2x pull-right"></i>
+                                 </span>
+
+                              </a>
+                            <!-- </div> -->
+                      </div>
+                      <!--div class="panel-footer text-sm">
+                              <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                              <a href="#notes" data-toggle="class:show animated fadeInRight"></a>
+                            </div-->
+                    </section>
+                  </section>
+                </li>
+                <li class="dropdown" ng-cloak>
+                  <a ng-href="#login" class="dropdown-toggle bg clear" data-toggle="dropdown" ng-show="LogoutButton" style="cursor:pointer">
+                    <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="images/a0.png" alt="...">
+                          </span-->
+                    Login/SignUp<b class="caret"></b>
+                  </a>
+                  <a class="dropdown-toggle bg clear" data-toggle="dropdown" ng-hide="LogoutButton">
+                    <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="images/a0.png" alt="...">
+                          </span-->
+                    {{loginStatus}}<b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu animated fadeInRight" ng-hide="LogoutButton" ng-cloak>
+                    <!--li>
+                            <span class="arrow top"></span>
+                            <a href="#">Settings</a>
+                          </li>
+                          <li>
+                            <a href="profile.html">Profile</a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <span class="badge bg-danger pull-right">3</span>
+                              Notifications
+                            </a>
+                          </li>
+                          <li>
+                            <a href="docs.html">Help</a>
+                          </li>
+                          <li class="divider"></li-->
+
+                    <li style="cursor:pointer">
+                      <a ng-click="Logout()">Logout</a>{{LogoutMessage}}
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="navbar-header">
+
+            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button>
 
-              <a class="navbar-brand" href="#/">webskeleton</a>
-            </div>
-            <div>
-              <button type="button" ng-cloak>{{loginStatus}}</button>
-              <div ng-cloak ng-hide="ActivationStatus">
-                <p>{{Status}}</p>
-                <p ng-cloak><a ng-hide="sendLinkButton" ng-click="SendActivationLink()">Send Link Again</a>{{ActivationMessage}}</p>
-              </div>
+              </button> -->
 
-              <div ng-hide="LogoutButton" ng-cloak><button type="button" ng-click="Logout()">Logout</button>{{LogoutMessage}}</div>
-              <!--H1><a ng-href="#login">LOGIN/SIGNUP</H1-->
-              <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-                <ul class="nav navbar-nav">
-                  <li class="active"><a href="#/">Home</a></li>
-                  <li><a ng-href="/#about">About</a></li>
-                  <li><a ng-href="/#">Contact</a></li>
-                  <li><a ng-href="/#library">Library</a></li>
-                  <li ng-hide="SignupButton"><a ng-href="/#signup">Signup</a></li>
-                  <li ng-hide="LoginButton"><a ng-href="/#login">Login</a></li>
-                  <li ng-hide="ProfileButton"><a ng-href="/#profile">Profile</a></li>
-                </ul>
-              </div>
-            </div>
           </div>
+
+          <!--/div-->
         </div>
       </div>
-      <div class="container">
+
+      <div>
         <div ng-view=""></div>
       </div>
-      <button ng-click="playThis('http://localhost:1234/Podcasts/testpod2.mp3')">Play this</button>
-      <div class="footer">
-        <div>
-          <p>Playlist</p>
-          <div ng-repeat="playpods in playlistPods track by $index">
-            <p>{{playpods.title}}</p><button ng-click="playlistPlay(playpods.fileUrl)">></button>
-          </div>
 
-        </div>
-
-        <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
-        <button ng-click='audio.restart()'>Stop</button>
-        <button ng-click='audio.muting = !audio.muting'>Mute</button>
-
-        <label>Current Time</label>
-        <input class='form-control' type=text ng-model='audio.currentTime'>
-        <label>Volume</label>
-        <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
-        <div class="container">
-          <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-        </div>
+      <div ng-hide="loginFirst" id="snackbar">
+        Please Login/Sign-up to continue
+        <span class="pull-right">
+        <a ng-href="/#/login" class="btn btn-info">Login now</a>
+        <a ng-click="loginFirst=true" class="loginfirst-dismiss">Dismiss</a>
+        </span>
       </div>
+
+      <!--/section-->
+
+      <footer class="footer bg-dark" ng-hide="hideHF">
+        <div id="jp_container_N">
+          <div class="jp-type-playlist">
+            <div id="jplayer_N" class="jp-jplayer hide"></div>
+            <div class="jp-gui">
+              <div class="jp-video-play hide">
+                <a class="jp-video-play-icon">play</a>
+              </div>
+              <div class="jp-interface">
+                <div class="jp-controls">
+                  <div ng-click="playPrevious()"><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                  <div ng-class="{active:audio.paused}" ng-click='audio.paused ? audio.play() : audio.pause()' ng-hide="!initiated">
+                    <a class="jp-play text-active"><i class="icon-control-play i-2x"></i></a>
+                    <a class="jp-pause text"><i class="icon-control-pause i-2x"></i></a>
+                  </div>
+                  <div ng-hide="initiated">
+                    <i class="icon-control-play i-2x"></i>
+                  </div>
+                  <div ng-click="playNext()"><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                  <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                  <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+                  <div class="jp-progress hidden-xs">
+                    <div class="jp-seek-bar dk" id="seekBar">
+
+                        <div class="wrap">
+                            <input class='range' type='range' min=0 max=1 step=0.00001 ng-model='player.progress'>
+                          </div>
+
+                      <div>
+                      </div>
+                      <!--div class="jp-title text-lt">
+                        nfhbjnfrn
+                      </div-->
+                    </div>
+                  </div>
+                  <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                  <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                  <div class="hidden-xs hidden-sm" ng-click='audio.muting = !audio.muting'>
+                    <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                    <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                  </div>
+                  <div class="hidden-xs hidden-sm jp-volume">
+                    <div class="volume-wrap">
+                    <input class='form-control volume-range ' type=range min=0 max=1 step=0.01 ng-model='audio.volume' style="padding:0">
+                    </div>
+                    <!-- <div class="jp-volume-bar dk">
+                      <div class="jp-volume-bar-value lter"></div>
+                    </div> -->
+                  </div>
+                  <!--div>
+                                  <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
+                                  <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
+                                </div-->
+                  <!-- <div>
+                    <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                    <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+                  </div> -->
+                  <!-- <div class="hide">
+                    <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+                    <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="jp-playlist dropup" id="playlist">
+              <ul class="dropdown-menu aside-xl dker">
+                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                <li class="list-group-item" ng-repeat="playpods in playlistPods track by $index">
+                  <div>
+                    <!-- <a class="jp-playlist-item-remove">x</a> -->
+                    <a ng-class="{isPlaying:(playpods.fileUrl==currentPlaying)}" class="jp-playlist-item jp-playlist-current" ng-click="playlistPlay(playpods.fileUrl)">{{playpods.title}}</a>
+                  </div>
+                  <!-- {{playpods.title}}<button ng-click="playlistPlay(playpods.fileUrl)">></button> -->
+                </li>
+              </ul>
+            </div>
+            <div class="jp-no-solution hide">
+              <span>Update Required</span> To play the media you will need to either update your browser to a recent version
+              or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!--/section>
+      </section-->
+
       <div ng-controller="FinalizeCtrl">
       </div>
+
     </div>
   </div>
 
@@ -106,7 +286,7 @@
         r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
     }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-XXXXX-X');
+	ga('create', 'UA-104876970-1');
     ga('send', 'pageview');
   </script>
 
@@ -126,6 +306,15 @@
 
 
   <!-- endbower -->
+
+  <!-- my js -->
+  <script src="scripts/lib/perspectico-app.js"></script>
+  <script src="scripts/lib/app.plugin.js"></script>
+  <script src="scripts/lib/custom.js"></script>
+  <!--script src="scripts/lib/demo.js"></script-->
+
+  <!-- end my js -->
+
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -150,6 +339,7 @@
   <script src="scripts/services/opspanel.js"></script>
   <script src="scripts/controllers/library.js"></script>
   <script src="scripts/services/library.js"></script>
+  <script src="scripts/controllers/modules.js"></script>
   <script src="scripts/controllers/google.js"></script>
   <script src="scripts/controllers/facebook.js"></script>
   <script src="scripts/services/socialsignin.js"></script>

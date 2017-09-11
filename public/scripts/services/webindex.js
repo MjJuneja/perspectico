@@ -16,8 +16,9 @@ angular.module('perspecticoApp')
         loaded:false,
         loggedIn:false,
         userData:{},
-        liked:[],
         currentPod:"",
+        isWished:[],
+        wishedPods:[],
 
         checkStatus:function(){
           var defer = $q.defer();

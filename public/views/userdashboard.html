@@ -2,19 +2,22 @@
 <div ng-hide="userdashboard.myPodcasts">
   <h1>My Podcasts</h1>
 
-  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)">
-    <img src="{{pods.coverUrl}}" alt="Cover image">
+<div class="row">
+  <div ng-repeat="pods in userdashboard.mypods track by $index" ng-click="selectPod(pods.podId,$index)" class="col-md-3" ng-class="{selectedpods:(userdashboard.selectedPod==pods.podId)}">
+    <img src="{{pods.coverUrl}}" alt="Cover image" class="img-responsive" style="width: 200px; height: 200px; margin-left: 15%">
     <p>Title:{{pods.title}}</p>
     <p>Subheading:{{pods.subtext}}</p>
     <p>Description:{{pods.description}}</p>
     <p>Type:{{pods.type}}</p>
     <p>Likes:{{pods.likes}}</p>
+    <p>Duration:{{pods.duration}}</p>
 
-    <button ng-click="playThis(pods.fileUrl)">></button>
-    <button ng-click="deleteThis(pods.podId,$index)">X</button>
+    <button ng-hide="pods.fileUrl==userPlaying" ng-click="playThis(pods.fileUrl)" class="btn btn-primary">Play</button>
+    <p ng-hide="pods.fileUrl!==userPlaying">Playing...</p>
+    <button ng-click="deleteThis(pods.podId,$index)" class="btn btn-danger">Remove</button>
 
   </div>
-
+</div>
   {{myPodsResult}}
 
     <div ng-hide="userdashboard.uploadCoverForm">
@@ -32,7 +35,7 @@
 </div>
 
 <h1>Upload a new podcast</h1>
-<div>
+<div style="margin-bottom: 6em;">
   <div ng-hide="userdashboard.newPodcastForm">
 
     <form name="podForm" ng-submit="submitPodForm(podForm)" novalidate>
@@ -70,7 +73,7 @@
      Invalid subheading(Should be 5-50 only a-z,A-Z,0-9,-,. , and space allowed) </span>
 
       <h5>Description</h5>
-      <textarea name="validDiscription" ng-model="userdashboard.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
+      <textarea name="validDiscription" rows="15" cols="60" ng-model="userdashboard.description" placeholder="A breif description" pattern="[A-Za-z0-9,-.' ]{20,300}"
         required></textarea>
       <span ng-show="podForm.validDiscription.$touched &&
      podForm.validDiscription.$error.pattern &&
@@ -92,6 +95,7 @@
        <option value="entrepreneurship">Entrepreneurship</option>
        <option value="marketing">Marketing</option>
      </select>
+      <input name="validType" type="text" ng-model="userdashboard.type" pattern="[A-Za-z0-9,-.' ]{3,30}" placeholder="Any other" required>
       <span ng-show="podForm.validType.$touched &&
      podForm.validType.$error.required">Cannot be left empty </span>
       <span ng-show="PodSubmitted && !podForm.validType.$touched &&

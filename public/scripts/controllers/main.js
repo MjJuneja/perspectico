@@ -15,6 +15,7 @@ angular.module('perspecticoApp')
     };
 
     $scope.loginFirst=true;
+    $scope.currentClicked = false;
 
     $scope.loadTopPods = function () {
       var myPod = {
@@ -31,7 +32,7 @@ angular.module('perspecticoApp')
           }
           $scope.main.topPods = data.data;
           webindex.playlist = data.data;
-          console.log($scope.main.topPods);
+          // console.log($scope.main.topPods);
         }
         else {
           $scope.topPodsResult = "Error loading! Try again later.";
@@ -43,9 +44,11 @@ angular.module('perspecticoApp')
 
     $scope.loadTopPods();
 
+    $scope.mainPlaying = "";
     $scope.playThis = function (link) {
       if (link) {
-        link = requrl + '/Podcasts/' + link;
+        $scope.mainPlaying = link;
+        // link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
       else if(!webindex.user){

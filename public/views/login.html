@@ -1,4 +1,4 @@
-    <h1>Login Page</h1>
+    <!--<h1>Login Page</h1>
 
     <form name="loginForm"  ng-submit="submitForm(loginForm)" novalidate>
 
@@ -15,9 +15,9 @@
     <span  ng-show="submitted && !loginForm.validloginid.$touched &&
      loginForm.validloginid.$error.pattern">
         Invalid email/username </span>
-    
 
-    <input type="password" ng-model="login.loginpassword" placeholder="Password" 
+
+    <input type="password" ng-model="login.loginpassword" placeholder="Password"
     name="validloginpass" pattern="[a-z0-9A-Z!@#$%^&*()_.]{8,25}" required>
     <span  ng-show="loginForm.validloginpass.$touched &&
      loginForm.validloginpass.$error.pattern && !loginForm.validloginpass.$error.required">
@@ -31,23 +31,111 @@
      password too small or invalid character,use(8-25 char)(a-z,0-9,A-Z,!,@,#,$,%,^,&,*,(,),_,.) </span>
 
     <input type="checkbox" ng-model="login.RememberMe" value="false">Remember Me<br>
-    
+
     <input type="submit" ng-click="submitted=true;" value="Login">
 
     </form>
     {{result}}
- 
+
     <H3><a ng-href="#forgotpassword">Forgot Password</a></H3>
 
     <H1><a ng-href="#signup">SIGNUP</a></H1>
- 
 
-<div ng-controller="GoogleCtrl">     
+
+<div ng-controller="GoogleCtrl">
     <input type="button" ng-click="SignInGoogle()" value="Sign in with google" />
     {{GoogleMessage}}
 </div>
 
-<div ng-controller="FacebookCtrl">     
+<div ng-controller="FacebookCtrl">
     <a href="/social/socialFacebook/" target="_self"`>Login with Facebook</a>
     {{FacebookMessage}}
 </div>
+-->
+
+
+
+
+
+<section id="content" class="col-md-6 col-md-offset-3 m-t-xl wrapper-md animated fadeInUp bg-info dker">
+        <div class="container aside-xl">
+          <a class="navbar-brand block" ng-href="/"><span class="h1 font-bold">Perspectico</span></a>
+          <section class="m-b-lg">
+            <header class="wrapper text-center">
+              <strong>Sign in to get in touch</strong>
+            </header>
+        <form name="loginForm"  ng-submit="submitForm(loginForm)" novalidate>
+              <div class="form-group">
+        <input type="text" ng-model="login.loginid" name="validloginid" class="form-control rounded input-lg text-center no-border" pattern="[a-zA-Z0-9_.@!#$%^&*-+=><?/~`'|]{5,50}" placeholder="Email/Username/Mobile" required>
+        <span  ng-show="loginForm.validloginid.$touched &&
+         loginForm.validloginid.$error.pattern && !loginForm.validloginid.$error.required">
+         Invalid email/username/Mobile </span>
+        <span  ng-show="loginForm.validloginid.$touched &&
+         loginForm.validloginid.$error.required">Cannot be left empty </span>
+        <span  ng-show="submitted && !loginForm.validloginid.$touched &&
+         loginForm.validloginid.$error.required">
+            Cannot be left empty </span>
+        <span  ng-show="submitted && !loginForm.validloginid.$touched &&
+         loginForm.validloginid.$error.pattern">
+            Invalid email/username </span>
+              </div>
+              <div class="form-group">
+                 <!--input type="password" placeholder="Password" class="form-control rounded input-lg text-center no-border"-->
+
+                 <input type="password" ng-model="login.loginpassword" class="form-control rounded input-lg text-center no-border" placeholder="Password"
+                 name="validloginpass" pattern="[a-z0-9A-Z!@#$%^&*()_.]{8,25}" required>
+                 <span  ng-show="loginForm.validloginpass.$touched &&
+                  loginForm.validloginpass.$error.pattern && !loginForm.validloginpass.$error.required">
+                  password too small or invalid character,use(8-25 char)(a-z,0-9,A-Z,!,@,#,$,%,^,&,*,(,),_,.) </span>
+                 <span  ng-show="loginForm.validloginpass.$touched && loginForm.validloginpass.$error.required">
+                     Cannot be left empty </span>
+                 <span  ng-show="submitted && !loginForm.validloginpass.$touched &&
+                  loginForm.validloginpass.$error.required">Cannot be left empty </span>
+                 <span  ng-show="submitted && !loginForm.validloginpass.$touched &&
+                  loginForm.validloginpass.$error.pattern">
+                  password too small or invalid character,use(8-25 char)(a-z,0-9,A-Z,!,@,#,$,%,^,&,*,(,),_,.) </span>
+
+              </div>
+              
+
+               <div class="text-center m-t m-b">
+                  <div class="checkbox i-checks"> <label> <input type="checkbox" ng-model="login.RememberMe" value="false"><i></i> Remember me </label> </div>
+              </div>
+              
+                <!-- <input type="checkbox" ng-model="login.RememberMe" value="false">Remember Me<br> -->
+
+                <input type="submit" ng-click="submitted=true;" value="Login" class="btn btn-lg btn-info b-white b-2x btn-block btn-rounded">
+
+
+              <!--button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign in</span></button-->
+
+              <div class="line line-dashed"></div>
+              <!--p class="text-muted text-center"><small>Do not have an account?</small></p>
+              <a href="signup.html" class="btn btn-lg btn-info btn-block rounded">Create an account</a-->
+            </form>
+
+            {{result}}
+
+            <div class="text-center m-t m-b"><a ng-href="#forgotpassword"><small>Forgot password?</small></a></div>
+
+              <p class="text-muted text-center"><small>Do not have an account?</small></p>
+              <a ng-href="#signup" class="btn btn-lg btn-info btn-block rounded">Create an account</a>
+          </section>
+
+            <div>
+              <a href="/social/socialGoogle/" target="_self" class="btn btn-danger btn-block m-b-sm btn-lg">
+                <span> <i class="fa fa-google-plus i-2x pull-left"></i>
+                Login with Google
+                </span>
+              </a>
+            </div>
+
+            <div>
+              <a href="/social/socialFacebook/" target="_self" class="btn btn-primary btn-lg btn-block m-b-sm">
+                <span> <i class="fa fa-facebook i-2x pull-left"></i>
+                Login with Facebook
+                </span>
+              </a>
+            </div>
+        </div>
+      </section>

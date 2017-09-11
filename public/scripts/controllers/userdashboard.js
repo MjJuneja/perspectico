@@ -26,6 +26,13 @@ angular.module('perspecticoApp')
     };
 
 
+    var unregister=$scope.$watch(webindex.loaded,function(newValue,oldValue){
+        if(!angular.equals(webindex.loaded, false)){
+            $scope.loadMyPods();
+            unregister();
+        }
+    },true);
+
     $scope.loadMyPods = function () {
       var myPod = {
         type: 'userPods',
@@ -47,7 +54,7 @@ angular.module('perspecticoApp')
             data.data[i].coverUrl=requrl+'/Covers/'+data.data[i].coverUrl;
           }
           $scope.userdashboard.mypods = data.data;
-          console.log($scope.userdashboard.mypods);
+          // console.log($scope.userdashboard.mypods);
         }
         else {
           $scope.myPodsResult = "Error loading! Try again later.";
@@ -56,9 +63,7 @@ angular.module('perspecticoApp')
         $scope.myPodsResult = "Error Loading! Try again later.";
       });
     };
-
     $scope.loadMyPods();
-
 
     $scope.submitPodForm = function (form) {
       if (form.$valid && $scope.podForm.file.$valid && $scope.userdashboard.podcast) {
@@ -191,9 +196,11 @@ angular.module('perspecticoApp')
       });
     };
 
+    $scope.userPlaying = "";
     $scope.playThis = function (link) {
       if (link) {
-        link = requrl + '/Podcasts/' + link;
+        $scope.userPlaying = link;
+        // link = requrl + '/Podcasts/' + link;
         webindex.currentPod = link;
       }
     };
