@@ -85,8 +85,6 @@ passport.use(new GoogleStrategy({
         }
         else{
             logger.debug('routes social google');
-            console.log(profile);
-            console.log(profile.emails[0].value);
             request.body.Email=profile.emails[0].value.toLowerCase();
             request.body.FullName=profile._json.displayName;
             request.body.socialId=profile.id;
@@ -97,7 +95,6 @@ passport.use(new GoogleStrategy({
                     return;
                 }
             };
-            console.log(request.body);
             dbOperations.socialSignin(request,response,done);
         }
 	}
