@@ -1,5 +1,5 @@
 # Perspectico
 
-A podcast platform
+A podcast platform for users
 
 View live at: http://www.perspectico.com
